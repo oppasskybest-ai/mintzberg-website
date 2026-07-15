@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+/* ── DESIGN TOKENS — per mintzberg-master-prompt.md "DESIGN DIRECTION" ──
+   Do not introduce new colors or fonts without discussing it first (Rule 3). */
+
+@theme {
+  --color-navy: #1a2e4a;
+  --color-paper: #fafaf8;
+  --color-orange: #e05c1a;
+  --color-ink: #1a1a1a;
+  --font-family-serif: "Playfair Display", Georgia, serif;
+  --font-family-sans: "Inter", system-ui, sans-serif;
+}
+
+:root {
+  --navy: #1a2e4a;
+  --navy-light: #2b4468;
+  --paper: #fafaf8;
+  --paper-alt: #f2f1ec;
+  --orange: #e05c1a;
+  --orange-light: #ea7c47;
+  --ink: #1a1a1a;
+  --ink-light: #4a4a4a;
+  --rule: rgba(26, 46, 74, 0.12);
+  --nav-height: 72px;
+  --content-max-width: 720px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 17px; /* master prompt: minimum body font size 17px */
+  line-height: 1.7; /* master prompt: line height 1.7 */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden; /* master prompt: no horizontal scrolling anywhere */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--navy);
+}
+
+p { line-height: 1.7; margin-bottom: 1.25em; }
+
+a { color: var(--orange); text-decoration: none; transition: color 0.2s ease; }
+a:hover { color: var(--orange-light); }
+
+/* ── CONTAINERS ──
+   master prompt: "Maximum content width 720px centered on the page" */
+.container-content {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 0 1.25rem;
+  width: 100%;
+}
+.container-wide {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  width: 100%;
+}
+
+/* No carousels, no sliders, no autoplay anything — enforced at the
+   component level, not CSS, but flagged here as a standing rule. */

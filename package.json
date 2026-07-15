@@ -1,0 +1,41 @@
+{
+  "name": "mintzberg-website",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.108.2",
+    "@tailwindcss/postcss": "^4.3.1",
+    "@tiptap/react": "^3.20.4",
+    "@tiptap/starter-kit": "^3.20.4",
+    "@tiptap/extension-image": "^3.20.4",
+    "bcryptjs": "^3.0.3",
+    "cookies-next": "^6.1.1",
+    "date-fns": "^4.4.0",
+    "fuse.js": "^7.0.0",
+    "jose": "^6.2.3",
+    "next": "^16.2.9",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-hot-toast": "^2.6.0",
+    "resend": "^6.12.4"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.3.5",
+    "@types/bcryptjs": "^3.0.0",
+    "@types/node": "^25.9.3",
+    "@types/react": "^18.3.31",
+    "@types/react-dom": "^18.3.7",
+    "autoprefixer": "^10.5.0",
+    "eslint": "^8.57.1",
+    "eslint-config-next": "^14.2.35",
+    "postcss": "^8.5.15",
+    "tailwindcss": "^4.3.1",
+    "typescript": "^6.0.3"
+  }
+}
