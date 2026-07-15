@@ -4,8 +4,9 @@ import { assetUrl } from '@/lib/assets'
 
 export default function FeaturedBooks() {
   return (
-    <section className="container-wide" style={{ padding: '3rem 1.5rem' }}>
-      <h2 style={{ marginBottom: '1.5rem' }}>Books</h2>
+    <section className="container-wide" style={{ padding: '4rem 1.5rem' }}>
+      <p className="eyebrow-label" style={{ textAlign: 'center' }}>Latest work</p>
+      <h2 style={{ marginBottom: '2rem', textAlign: 'center' }}>Books</h2>
       <div
         style={{
           display: 'grid',
@@ -16,7 +17,7 @@ export default function FeaturedBooks() {
         {HOME_FEATURED_BOOKS.map((book) => {
           const cover = assetUrl(book.coverImage)
           return (
-            <div key={book.slug}>
+            <div key={book.slug} className="premium-card" style={{ padding: '1.25rem' }}>
               {cover && (
                 <a href={`/books/${book.slug}`}>
                   <Image
@@ -27,15 +28,14 @@ export default function FeaturedBooks() {
                     style={{
                       width: '100%',
                       height: 'auto',
-                      border: '1px solid var(--rule)',
                     }}
                   />
                 </a>
               )}
+              <h3 style={{ fontSize: '1.05rem', margin: '1rem 0 0.5rem' }}>{book.title}</h3>
               <ul
                 style={{
                   listStyle: 'none',
-                  marginTop: '0.75rem',
                   display: 'flex',
                   flexDirection: 'column',
                   gap: '0.35rem',

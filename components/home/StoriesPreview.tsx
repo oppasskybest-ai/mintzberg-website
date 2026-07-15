@@ -11,23 +11,26 @@ const STORIES = [
 // Verbatim from html/pages/1.html block-nodeblock-177.
 export default function StoriesPreview() {
   return (
-    <section className="container-content" style={{ padding: '2rem 1.25rem' }}>
-      <h2>Stories</h2>
-      <p>
-        I like to write short stories—not fiction, but based on personal
-        experiences. I have done about thirty in all. Five are included{' '}
-        <a href="/stories">here</a>.
-      </p>
-      <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
-        {STORIES.map((s) => {
-          const href = assetUrl(s.file) || '#'
-          return (
-            <li key={s.file}>
-              <a href={href}>{s.label}</a>
-            </li>
-          )
-        })}
-      </ul>
+    <section className="section-parallax" style={{ padding: '3.5rem 0' }}>
+      <div className="container-content">
+        <p className="eyebrow-label">Personal writing</p>
+        <h2 style={{ margin: '0.4rem 0 1rem' }}>Stories</h2>
+        <p>
+          I like to write short stories—not fiction, but based on personal
+          experiences. I have done about thirty in all. Five are included{' '}
+          <a href="/stories">here</a>.
+        </p>
+        <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
+          {STORIES.map((s) => {
+            const href = assetUrl(s.file) || '#'
+            return (
+              <li key={s.file}>
+                <a href={href}>{s.label}</a>
+              </li>
+            )
+          })}
+        </ul>
+      </div>
     </section>
   )
 }

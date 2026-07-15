@@ -71,3 +71,155 @@ a:hover { color: var(--orange-light); }
 
 /* No carousels, no sliders, no autoplay anything — enforced at the
    component level, not CSS, but flagged here as a standing rule. */
+
+/* ══════════════════════════════════════════════════════════════════
+   PREMIUM DESIGN SYSTEM — added 2026-07-15 per explicit direction.
+   Adapts duff-site's .page-hero / .section-bg-image fixed-parallax
+   pattern (background-attachment: fixed, full-bleed image, overlay,
+   accent divider) into Henry's navy/off-white/orange palette. This is
+   the new standard for every page going forward, not a one-off.
+   ══════════════════════════════════════════════════════════════════ */
+
+/* Full-height hero: fixed parallax texture + navy gradient overlay,
+   white text on top. Used at the top of major pages (home, section
+   index pages). */
+.hero-parallax {
+  position: relative;
+  min-height: 62vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url('/texture-lines.svg');
+  background-size: 320px 320px;
+  background-attachment: fixed;
+  background-color: var(--navy);
+  overflow: hidden;
+  padding: calc(var(--nav-height) + 3rem) 1.5rem 3.5rem;
+  box-sizing: border-box;
+}
+.hero-parallax::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, rgba(15,28,48,0.94) 0%, rgba(26,46,74,0.86) 55%, rgba(224,92,26,0.22) 100%);
+  z-index: 1;
+}
+.hero-parallax > * { position: relative; z-index: 2; }
+
+.hero-eyebrow {
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(234, 124, 71, 0.9); /* orange-light */
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+}
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  color: var(--paper);
+  font-size: clamp(2.4rem, 6vw, 4.2rem);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+}
+.hero-subtitle {
+  color: rgba(250, 250, 248, 0.72);
+  font-size: clamp(1rem, 1.6vw, 1.2rem);
+  max-width: 640px;
+  margin-top: 1rem;
+  line-height: 1.7;
+}
+
+/* Reusable in-page parallax band — same fixed texture, lighter overlay
+   in paper tones, for breaking up long scrolling lists (e.g. blog
+   index) so the background stays "featured" as the person scrolls,
+   without being a full hero every time. */
+.section-parallax {
+  position: relative;
+  background-image: url('/texture-lines.svg');
+  background-size: 240px 240px;
+  background-attachment: fixed;
+  background-color: var(--paper-alt);
+}
+.section-parallax::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(250, 250, 248, 0.88);
+  z-index: 0;
+}
+.section-parallax > * { position: relative; z-index: 1; }
+
+/* Accent divider — replaces duff-site's gold-divider, in Henry's orange */
+.divider-accent {
+  width: 52px;
+  height: 3px;
+  background: var(--orange);
+  margin: 1.5rem 0;
+}
+.divider-accent-center { margin-left: auto; margin-right: auto; }
+
+/* Premium card treatment for listings (blog index, book grid, etc.) */
+.premium-card {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+.premium-card:hover {
+  border-color: rgba(224, 92, 26, 0.35);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(26, 46, 74, 0.08);
+}
+
+.eyebrow-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--orange);
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Pagination controls */
+.pager-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.25rem;
+  height: 2.25rem;
+  padding: 0 0.6rem;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  font-size: 0.9rem;
+  color: var(--navy);
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+.pager-link:hover { border-color: var(--orange); color: var(--orange); }
+.pager-link[aria-current='page'] {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: var(--paper);
+}
+
+/* Prose refinements for parsed blog/article bodies */
+.post-body { font-size: 1.06rem; }
+.post-body p { margin-bottom: 1.4em; }
+.post-body img { max-width: 100%; height: auto; border-radius: 2px; margin: 1.5rem 0; }
+.post-body a { border-bottom: 1px solid rgba(224, 92, 26, 0.35); }
+.post-body a:hover { border-bottom-color: var(--orange); }
+.post-body blockquote {
+  border-left: 3px solid var(--orange);
+  padding-left: 1.25rem;
+  margin: 1.75rem 0;
+  font-style: italic;
+  color: var(--ink-light);
+}
+
+@media (max-width: 640px) {
+  /* iOS Safari doesn't support background-attachment: fixed well inside
+     transformed contexts; fall back to scroll on small screens so the
+     texture doesn't jitter, per master prompt Mobile section. */
+  .hero-parallax, .section-parallax { background-attachment: scroll; }
+}

@@ -74,6 +74,22 @@ def main():
             # remove leading date text
             body_html = re.sub(r'^\s*\d{1,2}\s+[A-Za-z]+\s+\d{4}', '', body_html, count=1)
             body_html = re.sub(r'<script\b[^>]*>.*?</script>', '', body_html, flags=re.S)
+            # Strip inline style="" attributes site-wide (Word-paste cruft
+            # like explicit font-size/line-height/font-family on spans) so
+            # every post renders with the site's own typography system.
+            # Decision confirmed 2026-07-15: strip, don't preserve.
+            body_html = re.sub(r'\s+style="[^"]*"', '', body_html)
+            body_html = re.sub(r"\s+style='[^']*'", '', body_html)
+            # Also drop now-pointless empty class="" / lang="" MSO leftovers
+            body_html = re.sub(r'\s+class=""', '', body_html)
+            body_html = re.sub(r'\s+xml:lang="[^"]*"', '', body_html)
+            # Collapse spans that now carry no attributes at all into
+            # nothing (unwrap), since they were purely styling wrappers
+            for _ in range(5):
+                new_body = re.sub(r'<span>(.*?)</span>', r'\1', body_html, flags=re.S)
+                if new_body == body_html:
+                    break
+                body_html = new_body
             body_html = re.sub(r'(<p>\s*(&nbsp;|\s)*</p>\s*)+$', '', body_html.strip())
             body_html = body_html.strip()
         results.append({

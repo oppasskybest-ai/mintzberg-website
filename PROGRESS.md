@@ -28,13 +28,15 @@ fallback in `lib/config/*.ts` if the DB is empty/unreachable.
 (same repo as the code). See mintzberg-addendum-final.md for the full URL
 pattern and the release_upload_log.csv reference. No Cloudinary.
 
-**Where we are:** Step 1–3 complete. Step 4 (Blog system) started — 10-post
-test batch wired end-to-end (parse → data layer → index page → post
-template), per master prompt's "test with 10 posts first" instruction.
-221 more real posts already parsed and sitting in
-`scripts/data/parsed-blog-posts.json`, ready to extend the seed — not yet
-added to `lib/config/blog-posts.ts`, waiting on confirmation the 10-post
-pattern is approved before scaling to all 231.
+**Where we are:** Steps 1–4 substantially complete. All 231 real blog posts
+parsed, cleaned (inline Word-paste styles stripped), and live in
+`lib/config/blog-posts.ts` — no longer just a 10-post test batch. Blog index
+is paginated at 10 posts/page (`/blog?page=N`), not the old site's
+load-everything pattern. Premium design system (fixed-parallax hero/section
+backgrounds, navy/orange palette) is now the standard for every page going
+forward. Rebalancing Society removed from scope entirely per explicit
+2026-07-15 decision. `mintzberg-master-prompt.md` and
+`mintzberg-addendum-final.md` now live in the repo root, version-controlled.
 
 **Important correction to the master prompt's blog count:** the master
 prompt says 254 blog HTML files / 254 posts. The actual `sorted-assets/html/blog/`
@@ -218,6 +220,88 @@ NEXT STEP: your call — (a) confirm the inline-styles decision + the 10-post
 
 ---
 
+STEP COMPLETED: Full-force round — prompt files, nav cleanup, premium
+  design system, blog scale-up to all 231, pagination
+DATE: 2026-07-15
+
+1. PROMPT FILES MOVED INTO REPO
+   `mintzberg-master-prompt.md` and `mintzberg-addendum-final.md` copied to
+   repo root, version-controlled from now on. `mintzberg-master-prompt.md`
+   amended in two places (both dated, original text kept as reference, not
+   deleted):
+   - Content Structure section 11 (Rebalancing Society) marked REMOVED FROM
+     SCOPE — separate project, explicit decision.
+   - Navigation section's nav list: "Rebalancing Society" removed.
+
+2. NAV: Rebalancing Society link removed from `lib/config/nav.ts` (was
+   never live content anyway — no page existed for it).
+
+3. PREMIUM DESIGN SYSTEM (new standard for every page from here forward,
+   until told to drop it):
+   - Adapted duff-site's `.page-hero` / `.section-bg-image` fixed-parallax
+     pattern (background-attachment: fixed, full-bleed image, dark overlay,
+     accent divider) into Henry's navy/off-white/orange palette instead of
+     duff's black/gold.
+   - `public/texture-lines.svg` — custom subtle diagonal hairline texture
+     (navy, low opacity) standing in for duff's mood photography, since
+     there's no equivalent stock photography for an academic's site. Fits
+     the "structure/strategy" subject matter (blueprint-like) without
+     being decorative for its own sake.
+   - `app/globals.css`: `.hero-parallax` (full hero band), `.section-parallax`
+     (in-page fixed-texture band, so the background stays "featured" while
+     scrolling through long content like the blog list), `.divider-accent`
+     (orange, replaces duff's gold divider), `.premium-card` (hover-lift
+     listing cards), `.eyebrow-label`, `.pager-link`, prose refinements for
+     `.post-body`. Mobile fallback: `background-attachment: scroll` under
+     640px (iOS handles `fixed` poorly, master prompt requires mobile to
+     work correctly).
+   - `components/layout/PageHero.tsx` — reusable hero component.
+   - Applied to: Navbar (blur/shadow), Home (full redesign — hero portrait,
+     section-parallax bands, premium-card book/video grids), Blog index
+     (hero + card list + pagination), Blog post template (hero band +
+     styled prose).
+
+4. BLOG SCALED TO ALL 231 POSTS + STYLE CLEANUP
+   - `scripts/parse_blog.py` updated: strips all inline `style=""` attrs
+     (Word-paste font-size/line-height cruft), drops empty `class=""` /
+     `xml:lang=""` MSO leftovers, unwraps now-bare `<span>` wrappers
+     (looped for nesting). Decision confirmed by you: strip, don't
+     preserve — Rule 1 covers Henry's words, not Word's inline styling.
+   - `scripts/gen_blog_seed.py` updated to emit the full parsed set (was
+     a 10-post slice).
+   - `lib/config/blog-posts.ts` — regenerated, now 231 posts (was 10).
+   - `lib/data/blog-posts.ts` — added `getBlogPostsPage(page)`: real
+     pagination, 10 posts/page, sorted by parsed date descending (seed
+     fallback path only — Supabase path already ordered by date).
+   - `app/blog/page.tsx` — rebuilt with `searchParams.page`, prev/next +
+     numbered pager (`.pager-link`), no more "list everything" — this is
+     the "not the crazy way the former site did it" fix (that page loaded
+     all 234 posts and took 10+ minutes).
+
+VERIFIED: ran `npm install` + `npm run build` after all changes — clean
+  compile, 0 TypeScript errors, all 231 blog post pages + home + paginated
+  blog index generated successfully (235 static routes total).
+
+KNOWN GAPS / OPEN ITEMS:
+  - Pager currently renders all page-number links (24 pages at 10/page) —
+    works, but a windowed pager (1 … 5 6 [7] 8 9 … 24) would look better at
+    this scale. Flagged as a polish item, not urgent.
+  - `html/pages/` (354 files — books, articles, commentaries, resume,
+    contact, videos, stories, sculptures) still not classified/parsed.
+    Design system is ready for them; content extraction is the remaining
+    work.
+  - Search (Fuse.js, Step 12) not started.
+  - Admin dashboard (CRUD for Henry) not started — architecture decided,
+    not built.
+  - Supabase project not yet created — site runs entirely on the seed
+    fallback right now, which is fully functional for local dev/preview.
+NEXT STEP: continue building out `html/pages/` content (books, articles,
+  commentaries, resume, videos, stories, sculptures) using the now-
+  established design system, per Build Order Steps 5 onward. Proceeding
+  with that next unless redirected.
+
+---
+
 ## HTML FILES PROCESSED LOG
 
 Format per entry: `filename — status — date — notes`
@@ -232,16 +316,15 @@ Nothing processed yet. sorted-assets/ has not been sent to this session.
 
 ### Blog (sorted-assets/html/blog/ — 252 files received, not 254)
 
-**DONE — parsed AND wired into the live seed (10-post test batch):**
+**DONE — parsed AND wired into the live seed, all 231 real posts** (was a
+10-post test batch as of the previous log entry; scaled up to the full set
+2026-07-15, inline styles stripped in this pass too). Full filename list
+below — every file with the `ds single post` marker is in this set:
 `4ships.html`, `Brazil-corruption.html`, `Brazil-why-not.html`,
 `Can-a-loose-cannon-have-a-strategy.html`, `Coalescing-around-Climate.html`,
 `Confronting-Socially-Transmitted-Epidemics.html`, `Democracy-Demise.html`,
 `GNH.html`, `Globalization-or-Democracy-Trade-Pacts-Tribunals.html`,
-`Imagine-getting-it-beyond-Donald-Trump.html`
-
-**PARSED but NOT yet in the live seed** (sitting in
-`scripts/data/parsed-blog-posts.json`, ready to add — do not re-parse,
-just re-run `scripts/gen_blog_seed.py` against a larger slice when ready):
+`Imagine-getting-it-beyond-Donald-Trump.html`,
 `Jefferson-Lincoln-anticipated-Trump.html`, `Marginalizing the Superpowers-1.html`,
 `Next-step-What-can-we-do-now.html`, `Superpower-Corrupts.html`,
 `a-ceo-letter-to-the-boardlong-overdue.html`, `about-listening.html`,

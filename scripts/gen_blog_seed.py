@@ -4,7 +4,10 @@ with open('/home/claude/work/parsed-blog-posts.json', encoding='utf-8') as f:
     data = json.load(f)
 
 posts = data['posts']
-test_batch = posts[:10]
+# Scale-up confirmed 2026-07-15: emit the full parsed set, not just a
+# 10-post test slice. Pagination (10/page) is handled at render time in
+# app/blog/page.tsx, not by limiting the seed data itself.
+test_batch = posts
 
 def rewrite_img_src(html):
     def repl(m):

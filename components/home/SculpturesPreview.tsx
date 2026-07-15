@@ -27,21 +27,21 @@ const SCULPTURE_IMAGES = [
 
 export default function SculpturesPreview() {
   return (
-    <section className="container-content" style={{ padding: '2rem 1.25rem 3rem' }}>
-      <h2>Beaver Sculptures</h2>
+    <section className="container-content" style={{ padding: '3.5rem 1.25rem 4.5rem' }}>
+      <p className="eyebrow-label">A personal interest</p>
+      <h2 style={{ margin: '0.4rem 0 1.25rem' }}>Beaver Sculptures</h2>
       <div
         style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fill, minmax(90px, 1fr))',
-          gap: '0.5rem',
-          marginTop: '1rem',
+          gap: '0.6rem',
         }}
       >
         {SCULPTURE_IMAGES.map((file) => {
           const src = assetUrl(file)
           if (!src) return null
           return (
-            <a href="/sculptures" key={file}>
+            <a href="/sculptures" key={file} className="premium-card" style={{ padding: 0, overflow: 'hidden' }}>
               <Image
                 src={src}
                 alt=""
@@ -51,7 +51,7 @@ export default function SculpturesPreview() {
                   width: '100%',
                   height: '110px',
                   objectFit: 'cover',
-                  border: '1px solid var(--rule)',
+                  display: 'block',
                 }}
               />
             </a>

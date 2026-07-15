@@ -17,8 +17,11 @@ export default function Navbar() {
         position: 'sticky',
         top: 0,
         zIndex: 50,
-        background: 'var(--paper)',
+        background: 'rgba(250, 250, 248, 0.92)',
+        backdropFilter: 'blur(8px)',
+        WebkitBackdropFilter: 'blur(8px)',
         borderBottom: '1px solid var(--rule)',
+        boxShadow: '0 1px 0 rgba(26,46,74,0.03)',
       }}
     >
       <div
