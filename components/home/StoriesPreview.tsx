@@ -25,7 +25,7 @@ export default function StoriesPreview() {
             const href = assetUrl(s.file) || '#'
             return (
               <li key={s.file}>
-                <a href={href}>{s.label}</a>
+                <a href={href} target="_blank" rel="noopener noreferrer">{s.label}</a>
               </li>
             )
           })}

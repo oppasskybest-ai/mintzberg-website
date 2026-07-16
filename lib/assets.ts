@@ -48,6 +48,63 @@ export function assetUrl(pathOrFilename: string): string | null {
   )}`
 }
 
+/**
+ * Rewrites the ~450 relative-path cross-links found inside scraped blog
+ * post / book bodies ("../some-post.html", "../books/x.html",
+ * "../sculptures.html", etc.) into real site routes. Bug found 2026-07-15:
+ * these were being left completely untouched and 404ing, since a relative
+ * ".html" path resolves against the live page's own URL on the new site,
+ * not against the old Drupal site structure.
+ */
+const OLD_BOOK_SLUG_TO_NEW: Record<string, string> = {
+  'mintzberg-management-inside-our-strange-world-organizations':
+    'mintzberg-on-management-inside-our-strange-world-of-organizations',
+  'power-and-around-organizations': 'power-in-and-around-organizations',
+  'rise-and-fall-strategic-planning': 'the-rise-and-fall-of-strategic-planning',
+}
+
+const SPECIAL_PAGE_MAP: Record<string, string> = {
+  sculptures: '/sculptures',
+  beaver: '/sculptures',
+  stories: '/stories',
+  blog: '/blog',
+  index: '/',
+  articles: '/articles',
+  commentaries: '/commentaries',
+  resume: '/resume',
+  contact: '/contact',
+  welcome: '/',
+  // Rebalancing Society is explicitly out of scope (see master prompt
+  // Content Structure section 11 amendment) — no page exists for it here,
+  // so these send readers to the live separate site instead of 404ing.
+  rs: 'https://rebalancingsociety.org/',
+  'a-map-for-balance': 'https://rebalancingsociety.org/',
+}
+
+export function rewriteInternalLinks(html: string): string {
+  return html.replace(/href="((?:\.\.\/)+)([^"]+?)\.html"/gi, (full, _dots, path) => {
+    // "books/some-slug" or "books/some-slug/index"
+    const bookMatch = path.match(/^books\/([^/]+?)(?:\/index)?$/i)
+    if (bookMatch) {
+      const oldSlug = bookMatch[1]
+      const newSlug = OLD_BOOK_SLUG_TO_NEW[oldSlug] || oldSlug
+      return `href="/books/${newSlug}"`
+    }
+    // Known special pages (sculptures, stories, blog index, etc.)
+    if (SPECIAL_PAGE_MAP[path]) {
+      return `href="${SPECIAL_PAGE_MAP[path]}"`
+    }
+    // Known dead links in the original site itself — leave pointing
+    // nowhere useful rather than guessing; they 404'd on the old site too.
+    if (path === 'enterprise' || path === 'pp') {
+      return full
+    }
+    // Otherwise assume it's a blog post cross-reference — this covers the
+    // large majority of cases, since blog slugs here are the original
+    // filenames unchanged.
+    return `href="/blog/${path}"`
+  })
+}
 /** YouTube thumbnail for the click-to-load facade pattern (addendum). */
 export function youtubeThumbnail(videoId: string): string {
   return `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`
@@ -56,4 +113,35 @@ export function youtubeThumbnail(videoId: string): string {
 /** youtube-nocookie embed URL, only used after a facade click. */
 export function youtubeEmbedUrl(videoId: string): string {
   return `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1`
+}
+
+/**
+ * Resolves any scraped href into something that actually works, and tells
+ * the caller whether it's external (so the link can open in a new tab).
+ *
+ * Bug fixed 2026-07-15: raw scraped hrefs came in three shapes that were
+ * being rendered as-is without this resolution, causing real 404s:
+ *   1. Relative local paths ("../sites/default/files/book/x.pdf") — these
+ *      need the same GitHub Release URL treatment as images, or they
+ *      resolve against the live site's own domain and 404.
+ *   2. Genuine external URLs (Amazon, publishers, etc.) — left as-is, but
+ *      need target="_blank" so users don't lose the site.
+ *   3. Site-internal routes we built ("/books/slug") — left as-is, no
+ *      new tab.
+ */
+export function resolveHref(href: string): { href: string; external: boolean } {
+  if (/^https?:\/\//.test(href)) {
+    return { href, external: true }
+  }
+  if (href.startsWith('/')) {
+    return { href, external: false } // our own internal route
+  }
+  if (href.startsWith('#') || href.startsWith('mailto:')) {
+    return { href, external: false }
+  }
+  // Relative local path (old Drupal file path) — resolve via the asset
+  // repo, same as images. If it's not a known asset type, fall back to
+  // the original string rather than silently breaking the link further.
+  const resolved = assetUrl(href)
+  return { href: resolved || href, external: true }
 }

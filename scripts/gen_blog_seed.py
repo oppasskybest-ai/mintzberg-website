@@ -1,4 +1,5 @@
 import json, re
+from datetime import datetime
 
 with open('/home/claude/work/parsed-blog-posts.json', encoding='utf-8') as f:
     data = json.load(f)
@@ -9,9 +10,32 @@ posts = data['posts']
 # app/blog/page.tsx, not by limiting the seed data itself.
 test_batch = posts
 
+def parse_sort_date(d):
+    if not d:
+        return None
+    try:
+        return datetime.strptime(d, '%d %B %Y').strftime('%Y-%m-%d')
+    except ValueError:
+        return None
+
 def rewrite_img_src(html):
+    # Bug fix (2026-07-15): only tokenize images that are actually
+    # Henry's own local assets (relative paths, or absolute URLs on
+    # mintzberg.org/rebalancingsociety.org). Truly external hotlinked
+    # images (imgur.com, other third-party sites) must be left with their
+    # original absolute URL untouched — they were never local files, so
+    # wrapping them in an {{ASSET}} token made them 404 against GitHub
+    # Releases where they never existed. This was causing real broken
+    # images/links on the live site.
+    MINTZBERG_DOMAINS = ('mintzberg.org', 'rebalancingsociety.org')
+
     def repl(m):
         path = m.group(1)
+        if re.match(r'^https?://', path):
+            domain_m = re.search(r'^https?://(?:www\.)?([^/]+)', path)
+            domain = domain_m.group(1) if domain_m else ''
+            if not any(domain.endswith(d) for d in MINTZBERG_DOMAINS):
+                return m.group(0)  # leave truly-external images untouched
         filename = path.split('/')[-1]
         return f'src="{{{{ASSET}}}}{filename}{{{{/ASSET}}}}"'
     return re.sub(r'src="([^"]+\.(?:jpg|jpeg|png|gif))"', repl, html, flags=re.I)
@@ -48,6 +72,24 @@ lines.append("]")
 
 with open('/home/claude/work/mintzberg-site/mintzberg-site/lib/config/blog-posts.ts', 'w', encoding='utf-8') as f:
     f.write('\n'.join(lines) + '\n')
+
+# Supabase-ready JSON export — same tokenized body_html as the TS seed
+# (so rendering logic is identical whichever source the data comes from),
+# plus a computed sort_date for correct chronological ordering.
+supabase_rows = []
+for p in test_batch:
+    supabase_rows.append({
+        'slug': p['slug'],
+        'title': p['title'],
+        'date': p['date'],
+        'sort_date': parse_sort_date(p['date']),
+        'category_label': p['category_label'],
+        'category_id': p['category_id'],
+        'image_refs': p['image_refs'],
+        'body_html': rewrite_img_src(p['body_html']),
+    })
+with open('/home/claude/work/mintzberg-site/mintzberg-site/supabase/seed-data/blog_posts.json', 'w', encoding='utf-8') as f:
+    json.dump(supabase_rows, f, ensure_ascii=False)
 
 print("Wrote", len(test_batch), "posts")
 for p in test_batch:

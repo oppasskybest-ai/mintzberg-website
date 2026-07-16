@@ -18,7 +18,7 @@ def parse_year_list(path):
             text = unescape(re.sub(r'<[^>]+>', '', p_m.group(1))).strip() if p_m else ''
             links = []
             for href, label in re.findall(r'<a href="([^"]+)"[^>]*>([^<]+)</a>', li):
-                links.append({'label': unescape(label).strip(), 'href': href})
+                links.append({'label': unescape(label).strip(), 'href': unescape(href).strip()})
             if text or links:
                 items.append({'text': text, 'links': links})
         if items:

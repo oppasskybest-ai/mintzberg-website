@@ -38,7 +38,7 @@ def main():
 
         links = []
         for href, label in re.findall(r'<a href="([^"]+)"[^>]*>([^<]+)</a>', cover_html):
-            links.append({'label': unescape(label).strip(), 'href': href})
+            links.append({'label': unescape(label).strip(), 'href': unescape(href).strip()})
 
         info_m = re.search(r'<div class="book-info">(.*?)</div>\s*</div>', c, re.S)
         body_html = info_m.group(1).strip() if info_m else ''

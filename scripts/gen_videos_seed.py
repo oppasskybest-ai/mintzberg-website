@@ -26,4 +26,11 @@ lines.append("]")
 with open('/home/claude/work/mintzberg-site/mintzberg-site/lib/config/videos.ts', 'w', encoding='utf-8') as f:
     f.write('\n'.join(lines) + '\n')
 
+supabase_rows = [
+    {'slug': v['slug'], 'title': v['title'], 'youtube_id': v['youtubeId']}
+    for v in data['videos']
+]
+with open('/home/claude/work/mintzberg-site/mintzberg-site/supabase/seed-data/videos.json', 'w', encoding='utf-8') as f:
+    json.dump(supabase_rows, f, ensure_ascii=False)
+
 print("Wrote", len(data['videos']), "videos")

@@ -6,6 +6,7 @@ import PostBody from '@/components/blog/PostBody'
 import { assetUrl } from '@/lib/assets'
 import WaveDivider from '@/components/layout/WaveDivider'
 import FeatureBand from '@/components/layout/FeatureBand'
+import SmartLink from '@/components/ui/SmartLink'
 
 export async function generateStaticParams() {
   const books = await getAllBooks()
@@ -48,13 +49,13 @@ export default async function BookDetailPage({
             <ul style={{ listStyle: 'none', display: 'flex', flexWrap: 'wrap', gap: '0.75rem', marginTop: '1rem' }}>
               {book.links.map((link) => (
                 <li key={link.href}>
-                  <a
+                  <SmartLink
                     href={link.href}
                     className="pager-link"
                     style={{ padding: '0 1rem', color: 'var(--paper)', borderColor: 'rgba(250,250,248,0.3)' }}
                   >
                     {link.label}
-                  </a>
+                  </SmartLink>
                 </li>
               ))}
             </ul>

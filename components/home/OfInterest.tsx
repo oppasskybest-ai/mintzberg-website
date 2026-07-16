@@ -1,5 +1,5 @@
 import { OF_INTEREST_ITEMS } from '@/lib/config/of-interest'
-import { assetUrl } from '@/lib/assets'
+import SmartLink from '@/components/ui/SmartLink'
 
 // Original wraps this in a Drupal cycle-slideshow carousel — rendered here
 // as a plain static list instead (master prompt: "No carousels, no
@@ -11,24 +11,13 @@ export default function OfInterest() {
         <p className="eyebrow-label">Selected reading</p>
         <h2 style={{ margin: '0.4rem 0 1.25rem' }}>Of Interest</h2>
         <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
-          {OF_INTEREST_ITEMS.map((item, i) => {
-            const isExternal = /^https?:\/\//.test(item.href)
-            const href = isExternal
-              ? item.href
-              : item.href.startsWith('/')
-                ? item.href
-                : assetUrl(item.href) || item.href
-            return (
-              <li key={i}>
-                <a
-                  href={href}
-                  style={item.emphasis ? { fontWeight: 600 } : undefined}
-                >
-                  {item.label}
-                </a>
-              </li>
-            )
-          })}
+          {OF_INTEREST_ITEMS.map((item, i) => (
+            <li key={i}>
+              <SmartLink href={item.href} style={item.emphasis ? { fontWeight: 600 } : undefined}>
+                {item.label}
+              </SmartLink>
+            </li>
+          ))}
         </ul>
       </div>
     </section>

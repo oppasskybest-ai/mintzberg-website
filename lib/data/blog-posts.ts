@@ -22,7 +22,7 @@ export async function getAllBlogPosts(): Promise<BlogPost[]> {
     const { data, error } = await supabase
       .from('blog_posts')
       .select('slug, title, date, category_label, category_id, image_refs, body_html')
-      .order('date', { ascending: false })
+      .order('sort_date', { ascending: false, nullsFirst: false })
 
     if (!error && data && data.length > 0) {
       return data.map((row) => ({

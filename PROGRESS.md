@@ -536,6 +536,150 @@ NEXT STEP: Search (Fuse.js, client-side, indexing blog/books/videos/
 
 ---
 
+STEP COMPLETED: Bug-fix round — broken links, favicon, Supabase setup
+DATE: 2026-07-16
+CONTEXT: you reported Amazon book links 404ing, some article PDFs 404ing,
+  external links opening in the same tab instead of a new one, and asked
+  about a favicon + a Supabase setup guide.
+
+1. VERIFIED ASSET LINKS AGAINST THE ACTUAL LIVE REPO
+   Queried the GitHub Releases API directly (api.github.com — confirmed
+   239/69/5/78 assets across images-jpg/images-png/images-gif/
+   documents-pdf, matching the addendum) and cross-referenced every
+   filename referenced anywhere in the codebase against what's actually
+   uploaded.
+
+2. REAL BUG FOUND #1 — external hotlinked images wrongly treated as local
+   assets. `rewrite_img_src()` (in both `gen_blog_seed.py` and
+   `gen_books_seed.py`) was converting EVERY `<img src="...">` ending in
+   jpg/png/gif into an `{{ASSET}}` token, including genuinely external
+   images (e.g. `https://i.imgur.com/ecMScUo.jpg`,
+   `https://www.thiswomancan.org/.../mentor-1080x675.jpg`) that were never
+   Henry's own files and were correctly never uploaded to GitHub Releases.
+   These broke into 404s. FIXED: now checks the domain — only
+   mintzberg.org/rebalancingsociety.org-hosted or relative-path images get
+   tokenized; anything else keeps its original working external URL.
+   Re-ran both generators.
+
+3. GENUINE ASSET GAP FOUND (not fixable by me — needs new files uploaded):
+   4 images referenced in a handful of blog posts were legitimately
+   Henry's own mintzberg.org-hosted files but were NEVER part of the
+   391-asset upload the addendum describes: `for_irene.jpg`,
+   `tableimage.jpg`, `unnamed_0.jpg`, `512px-luther_95_thesen.png`. These
+   will still 404 until someone finds and uploads them to the
+   `images-jpg`/`images-png` GitHub Releases. Source posts: `4.html`
+   (`click-here-to-save-the-world.html` duplicate),
+   `draining-the-reservoir.html`, `nailing-corporate-reformation-to-the-
+   door.html`, `17.html`.
+
+4. REAL BUG FOUND #2 — HTML entities never decoded in link hrefs. The
+   book/article/commentary link-extraction regex only called
+   `unescape()` on link LABELS, not on the href itself. Any href
+   containing `&amp;` (extremely common in Amazon URLs with tracking
+   params) was stored with the literal 5-character string `&amp;` instead
+   of `&`, corrupting the query string and breaking the link — this is
+   almost certainly what you saw as the Amazon 404s specifically on
+   Understanding Organizations...Finally!. FIXED in `parse_books.py` and
+   `parse_year_lists.py`; re-parsed and confirmed via direct string check
+   that Amazon URLs now contain a real `&`.
+
+5. REAL BUG FOUND #3 (the big one) — ~450 relative ".html" cross-links
+   inside blog post AND book description bodies were never rewritten and
+   were 404ing. These are Henry's own inline links to OTHER blog posts
+   (`../some-other-post.html`), to books (`../books/slug.html`), and to
+   special pages (`../sculptures.html`, `../stories.html`, `../rs.html`,
+   etc.) — left completely untouched, they resolve against the NEW site's
+   own domain/path instead of the old Drupal structure and 404 every time.
+   FIXED: added `rewriteInternalLinks()` to `lib/assets.ts`, wired into
+   `PostBody.tsx` (used by both blog posts and book descriptions, so both
+   are fixed by one change). Handles: blog-to-blog cross-refs (majority
+   case — blog slugs are unchanged from original filenames, so this is a
+   straight rewrite), book cross-refs (needed a 3-entry mapping table
+   since 3 of the 21 books have a different slug now than their old
+   Drupal path — `power-and-around-organizations` →
+   `power-in-and-around-organizations`, etc.), special pages
+   (sculptures/stories/blog/contact/resume/articles/commentaries), and
+   Rebalancing Society links (`rs.html`, `a-map-for-balance.html`) — since
+   RS is explicitly out of scope now, these redirect to the live separate
+   site (rebalancingsociety.org) instead of 404ing inside ours. Two known
+   dead links in the ORIGINAL site (`enterprise.html`, `pp.html`) are left
+   alone — they 404'd on mintzberg.org too, not a regression.
+   Verified via an isolated Node unit test (not just assumed): all 7 link
+   patterns rewrite correctly.
+
+6. TARGET="_BLANK" FOR EXTERNAL LINKS — added sitewide, two mechanisms:
+   - `lib/assets.ts` → `resolveHref()`: for links rendered as normal React
+     props (book purchase links, article/commentary "Link"/"Download"
+     buttons, Of Interest list). New `components/ui/SmartLink.tsx` wraps
+     this so call sites stay simple. Applied to: `FeaturedBooks.tsx`
+     (home), `app/books/[slug]/page.tsx`, `YearList.tsx` (Articles +
+     Commentaries), `OfInterest.tsx` (simplified to use SmartLink instead
+     of its own inline external-check logic). Stories links (already
+     correctly using `assetUrl()`) got `target`/`rel` added directly.
+   - `PostBody.tsx` → `addTargetBlankToExternalLinks()`: post-processes
+     the raw scraped HTML string (can't attach React props to
+     dangerouslySetInnerHTML content) to add `target="_blank"
+     rel="noopener noreferrer"` to every external `<a href="http...">`
+     inside a blog post or book description body, while leaving the
+     now-internal-rewritten links (`/blog/...`, `/books/...`) as
+     same-tab navigation.
+   Verified via isolated Node unit test.
+
+7. FAVICON — searched every uploaded file; the real one
+   (`sites/all/themes/mintzberg/favicon.ico`, referenced in the original
+   HTML's `<link rel="shortcut icon">`) was never part of any upload —
+   it's a theme file, not a content file, so it was outside the scope of
+   the addendum's asset upload entirely. **I cannot produce this file
+   myself — it needs to come from you** (extract it from the old site's
+   theme folder, or design a new one). In the meantime, added a
+   placeholder: `app/icon.svg`, a simple "HM" monogram in the site's own
+   navy/orange, using Next.js's automatic icon convention (no extra
+   wiring needed — swap the file whenever the real one is available).
+
+8. SUPABASE SETUP — since Supabase + admin dashboard was the confirmed
+   architecture:
+   - `supabase/schema.sql` — `blog_posts`, `books`, `videos` tables,
+     columns matching `lib/data/*.ts` queries exactly (so no code changes
+     needed once seeded), public read-only RLS policies.
+   - `lib/data/blog-posts.ts` — now orders by a new `sort_date` column
+     (a parsed, sortable date) instead of the free-text `date` string,
+     which doesn't sort correctly as text ("19 May 2016" vs "3 June
+     2020").
+   - Every `gen_*_seed.py` script now ALSO writes a Supabase-ready JSON
+     export to `supabase/seed-data/*.json` (same `{{ASSET}}` tokens as the
+     TS seed, so rendering is identical regardless of data source) —
+     regenerated alongside every future parsing batch, not a one-off.
+   - `scripts/seed-supabase.mjs` — Node script using `@supabase/supabase-js`
+     (already a dependency) to upsert all three seed-data JSON files into
+     Supabase by `slug`, safe to re-run anytime.
+   - `SUPABASE_SETUP.md` — numbered walkthrough at repo root: create
+     project → run schema.sql → set env vars → run the seed script →
+     verify. Explicitly notes what's NOT covered yet (Articles/
+     Commentaries/Résumé/Stories/Sculptures don't have Supabase tables;
+     the admin dashboard UI itself isn't built).
+VERIFIED: `npm run build` clean, 284 static routes (was 283 — added
+  `/icon.svg`). Link-rewriting and target-blank logic verified via
+  isolated Node unit tests (exact regex/replace functions extracted and
+  run standalone) rather than just asserted, since a live-server curl
+  check kept hanging in this session's tooling.
+KNOWN GAPS:
+  - The 4 genuinely-missing images (item 3 above) still need real files
+    uploaded — I don't have the original bytes.
+  - Haven't independently re-verified the FULL 267-asset and 73-PDF
+    reference lists against GitHub Releases after all fixes — did a
+    representative check, not an exhaustive final pass. Worth one more
+    full cross-check pass before declaring all links clean.
+  - Supabase project itself still not created (needs you to do step 1 of
+    SUPABASE_SETUP.md); until then the site keeps running on local seed
+    data, which is fully functional.
+NEXT STEP: Search (Fuse.js) is still the next major original content
+  feature. Also worth doing soon: a full automated broken-link sweep
+  across the entire built site (not just spot checks) now that so many
+  link-generation bugs have been found and fixed — better to verify
+  systematically than find the next one by you clicking around.
+
+---
+
 ## HTML FILES PROCESSED LOG
 
 Format per entry: `filename — status — date — notes`

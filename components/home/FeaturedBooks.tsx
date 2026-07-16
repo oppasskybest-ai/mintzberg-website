@@ -3,6 +3,7 @@ import { HOME_FEATURED_BOOKS } from '@/lib/config/home-books'
 import { assetUrl } from '@/lib/assets'
 import FeatureBand from '@/components/layout/FeatureBand'
 import WaveDivider from '@/components/layout/WaveDivider'
+import SmartLink from '@/components/ui/SmartLink'
 
 // Redesigned 2026-07-15: dark full-bleed panel (Henry's own sculpture
 // photography as texture) with book covers as bright cards on top —
@@ -56,9 +57,9 @@ export default function FeaturedBooks() {
                   <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
                     {book.links.map((link) => (
                       <li key={link.href}>
-                        <a href={link.href} style={{ fontSize: '0.85rem' }}>
+                        <SmartLink href={link.href} style={{ fontSize: '0.85rem' }}>
                           {link.label}
-                        </a>
+                        </SmartLink>
                       </li>
                     ))}
                   </ul>

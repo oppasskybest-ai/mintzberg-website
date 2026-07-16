@@ -365,7 +365,7 @@ export const BLOG_POSTS_SEED: BlogPost[] = [
     categoryLabel: `What I really think`,
     categoryId: `13`,
     imageRefs: ["mentor-1080x675.jpg"],
-    bodyHtml: `<p><img alt="" src="{{ASSET}}mentor-1080x675.jpg{{/ASSET}}" /></p>
+    bodyHtml: `<p><img alt="" src="https://www.thiswomancan.org/wp-content/uploads/2017/10/mentor-1080x675.jpg" /></p>
 <p>I write a good deal about the disconnect of leaders/managers from the ongoing activities of their organizations. An organization can’t be run by remote control: people “on top” have to get on the ground to see what is going on. And, no less, to <em>hear</em> what is happening.</p>
 <p>Let me give you an example from the thin air. I am doing a collection of my blogs, using the title “Managing Scrambled Eggs” because the <a href="scrambled-eggs.html">first story</a> is about the CEO of a failing airline who sat in First Class while the passengers in the back had to eat some excuse for scrambled eggs. I was one of them, and when I asked the flight attendant why they served this stuff, she said: “I know, we keep telling them; they won’t listen.“ How can that be?  If they were running a cemetery, I might understand not listening to the customers. But an airline? Feasting in First Class is not leadership, let alone management. Among the most important qualities of managers who truly lead is a captivating capacity to listen, really listen.</p>
 <p>In my book <a href="https://www.amazon.ca/Managing-Myths-Health-Care-Separations/dp/1626569053">Managing the Myths of Health Care</a>, I cite a study of patients who were explaining their problems to physicians: on average, they were interrupted after 23 seconds<sup>1</sup>… and rarely had a chance to continue! Modern medicine makes a thing about being evidence-based. Sure, evidence is important, as the collected experiences of many people. But how about the particular experience of the person right there? If medicine had to rely solely on evidence, without tangible experience, it would shut down. Evidence puts numbers on abstracted experience; listening to someone’s full message brings out what anthropologist Clifford Geertz called “thick description.” We need this to understand what is happening, beyond just putting people into <a href="going-public-with-my-puzzle.html">pat categories</a>.</p>
@@ -2438,7 +2438,7 @@ with the code below: -->
     categoryLabel: `Simply Nonsense`,
     categoryId: `14`,
     imageRefs: ["r6BJvsu.jpg", "undefined.jpg"],
-    bodyHtml: `<p><img alt="" src="{{ASSET}}undefined.jpg{{/ASSET}}" /><img alt="" src="{{ASSET}}r6BJvsu.jpg{{/ASSET}}" /></p>
+    bodyHtml: `<p><img alt="" src="https://i.imgur.com/undefined.jpg" /><img alt="" src="https://i.imgur.com/r6BJvsu.jpg" /></p>
 <p>Gambling is a popular metaphor among CEOs—"doubling down” and all that stuff. So let’s use it to consider the compensation of those CEOs who gamble with their bonuses.</p>
 <p><strong>First, CEOs gamble with other people’s money.</strong> This is nice work, if you can get it.</p>
 <p><strong>Second, CEO gamblers collect, not when they win, but when they appear to be winning. </strong>Since it takes time to know a winning hand, the CEO gamblers usually collect in the midst of the game. This is like taking the pot with a couple of aces on the table, while the rest of the hand remains closed. Poker players call this kind of thing a semi-bluff. No semi for these CEOs! Just make sure that the best cards shown.</p>
@@ -5507,7 +5507,7 @@ Henry. If we want to embarrass ourselves you could publish this string of emails
     categoryLabel: `Managing the Care of Health`,
     categoryId: `16`,
     imageRefs: ["ecMScUo.jpg"],
-    bodyHtml: `<p><img alt="" src="{{ASSET}}ecMScUo.jpg{{/ASSET}}" /></p>
+    bodyHtml: `<p><img alt="" src="https://i.imgur.com/ecMScUo.jpg" /></p>
 <p>Medicine has made profound advances in treating many diseases, but in its great strength lies its debilitating weakness.</p>
 <p><strong>Organizing for Professional Work </strong></p>
 <p>To understand this, consider how professional work tends to be organized. Much of it is rather standardized, carried out by highly-trained people with a good deal of individual autonomy—at least from their colleagues, if not from the professional associations that set their standards. Just as the musicians of a symphony orchestra play in harmony while each plays to the notes written for his or her instrument, so too can a surgeon and anesthetist spend hours in an operating room without exchanging a single word. By virtue of their training, each knows exactly what to expect of the other.</p>

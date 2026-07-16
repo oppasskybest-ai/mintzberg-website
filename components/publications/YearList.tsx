@@ -1,4 +1,5 @@
 import type { PublicationYear } from '@/types/content'
+import SmartLink from '@/components/ui/SmartLink'
 
 // Shared renderer for Articles and Commentaries — both are year-grouped
 // lists of {text, links[]} items, verbatim from the source (Rule 1).
@@ -15,9 +16,9 @@ export default function YearList({ years }: { years: PublicationYear[] }) {
                 {item.links.length > 0 && (
                   <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
                     {item.links.map((link) => (
-                      <a key={link.href} href={link.href} className="pager-link" style={{ padding: '0 1rem' }}>
+                      <SmartLink key={link.href} href={link.href} className="pager-link" style={{ padding: '0 1rem' }}>
                         {link.label}
-                      </a>
+                      </SmartLink>
                     ))}
                   </div>
                 )}
