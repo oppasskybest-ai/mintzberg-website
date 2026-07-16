@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import { assetUrl } from '@/lib/assets'
+import WaveDivider from '@/components/layout/WaveDivider'
 
 // Verbatim from html/pages/1.html <div class="ds single page"> block.
 // Rule 1: not one word of Henry's welcome text is altered.
@@ -76,6 +77,8 @@ export default function WelcomeSection() {
           </p>
         </div>
       </section>
+
+      <WaveDivider fill="var(--paper)" />
 
       <section className="container-content" style={{ padding: '2.5rem 1.25rem 0', textAlign: 'center' }}>
         {signature && (

@@ -1,0 +1,950 @@
+import type { PublicationYear } from '@/types/content'
+
+// 171 articles across 52 years (1967-2026), parsed from sorted-assets/html/pages/articles.html.
+// Verbatim (Rule 1) - text and links as scraped, year-grouped exactly as the original.
+export const ARTICLES_SEED: PublicationYear[] = [
+  {
+    year: `2026`,
+    items: [
+      {
+        text: `Perspectives in Strategy: Mintzberg on the Influence of Ansoff, Strategic Change (April 2026) - In the history of strategic management thought, few intellectual rivalries have been as enduring, or as illuminating, as the dialogue between Igor Ansoff and Henry Mintzberg. One championed systematic planning, the other warned of its limitations. One codified strategy from practice, the other sought to reveal how it truly emerged in organizations. Together, they shaped a field still wrestling with their questions: Is strategy best designed from the top, or does it grow from the ground up?`,
+        links: [{ label: `Download`, href: `sites/default/files/article/download/strategic_change_-_2026_-_puyt_-_perspectives_in_strategy_mintzberg_on_the_influence_of_ansoff-2.pdf` }, { label: `Link`, href: `https://onlinelibrary.wiley.com/doi/10.1002/jsc.70058` }],
+      },
+      {
+        text: `On the Trail of the New Social Economy, Coop News (January, 2026) - Coop-Sapporo is not a traditional cooperative so much as an affiliation of social enterprises that it has organized to serve a range of community needs on the Japanese island of Hokkaido, from cradle to grave. This suggests a new model of the social economy: how communityship in the plural sector can play a consolidating role in rebalancing a society.`,
+        links: [{ label: `Download`, href: `sites/default/files/article/download/coop-s_january2026.pdf` }],
+      },
+    ],
+  },
+  {
+    year: `2025`,
+    items: [
+      {
+        text: `Is Serendipity Serendipitous?, Journal of Management Inquiry (September, 2025) - Serendipity may not be as serendipitous as we believe when we take into account the odds of some unexpected event happening, even if not the particular event that does happen. Consider, for example, the frequency of chance encounters that can lead to opportunities when attending a conference. Therefore, rather than being surprised by serendipity, we should expect it, and thus manage it, for example, by spending less time on e-calls and more time around the coffee machine, where serendipity can flourish.`,
+        links: [{ label: `Link`, href: `https://journals.sagepub.com/doi/10.1177/10564926251365863` }],
+      },
+    ],
+  },
+  {
+    year: `2024`,
+    items: [
+      {
+        text: `Reorganizing our Heads for the Care of our Heath, British Medical Journal Leader (2024) - because health care is a calling, it cannot be managed like a business, through top-down reorganizing, technocratic measuring, and the like. There is thus the need to cross the great divide between administration concerned with efficiency laid over operations concerned with proficiency.`,
+        links: [{ label: `Link`, href: `https://bmjleader.bmj.com/content/leader/8/4/352.full.pdf` }],
+      },
+      {
+        text: `Superpower Corrupts, Antagonistic Superpowers Corrupt Absolutely, Journal of Management Inquiry, Volumn 33, Issue 4 (May, 2024) - three superpowers vie with each other for global supremacy; to avoid, rather than delay, World War III, we shall have to think outside the superpower box, for example, by favoring grounded communityship over centralized leadership, and global governance beyond antagonistic superpower.`,
+        links: [{ label: `Link`, href: `https://journals.sagepub.com/doi/10.1177/10564926241256601` }],
+      },
+      {
+        text: `Four Forms That Fit Most Organizations, California Management Review, Volume 66, Issue 2 (February 2024) - a summary of my new book 'Understanding Organizations . . . Finally' (2023), getting past the one-size-fits-all approach by presenting four forms of organizations, each with its own way of managing and crafting strategy.`,
+        links: [{ label: `Link`, href: `https://journals.sagepub.com/doi/10.1177/00081256231214816` }],
+      },
+    ],
+  },
+  {
+    year: `2023`,
+    items: [
+      {
+        text: `Higher Education Research beyond The Ivory Tower, University World News (December 2023), with Susan Mintzberg - beyond the mainstream model, which we call ‘looking-on’, from the proverbial ‘ivory tower’, lies another model worthy of comparable attention, which we call ‘reaching-out’.`,
+        links: [{ label: `Link`, href: `https://shorturl.at/pcEvj` }],
+      },
+    ],
+  },
+  {
+    year: `2022`,
+    items: [
+      {
+        text: `Pathway to Balance, in Social Scientists Confronting Global Crises (edited by Jean M. Bartunek)`,
+        links: [{ label: `Download`, href: `sites/default/files/article/download/hm_pathway_to_balance.pdf` }, { label: `Link`, href: `https://www.taylorfrancis.com/chapters/edit/10.4324/9781003109372-9/pathway-balance-henry-mintzberg` }],
+      },
+      {
+        text: `An Underlying Theory for Strategy, Organization, and Management: Bridging the Divide Between Analysis and Synthesis, Strategic Management Review`,
+        links: [{ label: `Link`, href: `https://www.strategicmanagementreview.net/assets/articles/Mintzberg.pdf` }],
+      },
+    ],
+  },
+  {
+    year: `2019`,
+    items: [
+      {
+        text: `Please Welcome CSR 2.0, in Rethinking Strategic Management: Sustainable Strategizing for Positive Impact (edited by Thomas Wunder) - while we should be appreciating CSR 1.0 for its damage control, we should be welcoming CSR 2.0 for helping to reverse the damage.`,
+        links: [{ label: `Link`, href: `https://philpapers.org/rec/MINPWC` }],
+      },
+    ],
+  },
+  {
+    year: `2018`,
+    items: [
+      {
+        text: `Mintzberg, H., Etzion, D. & Mantere, S. Worldly Strategy for the Global Climate. Stanford Social Innovation Review, 16(4): 42-47 — presents a model of the consolidation of orchestrated planning in government, autonomous venturing in business, and grounded engagement in communities.`,
+        links: [{ label: `Download`, href: `sites/default/files/article/download/worldly_strategy.pdf` }],
+      },
+    ],
+  },
+  {
+    year: `2017`,
+    items: [
+      {
+        text: `The U.S. Cannot Be Run Like a Business, Harvard Business Review (March, 2017)`,
+        links: [{ label: `Link`, href: `https://hbr.org/2017/03/the-u-s-cannot-be-run-like-a-business` }],
+      },
+    ],
+  },
+  {
+    year: `2015`,
+    items: [
+      {
+        text: `Rescuing Capitalism from itself, Harvard Business Review (December 3, 2015) — perhaps the best short statement of my Rebalancing Society book`,
+        links: [{ label: `Link`, href: `https://hbr.org/2015/12/rescuing-capitalism-from-itself` }],
+      },
+      {
+        text: `Managers are More Connected, but Not for the Better, Harvard Business Review (July, 2015) - Technology takes our tendencies too far.`,
+        links: [{ label: `Link`, href: `https://hbr.org/2015/07/managers-are-more-connected-but-to-all-the-wrong-things` }],
+      },
+      {
+        text: `Why CSR is not a Piece of Cake (with Jose Carlos Marques), Sloan Management Review (Summer 2015)`,
+        links: [{ label: `Link`, href: `http://sloanreview.mit.edu/x/56413` }],
+      },
+      {
+        text: `Time for the Plural Sector, Stanford Social Innovation Review (Summer 2015) — plural to join the words public and private`,
+        links: [{ label: `Download`, href: `sites/default/files/article/download/ssir_summer_2015_timeforthepluralsector.pdf` }, { label: `Link`, href: `https://ssir.org/articles/entry/time_for_the_plural_sector` }],
+      },
+    ],
+  },
+  {
+    year: `2012`,
+    items: [
+      {
+        text: `The Lost Years? Or Finding Japan? (article published in Japanese, English version as PDF), Diamond Harvard Business Review (August 2012)`,
+        links: [{ label: `Download`, href: `sites/default/files/article/download/lost_years_or_finding_japan.pdf` }, { label: `Link`, href: `http://www.dhbr.net/articles/-/1990` }],
+      },
+      {
+        text: `Managing the Myths of Health Care, World Hospitals and Health Services (November 2012) — outlining the myths that made the management of health care difficult and suggestions for the reframing of it`,
+        links: [{ label: `Download`, href: `sites/default/files/article/download/managing_the_myths_of_health_care.pdf` }],
+      },
+      {
+        text: `Fostering “Why not?” Social Initiatives — beyond business and government (with Gui Azevedo), Development in Practice (forthcoming 2012) — how such initiatives from the plural sector are needed to drive social change`,
+        links: [{ label: `Download`, href: `sites/default/files/article/download/27_mintzberg_henry_-_fostering_why_not.pdf` }, { label: `Link`, href: `https://www.jstor.org/stable/41723150` }],
+      },
+      {
+        text: `It Does Have an Off Button (with Peter Todd), Strategy + Business (Winter, 2012) — the impact of email on managerial work`,
+        links: [{ label: `Link`, href: `http://www.strategy-business.com/article/00121` }],
+      },
+    ],
+  },
+  {
+    year: `2011`,
+    items: [
+      {
+        text: `To Fix Health Care, Ask the Right Questions, Harvard Business Review (October 2011) — extracted from "Managing the Myths of Health Care"`,
+        links: [{ label: `Link`, href: `http://hbr.org/2011/10/to-fix-health-care-ask-the-right-questions/ar/1` }],
+      },
+      {
+        text: `From Management Development to Organization Development with IMpact, OD Practitioner (Vol. 43, No. 3, 2011) — connecting development to the workplace`,
+        links: [{ label: `Download`, href: `sites/default/files/article/download/odpractitionerv43no3.pdf` }],
+      },
+      {
+        text: `Looking Forward to Development, Training & Development (February 2011) — a very different perspective, from the point of view of the manager and the developer, on the development of managers and their organizations.`,
+        links: [{ label: `Download`, href: `sites/default/files/article/download/mintzberg_2011_looking_forward_to_development.pdf` }, { label: `Link`, href: `http://images.ebsco.com/pob/EbscoMedia/Catalog/Looking_Forward.pdf` }],
+      },
+    ],
+  },
+  {
+    year: `2010`,
+    items: [
+      {
+        text: `Management by Reflection, Strategy + Business (March 2010) — Free registration required`,
+        links: [{ label: `Link`, href: `http://www.strategy-business.com/article/00025` }],
+      },
+      {
+        text: `Developing Leaders? Developing Countries?, Oxford Leadership Journal (March 2010 and in Development in Practice 2006) — global, planned, or indigenous development?`,
+        links: [{ label: `Download`, href: `sites/default/files/article/download/mintzberg.pdf` }],
+      },
+      {
+        text: `Developing Naturally: from Management to Organization to Society to Selves (August 2010)`,
+        links: [{ label: `Download`, href: `sites/default/files/article/download/developing_naturally_from_management_to_organization_to_society_to_selves_pdf_march_2012.pdf` }],
+      },
+      {
+        text: `Juxtaposing Doers and Helpers (co-authored with Nidhi Srinivas), Community Development Journal, January 2010`,
+        links: [{ label: `Download`, href: `sites/default/files/article/download/juxtaposing_doers_and_helpers_community_dev_journal_2010.pdf` }],
+      },
+    ],
+  },
+  {
+    year: `2009`,
+    items: [
+      {
+        text: `Rebuilding Companies as Communities, Harvard Business Review (July-August 2009) — reasons and guidelines for rebuilding enterprises and an enterprise in America.`,
+        links: [{ label: `Link`, href: `http://hbr.org/2009/07/rebuilding-companies-as-communities/ar/1` }],
+      },
+    ],
+  },
+  {
+    year: `2007`,
+    items: [
+      {
+        text: `Productivity is Killing American Enterprise, Harvard Business Review (July-August 2007)—about the depreciation of American public enterprises, and enterprise`,
+        links: [{ label: `Link`, href: `http://hbr.org/2007/07/productivity-is-killing-american-enterprise/ar/1` }],
+      },
+    ],
+  },
+  {
+    year: `2006`,
+    items: [
+      {
+        text: `Patent nonsense: Evidence tells of an industry out of social control, CMAJ (August, 2006) — challenging the pharmaceutical industry’s argument along the whole chain, from research through development and manufacturing to promotion`,
+        links: [{ label: `Link`, href: `http://www.cmaj.ca/content/175/4/374.full.pdf+html` }],
+      },
+      {
+        text: `Leadership and Communityship (published as “Community-ship is the answer”), Financial Times (23 October, 2006) — time to recognize the importance of community in organizations.`,
+        links: [{ label: `Download`, href: `sites/default/files/article/download/henry_mintzberg_2006_community-ship_is_the_answer.pdf` }],
+      },
+      {
+        text: `Time for Design (with Jeanne Liedtka), Design Management Journal (Spring, 2006) — formulaic, visionary, conversational, and evolving approaches to designing; also the tensions of designers, designing, and designs (available through ProQuest and FindArticles [html format])`,
+        links: [{ label: `Link`, href: `http://onlinelibrary.wiley.com/doi/10.1111/j.1948-7169.2006.tb00034.x/abstract` }],
+      },
+      {
+        text: `Management Education as if Both Matter (with Jonathan Gosling), Management Learning (December, 2006) — lessons from our management development programs`,
+        links: [{ label: `Link`, href: `https://journals.sagepub.com/doi/10.1177/1350507606070214` }],
+      },
+      {
+        text: `Global or Worldly? (with Karl Moore), World Business (April, 2006) — we favor worldly`,
+        links: [{ label: `Link`, href: `https://www.managementtoday.co.uk/global-worldly/article/547318` }],
+      },
+    ],
+  },
+  {
+    year: `2005`,
+    items: [
+      {
+        text: `Developing Theory about the Development of Theory, Oxford Handbook of Management Theory (Michael Hitt and Ken Smith, editors, 2005) — asked to write about how I developed theory, I ended up doing that about how I was doing that in this paper`,
+        links: [{ label: `Download`, href: `sites/default/files/article/download/developing_theory_about_the_development_of_theory_jan_2014.pdf` }],
+      },
+      {
+        text: `The Magic Number Seven—plus or minus a couple of managers, Academy of  Management Learning and Education Executive (June, 2005)—response to seven reviews of my book Managers not MBAs (also available throughEBSCO)`,
+        links: [{ label: `Link`, href: `http://www.jstor.org/discover/10.2307/40214296` }],
+      },
+      {
+        text: `How Inspiring. How Sad. Comment on Sumantra Ghoshal's Paper, Academy of Management Learning and Education (2005) — about the loss of a cherished colleague`,
+        links: [{ label: `Link`, href: `https://journals.aom.org/doi/abs/10.5465/amle.2005.16132590` }],
+      },
+      {
+        text: `The Invisible World of Association (with Rick Molz, Emmanuel Raufflet, Pamela Sloan, Chahrazed Abdallah, Rick Bercuvitz, and Cheng HUa Tzeng), Leader to Leader (Spring 2005) — an effort to clarify the labeling of the social sector and categorize the types of associations found there (mutual, benefit, activist, and protection)`,
+        links: [{ label: `Download`, href: `sites/default/files/article/download/the_invisible_world_of_association.pdf` }],
+      },
+    ],
+  },
+  {
+    year: `2004`,
+    items: [
+      {
+        text: `Third Generation Management Development, Training and Development (March 2004) — first was lectures and cases, second was action learning and Work-Out, third is learning from own experience`,
+        links: [{ label: `Download`, href: `sites/default/files/article/download/third_generation_management_development.pdf` }],
+      },
+      {
+        text: `Enough Leadership, Harvard Business Review commentary (November 2004) — time for less leadership, quieter management`,
+        links: [{ label: `Link`, href: `https://hbr.org/2004/11/enough-leadership` }],
+      },
+      {
+        text: `Leadership and Management Development: An afterword, Academy of Management Executive (2004) — review of several papers`,
+        links: [{ label: `Link`, href: `https://journals.aom.org/doi/epub/10.5465/ame.2004.14776190` }],
+      },
+      {
+        text: `Reflect Yourself (with Jonathan Gosling), HR Magazine (September 2004)—on the role of reflection in managerial work`,
+        links: [{ label: `Download`, href: `sites/default/files/article/download/reflectyourself.pdf` }],
+      },
+      {
+        text: `The Education of Practicing Managers (with Jonathan Gosling), Sloan Management Review (Summer 2004) — on our new approach to management education`,
+        links: [{ label: `Link`, href: `http://sloanreview.mit.edu/article/the-education-of-practicing-managers/` }],
+      },
+      {
+        text: `Analysis: Framing and Frame Breaking (with Kunal Basu), Mindsets for Managers (web book, 2004)—about the McGill module of the IMPM program`,
+        links: [],
+      },
+    ],
+  },
+  {
+    year: `2003`,
+    items: [
+      {
+        text: `The Five Minds of a Manager (with Jonathan Gosling), Harvard Business Review (November 2003) — on the framework used in our programs for practicing managers: reflective, analytic, worldly, collaborative, action`,
+        links: [{ label: `Link`, href: `http://hbr.org/2003/11/the-five-minds-of-a-manager/ar/1` }],
+      },
+      {
+        text: `Strategic Management Upside Down: A Study of McGill University from 1829 to 1980 (with Janet Rose), Canadian Journal of Administrative Sciences (December 2003) —strategic management looks very different in this place of knowledge workers (winner of the Journal’s best paper award in strategy for 2003)`,
+        links: [{ label: `Download`, href: `sites/default/files/article/download/hm_tracking_strategies_at_mcgill.pdf` }, { label: `Link`, href: `https://www.researchgate.net/publication/229904587_Strategic_Management_Upside_Down_Tracking_Strategies_at_McGill_University_from_1829_to_1980` }],
+      },
+      {
+        text: `The Rhythm of Change (with Quy Huy), Sloan Management Review (summer, 2003) — another perspective on the change process`,
+        links: [{ label: `Link`, href: `http://sloanreview.mit.edu/article/the-rhythm-of-change/` }],
+      },
+    ],
+  },
+  {
+    year: `2002`,
+    items: [
+      {
+        text: `Beyond Selfishness (with Robert Simons and Kunal Basu), Sloan Management Review (Fall, 2002): shorter version appeared as “Memo to CEO” in Fast Company (June, 2002) — questioning the house of cards that is economic man, shareholder value, heroic leadership, lean and mean organization, and the rising tide of prosperity`,
+        links: [{ label: `Memo to CEO`, href: `http://www.fastcompany.com/44965/memo-ceos` }, { label: `Link`, href: `http://sloanreview.mit.edu/article/beyond-selfishness/` }],
+      },
+      {
+        text: `The Economist Who Never Came Back, Scandinavian Journal of Management (2002)—revisiting “Learning In and From Eastern Europe” (below)`,
+        links: [{ label: `Link`, href: `http://www.sciencedirect.com/science/article/pii/S0956522101000355` }],
+      },
+      {
+        text: `Managing to Innovate, in Leading for Innovation (Volume II of the Drucker Foundation Wisdom to Action Series, 2002) — low key approach to stimulating innovation`,
+        links: [{ label: `Link`, href: `https://hbswk.hbs.edu/archive/leading-for-innovation-and-organizing-for-results` }],
+      },
+      {
+        text: `Educating Managers Beyond Borders (with Jonathan Gosling), Academy of Management Learning and Education (1, 1, 2002) — looks beyond conventional business education workers`,
+        links: [{ label: `Link`, href: `http://www.jstor.org/discover/10.2307/40214100` }],
+      },
+      {
+        text: `Managing Health and Disease - Up and Down, In and Out, Health Science Management Research (2002) — a day in the lives of seven health care connected and disconnected managers`,
+        links: [{ label: `Link`, href: `https://journals.sagepub.com/doi/10.1258/095148402320176639` }],
+      },
+      {
+        text: `Reality Programming for MBAs (with Johathan Gosling), Strategy + Business (1st quarter, 2002) — brief review of our IMPM program`,
+        links: [{ label: `Link`, href: `http://www.strategy-business.com/article/11430` }],
+      },
+      {
+        text: `Researching the Researching of Walking, Journal of Management Inquiry (2002)—following the practicing managers of our masters program on assignment`,
+        links: [{ label: `Link`, href: `http://jmi.sagepub.com/content/11/4/426.full.pdf+html` }],
+      },
+    ],
+  },
+  {
+    year: `2001`,
+    items: [
+      {
+        text: `The Yin & Yang of Managing, Organizational Dynamics (Spring 2001) — a day in the life of the male head of Médecins sans frontiers and the female head of Paris’s fashion museum`,
+        links: [{ label: `Download`, href: `sites/default/files/article/download/hm_the_yin_and_the_yang_of_managing.pdf` }, { label: `Link`, href: `http://www.sciencedirect.com/science/article/pii/S0090261601000353` }],
+      },
+      {
+        text: `Decision-Making: It’s not What You Think (with Frances Westley), Sloan Management Review (Spring, 2001)—Seeing First and Doing First as compared with Thinking First`,
+        links: [{ label: `Link`, href: `http://sloanreview.mit.edu/article/decision-making-its-not-what-you-think/` }],
+      },
+      {
+        text: `Thoughts on Schools, in Rethinking Strategies (Volderda and Elfring, eds., 2001)—responding to two proposed new schools on strategy`,
+        links: [{ label: `Link`, href: `http://www.amazon.com/exec/obidos/tg/detail/-/076195645X/` }],
+      },
+      {
+        text: `Managing Exceptionally, Organizational Science (2001)— a day in the lives of two Red Cross managers at refugee camps`,
+        links: [{ label: `Link`, href: `http://pubsonline.informs.org/doi/abs/10.1287/orsc.12.6.759.10081` }],
+      },
+      {
+        text: `Managing the Care of Health and the Cure of Disease: Part 1: Differentiation, Part II: Integration (with Sholom Glouberman), Health Care Management Review, (Winter, 2001)—a broad framework to think and rethink about the field of health`,
+        links: [{ label: `Download`, href: `sites/default/files/article/download/4c1.pdf` }, { label: `Download`, href: `sites/default/files/article/download/4c2.pdf` }],
+      },
+    ],
+  },
+  {
+    year: `2000`,
+    items: [
+      {
+        text: `Re-viewing the Organization (with Ludo Van der Heyden), Ivey Business Journal (September/October, 2000)—different ways to conceive processes in organizations`,
+        links: [{ label: `Link`, href: `https://www.iveypublishing.ca/s/product/taking-a-closer-look-reviewing-the-organization/01t5c00000CwZUeAAN` }],
+      },
+      {
+        text: `Sustaining the Institutional Environment, (with Frances Westley), Organizational Studies (Issue 0, 2000) — a day in the life of two Greenpeace managers`,
+        links: [{ label: `Link`, href: `https://journals.sagepub.com/doi/abs/10.1177/0170840600210005` }],
+      },
+    ],
+  },
+  {
+    year: `1999`,
+    items: [
+      {
+        text: `Organigraphs: Drawing How Companies Really Work (with Ludo Van der Heyden), Harvard Business Review (September-October 1999)—mapping processes in organizations`,
+        links: [{ label: `Link`, href: `http://hbr.org/1999/09/organigraphs-drawing-how-companies-really-work/ar/1` }],
+      },
+      {
+        text: `Reflecting on the Strategy Process (with Joseph Lampel), Sloan Management Review (Spring 1999) - ten schools of strategy, and beyond`,
+        links: [{ label: `Link`, href: `http://sloanreview.mit.edu/article/reflecting-on-the-strategy-process/` }],
+      },
+      {
+        text: `Managing Quietly, Leader to Leader (Spring, 1999) — enough hype, time for low key managing`,
+        links: [{ label: `Link`, href: `http://onlinelibrary.wiley.com/doi/10.1002/ltl.40619991206/abstract` }],
+      },
+    ],
+  },
+  {
+    year: `1998`,
+    items: [
+      {
+        text: `Covert Leadership: The Art of Managing Professionals, Harvard Business Review (November-December, 1998) - a day in the life of an orchestra conductor, questioning the myths`,
+        links: [{ label: `Link`, href: `http://hbr.org/1998/11/covert-leadership-notes-on-managing-professionals/ar/1` }],
+      },
+    ],
+  },
+  {
+    year: `1997`,
+    items: [
+      {
+        text: `A Day in the Life of John Cleghorn, Decision (Fall, 1997)—following the CEO of the Royal Bank of Canada`,
+        links: [{ label: `Download`, href: `sites/default/files/article/download/hm_a_day_in_the_life_of_john_cleghorn.pdf` }],
+      },
+      {
+        text: `Toward Healthier Hospitals, Health Care Management Review (Fall 1997)—another perspective on managing hospitals, based on a consulting study`,
+        links: [{ label: `Link`, href: `http://www.ncbi.nlm.nih.gov/pubmed/9358257` }],
+      },
+      {
+        text: `A Guide to Strategic Positioning, in The Strategy Process, (Mintzberg and Quinn, Prentice Hall, 1997)—a fancy framework to think about positioning`,
+        links: [{ label: `Link`, href: `http://www.amazon.com/exec/obidos/ASIN/013675984X/ref%3Dbr_lf_b_h__10/104-7265158-3909534` }],
+      },
+      {
+        text: `Managing on the Edges, International Journal of Public Sector Management (1997)—a day in the lives of three managers in hierarchical succession in the western Canadian Parks who must manage on all kinds of physical, administrative, and political edges`,
+        links: [{ label: `Link`, href: `http://www.emeraldinsight.com/doi/abs/10.1108/09513559710166020` }],
+      },
+    ],
+  },
+  {
+    year: `1996`,
+    items: [
+      {
+        text: `Managing Government, Governing Management, Harvard Business Review, (May-June, 1996)—a critique of the customer is everything, business is smarter, management has all the answers, capitalism has triumphed, and suggestions for an alternative perspective`,
+        links: [{ label: `Link`, href: `https://hbr.org/1996/05/managing-government-governing-management` }],
+      },
+      {
+        text: `Mirroring Canadian Industrial Policy: Strategy Formation at Dominion Textile from 1873 to 1990 (with Barbara Austin), Canadian Journal of Administrative Sciences (13, 1996) - study of tracking strategy research (available through ProQuest and FindArticles [html format])`,
+        links: [{ label: `Download`, href: `sites/default/files/article/download/hm_strategy_formation_at_dominion_textile.pdf` }, { label: `Link`, href: `http://onlinelibrary.wiley.com/doi/10.1111/j.1936-4490.1996.tb00101.x/abstract` }],
+      },
+      {
+        text: `Whining and Dining: Une table de joyeuses lamentations, ou une soirée, québeçoise parfaitment canadienne, in M. Briere (ed.) Le Gout du Québec (Editions Hurtubise, 1996)—an evening on the Quebec debate`,
+        links: [{ label: `Download`, href: `sites/default/files/article/download/le_gout_du_quebec.pdf` }, { label: `Link`, href: `http://classiques.uqac.ca/contemporains/briere_marc/gout_du_quebec/gout_du_quebec.html` }],
+      },
+      {
+        text: `Customizing Customization (with Joe Lampel), Sloan Management Review, (Fall, 1996)—the concept of customization is too standardized; an effort to nuance it`,
+        links: [{ label: `Link`, href: `http://sloanreview.mit.edu/article/customizing-customization/` }],
+      },
+      {
+        text: `The “Honda Effect” Revisited, California Management Review (Summer, 1996)—a set of writings I drew together, some old, some new, including a couple of my own commentaries, to revisit Richard Pascale’s Honda story`,
+        links: [{ label: `Link`, href: `https://cmr.berkeley.edu/1996/08/38-4-the-honda-effect-revisited/` }],
+      },
+      {
+        text: `Some Surprising Things About Collaboration, with (Deborah Dougherty, Jan Jorgensen, and Frances Westley), Organizational Dynamics (Summer, 1996)—some additional thoughts about collaboration`,
+        links: [{ label: `Link`, href: `http://www.sciencedirect.com/science/article/pii/S0090261696900418` }],
+      },
+      {
+        text: `Une Journée avec un Dirigeant, Revue Française de Gestion (nov-dec, 1996)—following the president of a high technology French company`,
+        links: [],
+      },
+      {
+        text: `Musings on Management, Harvard Business Review (July/August 1996)—ten points of the superficiality of management and my thinking`,
+        links: [{ label: `Link`, href: `https://hbr.org/1996/07/musings-on-management` }],
+      },
+    ],
+  },
+  {
+    year: `1995`,
+    items: [
+      {
+        text: `Opening up Decision Making: The View From the Black Stool (with Ann Langley, Pat Pitcher, Elizabeth Posada, and Jan Saint-Macary), Organization Science, (May-June 1995) - extensive paper critiquing conventional views of decision making`,
+        links: [{ label: `Link`, href: `http://www.jstor.org/discover/10.2307/2635251` }],
+      },
+      {
+        text: `Case Study Research, in N. Nicholson (ed.) The Blackwell Dictionary of Organizational Behaviour (Blackwell, 1995) — brief comments on case-type research method`,
+        links: [{ label: `Download`, href: `sites/default/files/article/download/mintzberg_1995_case_study_research_the_blackwell_encyclopedia_of_management_and_encyclopedic_dictionaries.pdf` }],
+      },
+      {
+        text: `Some Fresh Air for Management, in Collected Papers of Mary Parker Follett (Harvard Business School Press, 1995) — introduction to Follet's wonderful chapter on cooperation`,
+        links: [{ label: `Download`, href: `sites/default/files/article/download/hm_some_fresh_air_for_management.pdf` }, { label: `Link`, href: `https://www.amazon.ca/Mary-Parker-Follett-Prophet-Management-Celebration/dp/0875845630` }],
+      },
+    ],
+  },
+  {
+    year: `1994`,
+    items: [
+      {
+        text: `Diversifiction and Diversifact (with Sumantra Ghoshal), California Management Review, (Fall 1994) - grew out of joint effort to rethink how to organize multi-business enterprise`,
+        links: [{ label: `Link`, href: `https://journals.sagepub.com/doi/abs/10.2307/41165775` }],
+      },
+      {
+        text: `Parting Shots: Our Real Ridge, in Building the Strategically Responsive Organization (Wiley, 1994) - bringing practitioners and academics together`,
+        links: [{ label: `Link`, href: `http://www.amazon.com/Building-Strategically-Responsive-Organization-Howard-Thomas/dp/0471943991` }],
+      },
+      {
+        text: `"That's ‘Turbulence,’ Chicken Little, It's Real Opportunity", Planning Review, (Nov-Dec. 1994) — excerpt from my planning book`,
+        links: [{ label: `Link`, href: `https://www.amazon.com/Rise-Strategic-Planning-Henry-Mintzberg/dp/0029216052` }],
+      },
+      {
+        text: `Rounding Out the Manager's Job, Sloan Management Review, (Fall 1994) - a more integrated framework than my earlier work to consider the manager's job`,
+        links: [{ label: `Link`, href: `http://sloanreview.mit.edu/article/rounding-out-the-managers-job/` }],
+      },
+      {
+        text: `Managing as Blended Care, Journal of Nursing Administration, (September 1994) - based on a day observing the head nurse of a hospital ward`,
+        links: [{ label: `Link`, href: `http://www.ncbi.nlm.nih.gov/pubmed/8089715` }],
+      },
+      {
+        text: `Rethinking Strategic Planning: Parts I and II, Long Range Planning (June 1994) — summary of my planning book`,
+        links: [{ label: `Download`, href: `sites/default/files/article/download/rethinking_strategic_planning_1.pdf` }, { label: `Download`, href: `sites/default/files/article/download/rethinking_strategic_planning_2.pdf` }],
+      },
+      {
+        text: `Une Polémique en Appelle une autre, Revue Française de Gestion (janvier-février 1994) — my response to an article criticizing my critique of Henri Fayol`,
+        links: [],
+      },
+      {
+        text: `The Fall and Rise of Strategic Planning, Harvard Business Review (January-February, 1994) — summary of my planning book (title change from my book "Rise and Fall" done without my advice or consent)`,
+        links: [{ label: `Link`, href: `https://hbr.org/1994/01/the-fall-and-rise-of-strategic-planning` }],
+      },
+    ],
+  },
+  {
+    year: `1993`,
+    items: [
+      {
+        text: `The Pitfalls of Strategic Planning, California Management Review (Fall 1993) - excerpt from my book on Rise and Fall of Strategic Planning`,
+        links: [{ label: `Link`, href: `http://www1.ximb.ac.in/users/fac/DPdash/dpdash.nsf/0/7ff4b4eba439d790e52568b2001830ff` }],
+      },
+      {
+        text: `Globalization: Separating the Fad from the Fact, in D. Wong-Reiger and F. Reiger (eds.) International Management Research: Looking to the Future (de Gruyter, 1993)- summary comments at conference`,
+        links: [{ label: `Link`, href: `https://www.degruyter.com/document/doi/10.1515/9783110873092/html` }],
+      },
+      {
+        text: `25 Years Later...The Illusive Strategy, in A. Bedeian Management Laureates: A Collection of Autobiographical Essays, Vol. II (Grennwich, Ct., JAI Press, 1993) — autobiography of my working career, a detailed, ordered review of my research and writing`,
+        links: [{ label: `Download`, href: `sites/default/files/article/download/25years.pdf` }],
+      },
+    ],
+  },
+  {
+    year: `1992`,
+    items: [
+      {
+        text: `Cycles of Organizational Change (with Frances Westley), Strategic Management Journal, (13, 1992) — attempt to draw dimensions of process together`,
+        links: [{ label: `Link`, href: `http://onlinelibrary.wiley.com/doi/10.1002/smj.4250130905/abstract` }],
+      },
+      {
+        text: `Learning In (and from) Eastern Europe, Scandinavian Journal of Management 1992 — more learning at grass roots level and fewer planners/economists might help`,
+        links: [{ label: `Link`, href: `http://www.sciencedirect.com/science/article/pii/0956522192900146` }],
+      },
+      {
+        text: `Commentary on "MBA: Is the Traditional Model Doomed?", Harvard Business Review (November-December, 1992) - a shot at the dysfunctions of the MBA (available through EBSCO)`,
+        links: [],
+      },
+      {
+        text: `Learning In (and from) Eastern Europe, Scandinavian Journal of Management 1992; - more learning at grass roots level and fewer planners/economists might help`,
+        links: [{ label: `Link`, href: `http://www.sciencedirect.com/science/article/pii/0956522192900146` }],
+      },
+    ],
+  },
+  {
+    year: `1991`,
+    items: [
+      {
+        text: `Managing the Form, Function, and Fit of Design (with Angela Dumas), Design Management Journal (Summer 1991) — adding fit to form and function and discussing models of cooperation`,
+        links: [{ label: `Link`, href: `http://onlinelibrary.wiley.com/doi/10.1111/j.1948-7169.1991.tb00573.x/abstract` }],
+      },
+      {
+        text: `Learning 1, Planning 0 (Reply to Igor Ansoff), Strategic Management Journal 1991 — is strategy making deliberate or emergent`,
+        links: [{ label: `Link`, href: `http://onlinelibrary.wiley.com/doi/10.1002/smj.4250120606/abstract` }],
+      },
+      {
+        text: `Strategic Thinking as "Seeing," in Juha Nasi (editor) Arenas of Strategic Thinking (Helsinski, Finland, Foundation for Economic Education) 1991 — comment on papers and theme of a Finnish conference, different ways to "see" strategically`,
+        links: [{ label: `Download`, href: `sites/default/files/article/download/hm_strategic_thinking_as_seeing.pdf` }, { label: `Link`, href: `http://www.amazon.com/exec/obidos/tg/detail/-/9519601341/qid=1047076363/sr=8-1/ref=sr_8_1/103-3267186-3815814` }],
+      },
+      {
+        text: `A Letter to Marta Calàs and Linda Smircich, Organization Studies, (1991) - my reply to their to "deconstruction" of The Nature of Managerial Work (which is not about rape!)`,
+        links: [{ label: `Link`, href: `https://journals.sagepub.com/doi/abs/10.1177/017084069101200407` }],
+      },
+      {
+        text: `Managerial Work: Forty Years Later, in Sune Carlson Executive Behavior, Textgruppen i Uppsala, 1991 (book originally published in 1951) - revisiting my thesis subject, to celebrate Carlson's 80th birthday`,
+        links: [{ label: `Link`, href: `http://www.amazon.com/Executive-Behaviour-Acta-universitatis-Upsaliensis/dp/9155424856/ref=la_B001JXHH1M_1_3` }],
+      },
+      {
+        text: `Visualizing Strategies for Financial Services (with Maria Gonzalez), McKinsey Quarterly (1991) - framework of strategies that grew out of a consulting experience`,
+        links: [{ label: `Download`, href: `sites/default/files/article/download/hm_visualizing_strategies_for_financial_services.pdf` }],
+      },
+      {
+        text: `The Effective Organization: Forces and Forms, Sloan Management Review (Winter, 1991) - beyond configuration, playing "LEGO" with the dimensions`,
+        links: [{ label: `Link`, href: `http://sloanreview.mit.edu/article/the-effective-organization-forces-and-forms/` }],
+      },
+    ],
+  },
+  {
+    year: `1990`,
+    items: [
+      {
+        text: `Does Decision Get in the Way? (with James Waters), Organization Studies (1990) - "decision" is a construct`,
+        links: [{ label: `Download`, href: `sites/default/files/article/download/hm_does_decision_get_in_the_way.pdf` }, { label: `Link`, href: `https://journals.sagepub.com/doi/10.1177/017084069001100101` }],
+      },
+      {
+        text: `The Design School: Reconsideration of the Basic Premises of Strategic Management, Strategic Management Journal (1990) - criticising the dominant Harvard view of strategy making`,
+        links: [{ label: `Link`, href: `https://www.jstor.org/stable/2486485` }],
+      },
+      {
+        text: `Strategy Formation: Schools of Thought, in J. Frederickson (ed.) Perspectives on Strategic Management (Harper & Collins, 1990) - extensive piece (half the book) on different viewpoints in the field`,
+        links: [{ label: `Link`, href: `https://www.amazon.com/Perspectives-Strategic-Management-James-Fredrickson/dp/0887303579` }],
+      },
+    ],
+  },
+  {
+    year: `1989`,
+    items: [
+      {
+        text: `Society Has Become Unmanageable as a Result of Management, in Mintzberg on Management (Free Press, 1989) - cerebral style management is destroying our organizations and our social fabric`,
+        links: [{ label: `Link`, href: `http://www.amazon.com/exec/obidos/ASIN/0029213711/qid=981312654/sr=1-2/ref=sc_b_2/102-8831915-2000133` }],
+      },
+      {
+        text: `Training Managers, Not MBAs, in Mintzberg on Management (Free Press, 1989) - why we need to rethink degree management education`,
+        links: [{ label: `Link`, href: `http://www.amazon.com/exec/obidos/ASIN/0029213711/qid=981312654/sr=1-2/ref=sc_b_2/102-8831915-2000133` }],
+      },
+      {
+        text: `Analysis and Intuition in Management, in Mintzberg on Management (Free Press, 1989) — some correspondence with Hebert Simon and other thoughts`,
+        links: [{ label: `Link`, href: `http://www.amazon.com/exec/obidos/ASIN/0029213711/qid=981312654/sr=1-2/ref=sc_b_2/102-8831915-2000133` }],
+      },
+      {
+        text: `Managing Design, Designing Management (with Angela Dumas), Design Management Journal (Fall, 1989) - stages in managing the design process`,
+        links: [{ label: `Link`, href: `https://onlinelibrary.wiley.com/doi/10.1111/j.1948-7169.1989.tb00519.x` }],
+      },
+      {
+        text: `Positioning the Positioning School: A Framework for Strategy Content Research (Working Paper, 1989) - trying to pin down so-called content side of strategy`,
+        links: [],
+      },
+      {
+        text: `Visionary Leadership and Strategic Management (with Frances Westley), Strategic Management Journal (1989) - probing beyond, and into vision`,
+        links: [{ label: `Link`, href: `https://www.jstor.org/stable/2486580` }],
+      },
+    ],
+  },
+  {
+    year: `1988`,
+    items: [
+      {
+        text: `Profiles of Strategic Vision: Levesque and Iacocca (with Frances Westley), in J. Conger and R. Kanungo (eds.) Charismatic Leadership: the Elusive Factor in Organizational Effectiveness (Jossey-Bass, 1988) - comparative study of visionaries' autobiographies`,
+        links: [{ label: `Link`, href: `http://www.amazon.com/Charismatic-Leadership-Organizational-Effectiveness-Jossey-Bass/dp/1555421024` }],
+      },
+      {
+        text: `Strategy of Design: A Study of "Architects in Co Partnership" (with Jamal Shamsie, Susann Otis, and James Waters), in J. Grant (ed.) Significant Developments in Strategic Management (JAI Press, 1988) - tracking strategy research`,
+        links: [{ label: `Download`, href: `sites/default/files/article/download/hm_strategy_of_design_-_architects.pdf` }],
+      },
+      {
+        text: `Generic Strategies: Toward a Comprehensive Framework, in R.B. Lamb and P. Shivastava (eds.) Advances in Strategic Management (JAI Press, 1988; shorter version in The Strategy Process, Prentice-Hall, 1991) - foray into Porter territory, an exhaustive/ing typology`,
+        links: [{ label: `Link`, href: `http://www.amazon.com/exec/obidos/tg/detail/-/0892324082/qid=1047093081/sr=1-1/ref=sr_1_1/103-3267186-3815814` }],
+      },
+      {
+        text: `Strategy Making as Craft (with Yvette Mintzberg), in Innovation and Management: International Comparisons (Urabe, K., Child, J., & Kagono, T. (Eds.), de Gruyter, 1988).`,
+        links: [{ label: `Link`, href: `https://www.degruyterbrill.com/document/doi/10.1515/9783110864519-012/html` }],
+      },
+    ],
+  },
+  {
+    year: `1987`,
+    items: [
+      {
+        text: `Emergent Strategy for Public Policy (with Jan Jorgensen), Canadian Public Administration (Summer, 1987) - applying notion of emergent strategy to public sector`,
+        links: [{ label: `Link`, href: `http://onlinelibrary.wiley.com/doi/10.1111/j.1754-7121.1987.tb00079.x/full` }],
+      },
+      {
+        text: `Another Look at Why Organizations Need Strategies, California Management Review (June 1987) - various reasons delineated`,
+        links: [{ label: `Link`, href: `http://hbr.org/product/strategy-concept-i-five-ps-for-strategy-strategy-concept-ii-another-look-at-why-organizations-need-strategies/an/CMR017-PDF-ENG` }],
+      },
+      {
+        text: `Five Ps for Strategy, California Management Review (June 1987) - ideas to open up the definition`,
+        links: [{ label: `Link`, href: `http://hbr.org/product/strategy-concept-i-five-ps-for-strategy-strategy-concept-ii-another-look-at-why-organizations-need-strategies/an/CMR017-PDF-ENG` }],
+      },
+      {
+        text: `Crafting Strategy, Harvard Business Review (July – August, 1987; winner of second McKinsey Prize for that year) - main summary piece out of tracking strategy research`,
+        links: [{ label: `Link`, href: `http://hbr.org/1987/07/crafting-strategy/ar/1` }],
+      },
+    ],
+  },
+  {
+    year: `1986`,
+    items: [
+      {
+        text: `Does Planning Impede Strategic Thinking? Tracking the Strategies of Air Canada from 1937 to 1976 (with Pierre Brunet and James Waters), in R.B. Lamb and P. Shivastava (eds.) Advances in Strategic Management (JAI Press, 1986) - tracking strategy research`,
+        links: [{ label: `Download`, href: `sites/default/files/article/download/hm_tracking_strategies_of_air_canada.pdf` }, { label: `Link`, href: `http://www.amazon.com/exec/obidos/tg/detail/-/0892324082/qid=1047093081/sr=1-1/ref=sr_1_1/103-3267186-3815814` }],
+      },
+    ],
+  },
+  {
+    year: `1985`,
+    items: [
+      {
+        text: `Spinning on Symbolism: Imaging Strategy (with Frances Westley), Journal of Management (1985) - just a fun page, strategy as images`,
+        links: [{ label: `Link`, href: `http://jom.sagepub.com/content/11/2/63.full.pdf+html` }],
+      },
+      {
+        text: `Strategy Formation in an Adhocracy (with Alexandra McHugh), Administrative Science Quarterly (1985) - tracking strategy research`,
+        links: [{ label: `Link`, href: `https://www.jstor.org/stable/2393104` }],
+      },
+      {
+        text: `Of Strategies, Deliberate and Emergent (with James Waters), Strategic Management Journal (1985) - summary piece, out of tracking strategy research, especially with regard to deliberate/emergent strategy`,
+        links: [{ label: `Link`, href: `https://www.jstor.org/stable/2486186` }],
+      },
+      {
+        text: `The Organization as Political Arena, Journal of Management Studies (1985) - out of my Power book, another configuration`,
+        links: [{ label: `Download`, href: `sites/default/files/article/download/hm_the_organization_has_a_political_arena.pdf` }, { label: `Link`, href: `https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1467-6486.1985.tb00069.x` }],
+      },
+    ],
+  },
+  {
+    year: `1984`,
+    items: [
+      {
+        text: `Who Should Control the Corporation?, California Management Review (Fall, 1984) - out of my Power book, eight perspectives, left meets right and center differs`,
+        links: [{ label: `Link`, href: `https://journals.sagepub.com/doi/abs/10.2307/41165115` }],
+      },
+      {
+        text: `Power and Organization Life Cycles, Academy of Management Review (1984) - out of my Power book on power-driven life cycles`,
+        links: [{ label: `Link`, href: `https://journals.aom.org/doi/abs/10.5465/amr.1984.4277632` }],
+      },
+      {
+        text: `Researching the Formation of Strategies: The History of Canadian Lady, 1939 1976 (with James Waters), in R.B. Lamb (ed.) Competitive Strategic Management (Prentice Hall, l984) - tracking strategy research`,
+        links: [{ label: `Download`, href: `sites/default/files/article/download/hm_the_formation_of_strategies_-_canadian_lady.pdf` }, { label: `Link`, href: `https://www.alibris.com/Competitive-Strategic-Management-Robert-Lamb/book/1232866` }],
+      },
+      {
+        text: `The Case for Configuration (with Danny Miller), in G. Morgan (ed.) Beyond Method (Sage, 1983); also in Miller and Friesen Organizations: A Quantum View (Prentice Hall, 1984) - advantages of taking configurational approach to theorizing`,
+        links: [{ label: `Link`, href: `http://www.amazon.com/exec/obidos/ASIN/0803920784/` }],
+      },
+      {
+        text: `Tracking Strategies in the Birthplace of Canadian Tycoons: The Sherbrooke Record 1946 1976 (with William Taylor and James Waters), Canadian Journal of Administrative Sciences (June, 1984) - tracking strategy research`,
+        links: [{ label: `Download`, href: `sites/default/files/article/download/hm_canadian_tycoons.pdf` }, { label: `Link`, href: `https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1936-4490.1984.tb00718.x` }],
+      },
+      {
+        text: `Configurations of Organizational Structure, in Meltzer and Nord Making Organizations Humane and Productive: A Handbook for Practitioners (Wiley, l98l) reprinted in modified form as A Typology of Organization Structure, in Miller and Friesen Organizations: A Quantum View (Prentice-Hall, 1984) - practitioner-oriented summary of Structuring book`,
+        links: [{ label: `Download`, href: `sites/default/files/article/download/hm_a_typology_of_organizational_structure.pdf` }, { label: `Link`, href: `http://www.amazon.com/exec/obidos/ASIN/0471078131/` }],
+      },
+    ],
+  },
+  {
+    year: `1983`,
+    items: [
+      {
+        text: `Strategy Formation in the University Setting (with Cynthia Hardy, Ann Langley and Janet Rose), The Review of Higher Education (Summer, 1983); also in J. Bess (ed.) College and University Organization (New York University Press, 1984) - think piece on how strategy making is different in professional organizations`,
+        links: [{ label: `Download`, href: `sites/default/files/article/download/hm_strategy_formation_in_the_university_setting.pdf` }, { label: `Link`, href: `http://www.amazon.com/exec/obidos/tg/detail/-/0814710492/qid=1100569825/sr=1-1/ref=sr_1_1/104-6522601-2151163` }],
+      },
+      {
+        text: `The Case for Corporate Social Responsibility, Journal of Business Policy (Fall, 1983) - out of my Power book, summary of arguments for and against social responsibility`,
+        links: [{ label: `Link`, href: `http://www.emeraldinsight.com/doi/abs/10.1108/eb039015` }],
+      },
+      {
+        text: `The Mind of the Strategist(s) (with James Waters) in S. Srivasta (ed.) Executive Mind (Jossey Bass, 1983) - summary material on tracking strategy research`,
+        links: [{ label: `Download`, href: `sites/default/files/article/download/hm_the_mind_of_the_strategist.pdf` }, { label: `Link`, href: `http://www.amazon.com/Executive-Mind-Managerial-Jossey-Bass-Management/dp/0875895840` }],
+      },
+      {
+        text: `Why America Needs, But Cannot Have, Corporate Democracy, Organizational Dynamics (Spring, 1983) - out of my Power book, on democratization of the corporation`,
+        links: [{ label: `Download`, href: `sites/default/files/article/download/hm_why_america_needs_but_can_not_have_corporate_democracy.pdf` }, { label: `Link`, href: `http://www.sciencedirect.com/science/article/pii/0090261683900360` }],
+      },
+      {
+        text: `A Note on the Unionization of Professionals from the Perspective of Organization Theory, Industrial Relations Law Journal (now known as Berkeley Journal of Employment and Labor Law) (1983) - out of my Power book, reflecting concern about unions in professional organizations`,
+        links: [{ label: `Download`, href: `sites/default/files/article/download/hm_unionization_of_professionals.pdf` }, { label: `Link`, href: `https://www.jstor.org/stable/24049649` }],
+      },
+    ],
+  },
+  {
+    year: `1982`,
+    items: [
+      {
+        text: `If You're Not Serving Bill and Barbara, then You're Not Serving Leadership, in Hunt, Sekaran, and Schriesheim (eds.) Leadership: Beyond Establishment Views (Southern Illinois University Press, 1982) - sounding off on useless leadership research, plus speculations about how two managers might have reacted to conference papers, followed by their actual reactions`,
+        links: [{ label: `Download`, href: `sites/default/files/article/download/bill_and_barbara_mcgill_file_2022.pdf` }, { label: `Link`, href: `http://www.amazon.com/exec/obidos/ASIN/0809310260/` }],
+      },
+      {
+        text: `Commentary, in Ungson and Braunstein (eds.) Decision Making: An Interdisciplinary Inquiry (Kent Publishing, 1982) - comments off on decision making`,
+        links: [{ label: `Link`, href: `http://www.amazon.com/exec/obidos/tg/detail/-/0534011616/` }],
+      },
+      {
+        text: `Tracking Strategy in an Entrepreneurial Firm (with James Waters), Academy of Management Journal (1982) - tracking strategy research`,
+        links: [{ label: `Link`, href: `https://journals.aom.org/doi/abs/10.5465/256075` }],
+      },
+      {
+        text: `A Note on that Dirty Word Efficiency, Interfaces (October, 1982) - out of my Power book, on problems of quantification`,
+        links: [{ label: `Link`, href: `https://www.jstor.org/stable/25060327` }],
+      },
+    ],
+  },
+  {
+    year: `1981`,
+    items: [
+      {
+        text: `What is Planning Anyway? Strategic Management Journal (1981) - reply to critique of my views of POSDCORB`,
+        links: [{ label: `Link`, href: `http://onlinelibrary.wiley.com/doi/10.1002/smj.4250020308/abstract` }],
+      },
+      {
+        text: `Organization Design: Fashion or Fit, Harvard Business Review (January February, 1981) - practitioner-oriented summary of Structuring book`,
+        links: [{ label: `Link`, href: `http://hbr.org/1981/01/organization-design-fashion-or-fit/ar/1` }],
+      },
+    ],
+  },
+  {
+    year: `1980`,
+    items: [
+      {
+        text: `Structure in 5's, Management Science (March, 1980) - summary of the Structuring book`,
+        links: [{ label: `Link`, href: `http://pubsonline.informs.org/doi/abs/10.1287/mnsc.26.3.322` }],
+      },
+    ],
+  },
+  {
+    year: `1979`,
+    items: [
+      {
+        text: `Organizational Power and Goals, in Schendel and Hofer Strategic Management (Little Brown, 1979) - summary of material in my Power book`,
+        links: [{ label: `Download`, href: `sites/default/files/article/download/hm_organizational_power_and_goals.pdf` }, { label: `Link`, href: `http://www.amazon.com/exec/obidos/tg/detail/-/0316773123/` }],
+      },
+      {
+        text: `An Emerging Strategy of "Direct" Research, Administrative Science Quarterly (December, 1979) — inferring my own research methodology`,
+        links: [{ label: `Link`, href: `http://www.jstor.org/discover/10.2307/2392364` }],
+      },
+    ],
+  },
+  {
+    year: `1978`,
+    items: [
+      {
+        text: `Beyond Implementation: An Analysis of the Resistance to Policy Analysis (Proceedings of the 1978 IFORS Conference) in Haley (ed.), Operational Research '78 (North Holland, 1979: 106-l62) shorter version appeared in INFOR (May, 1980) - extensive paper on why analysis is resisted`,
+        links: [{ label: `Link`, href: `https://www.tandfonline.com/doi/abs/10.1080/03155986.1980.11731776` }],
+      },
+      {
+        text: `Patterns in Strategy Formation, Management Science (May, 1978) also guest editor of grouping of four articles in that issue) - first paper on "tracking strategy" research`,
+        links: [{ label: `Link`, href: `https://pubsonline.informs.org/doi/10.1287/mnsc.24.9.934` }],
+      },
+      {
+        text: `Ten Years Later: Some Personal Reflections on Management and Methodology (Working Paper, 1978) - reflections based on series of talks at business school`,
+        links: [{ label: `Download`, href: `sites/default/files/article/download/hm_78_10_years_later_reflections_mgmt_methodology.pdf` }],
+      },
+      {
+        text: `Team Teaching General Management: Theoretically, Experientially, Practically (with Walter Balke and James Waters), Exchange: The OB Teaching Journal (June 1978) - the theory/field study course at McGill coupled to the skill development course`,
+        links: [{ label: `Download`, href: `sites/default/files/article/download/hm_team_teaching.pdf` }, { label: `Link`, href: `https://journals.sagepub.com/doi/10.1177/105256297800300201` }],
+      },
+      {
+        text: `Mintzberg's Final Paradigm, letter to Administrative Science Quarterly (1978) - enough of that word`,
+        links: [{ label: `Download`, href: `sites/default/files/article/download/hm_mintzberg_final_paradigm.pdf` }, { label: `Download`, href: `sites/default/files/article/download/hm_mintzberg_final_paradigm_0.pdf` }, { label: `Link`, href: `https://www.jstor.org/stable/2392584` }],
+      },
+      {
+        text: `The Joint Doctoral Program in Administration (working paper, with Jean-Marie Toulouse, 1978; presented at ASAC Conference) - statement of program we designed for four Montreal universities, mid-way between European and American approaches`,
+        links: [{ label: `Download`, href: `sites/default/files/article/download/hm_78_joint_phd_administration_montreal.pdf` }],
+      },
+    ],
+  },
+  {
+    year: `1977`,
+    items: [
+      {
+        text: `Policy as a Field of Management Theory, Academy of Management Review (January, 1977) - view of the field in general`,
+        links: [{ label: `Link`, href: `https://journals.aom.org/doi/abs/10.5465/amr.1977.4409174` }],
+      },
+      {
+        text: `Strategy Formulation as an Historical Process, International Studies of Management and Organization (Summer, 1977) - research on strategy as historical pattern`,
+        links: [{ label: `Download`, href: `sites/default/files/article/download/hm_strategy_making_as_a_historical_process.pdf` }, { label: `Link`, href: `https://www.jstor.org/stable/41103849` }],
+      },
+      {
+        text: `Review of the "New Science of Management Decision," by Herbert Simon, Administrative Science Quarterly (June 1977) - follows correspondence with him (see Chapter 4 of my 1989 book), beginning of my questioning of his view of intuition`,
+        links: [{ label: `Link`, href: `https://www.jstor.org/stable/2391966` }],
+      },
+    ],
+  },
+  {
+    year: `1976`,
+    items: [
+      {
+        text: `Planning on the Left Side and Managing on the Right, Harvard Business Review (July August, l976; also in French in La revue internationale de gestion, Novembre 1976) - impulsive piece about two hemispheres of the brain related to managing`,
+        links: [{ label: `Link`, href: `http://hbr.org/1976/07/planning-on-the-left-side-and-managing-on-the-right/ar/1` }],
+      },
+      {
+        text: `The Structure of "Unstructured" Decision Processes (with Duru Raisinghani and André Théoret), Administrative Science Quarterly (June, 1976) - empirical study of 25 decision processes`,
+        links: [{ label: `Download`, href: `sites/default/files/article/download/hm_the_structure_of_unstructured_decision_processes.pdf` }, { label: `Link`, href: `http://www.jstor.org/discover/10.2307/2392045` }],
+      },
+      {
+        text: `Le Manager, le Planificateur et le Cerveau, Revue Internationale de Gestion (November, 1976) — planning on the left side and managing on the right, adapted in French`,
+        links: [],
+      },
+    ],
+  },
+  {
+    year: `1975`,
+    items: [
+      {
+        text: `Making Management Information Useful, Management Review (May 1975)—summary of the monograph below`,
+        links: [],
+      },
+      {
+        text: `Impediments to the Use of Management Information (monograph of the National Association of Accountants (U.S.) and Society of Industrial Accountants (Canada, 1975) - summary of literature on impediments to MIS`,
+        links: [{ label: `Download`, href: `sites/default/files/article/download/impediments_to_the_use_of_management_information_jan_2022_rotated.pdf` }, { label: `Link`, href: `https://www.amazon.com/Impediments-use-management-information-Association/dp/B0006CEKUI` }],
+      },
+      {
+        text: `Normative Models in Managerial Decision Making (monograph of the National Association of Accountants (U.S.) and Society of Industrial Accountants (Canada, 1975, with Larry Gordon and Danny Miller) - on various models`,
+        links: [{ label: `Link`, href: `https://archive.org/details/normativemodelsi0000gord/page/n1/mode/2up` }],
+      },
+      {
+        text: `The Manager's Job: Folklore and Fact, Harvard Business Review (July August, 1975), winner of the McKinsey award for the best HBR article of 1975 - roles and characteristics of managerial work`,
+        links: [{ label: `Link`, href: `http://hbr.org/product/manager-s-job-folklore-and-fact-hbr-onpoint-enhanced-edition/an/5429-PDF-ENG` }],
+      },
+    ],
+  },
+  {
+    year: `1973`,
+    items: [
+      {
+        text: `Strategy Making in Three Modes, California Management Review (Winter, 1973) - recurrent theme re planning, adapting, entrepreneurship`,
+        links: [{ label: `Download`, href: `sites/default/files/article/download/hm_strategy_making_in_three_modes.pdf` }, { label: `Link`, href: `https://journals.sagepub.com/doi/10.2307/41164491` }],
+      },
+      {
+        text: `A New Look at the Chief Executive's Job Organizational Dynamics (Winter, 1973) - summary of thesis findings for practitioners`,
+        links: [{ label: `Download`, href: `sites/default/files/article/download/hm_a_new_look_at_the_chief_executives_job.pdf` }, { label: `Link`, href: `https://www.sciencedirect.com/science/article/abs/pii/S0090261673800154` }],
+      },
+      {
+        text: `Policy as a Field of Management Theory, Journal of Business Policy (Summer, 1973) - a way to research and teach it in the theory-oriented business school`,
+        links: [{ label: `Download`, href: `sites/default/files/article/download/hm_73_policy_as_a_field_of_mgmt_theory.pdf` }],
+      },
+      {
+        text: `Jeu des Influences et Buts Organisationnels, Commerce (juin, 1973) - first shot at power material`,
+        links: [],
+      },
+    ],
+  },
+  {
+    year: `1972`,
+    items: [
+      {
+        text: `The Myths of MIS, California Management Review (Fall, 1972) - thesis findings on information systems`,
+        links: [{ label: `Download`, href: `sites/default/files/article/download/hm_the_myths_of_mis.pdf` }, { label: `Link`, href: `https://journals.sagepub.com/doi/10.2307/41164405` }],
+      },
+      {
+        text: `A Framework for Strategic Planning, Canadian Forum (January February, 1972) - toward a National Industrial Strategy for Canada`,
+        links: [{ label: `Download`, href: `sites/default/files/article/download/hm_a_framework_for_strategy_planning.pdf` }],
+      },
+    ],
+  },
+  {
+    year: `1971`,
+    items: [
+      {
+        text: `Managerial Work: Analysis from Observation, Management Science (October, 1971) - summary of thesis findings`,
+        links: [{ label: `Link`, href: `https://www.jstor.org/stable/2629532` }],
+      },
+    ],
+  },
+  {
+    year: `1970`,
+    items: [
+      {
+        text: `Making a Science of Management, Canadian Business (March, 1970) - brief review of early ideas for practitioners`,
+        links: [{ label: `Download`, href: `sites/default/files/article/download/hm_making_a_science_of_management.pdf` }],
+      },
+      {
+        text: `Structured Observation as a Method of Study Managerial Work, The Journal of Management Studies (February, 1970) - thesis methodology`,
+        links: [{ label: `Download`, href: `sites/default/files/article/download/hm_structured_observation.pdf` }, { label: `Link`, href: `http://www.researchgate.net/publication/227966182_STRUCTURED_OBSERVATION_OF_MANAGERIAL_WORK_A_REPLICATION_AND_SYNTHESIS` }],
+      },
+    ],
+  },
+  {
+    year: `1968`,
+    items: [
+      {
+        text: `The Planning Dilemma, (with James Hekimian), The Management Review (May, 1968)—first paper, recurrent theme, biblical vs. Darwinian approaches`,
+        links: [{ label: `Download`, href: `sites/default/files/article/download/hm_the_planning_dilemma.pdf` }],
+      },
+    ],
+  },
+  {
+    year: `1967`,
+    items: [
+      {
+        text: `The Science of Strategy-Making, Industrial (now Sloan) Management Review (Spring 1967)—managers versus planners`,
+        links: [{ label: `Download`, href: `sites/default/files/article/download/hm_the_science_of_strategy_making.pdf` }, { label: `Link`, href: `https://www.amazon.com/Science-Strategy-Making-Managerial-Methods-Programs/dp/B01BMMTLMW` }],
+      },
+    ],
+  },
+]

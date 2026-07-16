@@ -1,0 +1,231 @@
+import type { Book } from '@/types/content'
+
+// All 21 real books, parsed from sorted-assets/html/pages/*.html
+// (node-type-book pages). Deduped from 42 raw files — every book had
+// both a /node/{id} page and a /{slug} alias page with identical content.
+// See PROGRESS.md HTML FILES PROCESSED LOG for the source filenames.
+export const BOOKS_SEED: Book[] = [
+  {
+    slug: `simply-managing`,
+    title: `Simply Managing`,
+    coverImage: `simply-managing.jpg`,
+    links: [{ label: `amazon.com`, href: `http://www.amazon.com/Simply-Managing-Henry-Mintzberg/dp/1609949234` }, { label: `Appendix (29 days of managing)`, href: `../sites/default/files/book/appendix_29_days_of_managing.pdf` }, { label: `Download`, href: `../sites/default/files/book/appendix_29_days_of_managing.pdf` }],
+    bodyHtml: `<p>In 2009, Henry Mintzberg’s Managing was named one of the best books of the year by strategy+business and Library Journal magazines, the number two business book of the year by the Toronto Globe and Mail, one of the top ten academic titles by Choice magazine, and the management book of the year in a competition organized by the Chartered Management Institute in association with the British Library.</p>
+<p>So this is clearly a book every manager should read. But one of the issues Mintzberg addresses is the frenetic pace and relentless pressures of the job—most managers hardly have time to think. So Mintzberg has done some revising and some updating and has distilled the essence of his original 320-page book into a lean, action-oriented 216 pages.</p>
+<p>The core of the book remains the same: Mintzberg’s observations of twenty-nine different managers, from business, government, and nonprofits, working in diverse settings ranging from a refugee camp to a symphony orchestra. What he saw led him to develop a new model of management, one firmly grounded in his conclusion that it is not a profession or a science. “It is a practice,” he writes, “learned primarily through experience and rooted in context.”</p>
+<p>But context cannot be seen in the usual way. Factors such as national culture, level in a hierarchy, and even personal style turn out to have a far different influence—sometimes much less—than we have traditionally thought. Mintzberg also offers a compelling discussion of some of the inescapable conundrums of managing. How can you get in deep when there is so much pressure to get it done? How can you manage it when you can’t reliably measure it? How do you balance the need for change with the need for continuity?</p>
+<p>He concludes with a provocative look at what being an effective manager really means, which he describes as “engaging management.” This is the most authoritative and revealing book yet written about what managers do, how they do it, and how they can have the greatest impact.</p>
+<p>— Amazon.com</p>`,
+  },
+  {
+    slug: `management-it-s-not-what-you-think`,
+    title: `Management: It’s not what you think`,
+    coverImage: `management_its_not_what_you_think.jpg`,
+    links: [{ label: `amazon.com`, href: `http://amzn.com/0814416845` }, { label: `Pearson Education`, href: `http://www.pearsoned.co.uk/bookshop/detail.asp?item=100000000276960` }],
+    bodyHtml: `<p>A lot of things have been said about management over the years: that it’s an art, not a science; that it’s a science, filled with “best practices” and systematic steps anyone can use to get great results; that it’s the fuel that powers successful organizations. Only one thing is for sure: there is no one, easy definition of whatever it is that managers do!</p>
+<p>Henry Mintzberg, one of today’s most respected and controversial thinkers on management, has joined forces with other leading business figures to provide a provocative and unusual mix of writing on management. Management? It’s Not What You Think! gets readers thinking as they never have before about the practice of management. Readers will find differing perspectives—and plenty of food for thought—on topics including management terminology and buzz words; myths and maxims; MBAs; management fads; leadership; strategy; and much more.</p>
+<p>Presenting articles, book and journal excerpts, letters, web selections, and musings, these pieces will have readers pondering, laughing, and sometimes even crying (for poor old management itself!). This irreverent, highly relevant, and insightful book will inspire managers of all types, spark debate, and renew their passion and interest in doing what they do best… managing.</p>
+<p>International edition published by Pearson Education.</p>`,
+  },
+  {
+    slug: `tracking-strategies`,
+    title: `Tracking Strategies`,
+    coverImage: `tracking_strategies.jpg`,
+    links: [{ label: `amazon.com`, href: `http://www.amazon.com/Tracking-Strategies-Towards-Strategy-Formation/dp/0199228507` }],
+    bodyHtml: `<p>There is a great deal of practice, discussion, and publication about strategy, but surprisingly little investigation of the processes by which strategies actually form in organizations. This book reports the results of Henry Mintzberg's investigation about this that he has conducted over several decades.</p>
+<p>	Defining realized strategy - the strategy an organization has actually pursued - as a pattern in a stream of actions, this investigation was able to track strategies in organizations over long periods of time, usually three or four decades, and in one case, a century and a half. This meant the patterns by which strategies form and change in organizations, the interplay of 'deliberate' with 'emergent' strategies, and the relationship between leadership, organization, and environment in the strategy formation process, could be revealed.</p>
+<p>	An introductory chapter considers the term strategy, and the various ways it has been and can be used, and then introduces the studies. These are reported in the next ten chapters, with descriptions of what the strategies were, how they formed over time, and how they combined to establish periods in the history of the organization. This is followed by conclusions about the study revealed about the process. </p>
+<p>	These studies range across business (six studies), government (two studies), an architectural firm, and a university, as well as one professor in that university. They include U.S. strategy in Vietnam (1950-1973), Volkswagenwrk (1937-1972), and the National Film Board of Canada (1939-1975).</p>
+<p>	The final chapter, entitled 'Toward a General Theory of Strategy Formation', weaves these findings together in two themes. First is strategy formation in different forms of organization: Strategic Planning in the Machine Organization, Strategic Visioning in the Entrepreneurial Organization, Strategic Learning in the Adhocracy organization, and Strategic Venturing in the Professional Organization. The second theme considers stages in the formation of strategies, from Initiation through Development to Renewal.</p>
+<p>— Amazon.com</p>`,
+  },
+  {
+    slug: `the-flying-circus`,
+    title: `The Flying Circus`,
+    coverImage: `flying_circus.jpg`,
+    links: [{ label: `Download`, href: `../sites/default/files/book/flying_circus_whole_book_august_2005.pdf` }],
+    bodyHtml: `<p>Waste no time in reading this <a href="../sites/default/files/book/flying_circus_whole_book_august_2005.pdf">book</a>!</p>`,
+  },
+  {
+    slug: `managers-not-mbas`,
+    title: `Managers not MBAs`,
+    coverImage: `managers_not_mbas.jpg`,
+    links: [{ label: `amazon.com`, href: `http://www.amazon.com/Managers-Not-MBAs-Management-Development/dp/1576752755` }],
+    bodyHtml: `<h3>A hard look at the soft practice of managing and management development.</h3>
+<p>Henry Mintzberg believes that both management and management education are deeply troubled, but that neither can be changed without changing the other.</p>
+<p>Mintzberg asserts that conventional MBA classrooms overemphasize the science of management while ignoring its art and denigrating its craft, leaving a distorted impression of its practice. We need to get back to a more engaging style of management, to build stronger organizations, not bloated share prices. This calls for another approach to management education, whereby practicing mangers learn from their own experience. We need to build the art and the craft back into management education, and into management itself.</p>
+<p>Mintzberg examines what is wrong with our current system. Conventional MBA programs are mostly for young people with little or no experience. These are the wrong people. Programs to train them emphasize analysis and technique. These are the wrong ways. They leave graduates with the false impression that they have been trained as managers, which has had a corrupting effect on the practice of management as well as on our organizations and societies. These are the wrong consequences.</p>
+<p>Mintzberg describes a very different approach to management education, which encourages practicing mangers to learn from their own experience. No one can create a manager in a classroom. But existing managers can significantly improve their practice in a thoughtful classroom that makes use of that experience.</p>`,
+  },
+  {
+    slug: `the-strategy-process-concepts-context-and-cases`,
+    title: `The Strategy Process: Concepts, Context and Cases`,
+    coverImage: `strategy_process.jpg`,
+    links: [{ label: `amazon.com`, href: `http://www.amazon.com/exec/obidos/ASIN/0132340305` }],
+    bodyHtml: `<p>(with J. Lampel, S. Ghoshal, J.B. Quinn; second edition, Prentice Hall, 1991)—<em>selected readings and cases, all heavily edited</em></p>`,
+  },
+  {
+    slug: `strategy-bites-back`,
+    title: `Strategy Bites Back`,
+    coverImage: `strategy_bites_back.jpg`,
+    links: [{ label: `amazon.com`, href: `http://www.amazon.com/Strategy-Bites-Back-Imagined-paperback/dp/0768682223` }],
+    bodyHtml: `<h3>It is a lot more, and less, than you ever imagined.</h3>
+<p>SWOTed by strategy models? Crunched by analysis? Strategy doesn’t have to be this way.</p>
+<p>Strategy is really all about being different. Thinking about it shouldn't make you reach for the snooze button, but in the world of strategy everybody has become so serious.</p>
+<p>If that gets us better strategies, fine. But it doesn’t; we get worse ones—predictable, generic, uninspiring, dull. Strategy doesn’t only have to position; it also has to inspire. So an uninspiring strategy is really no strategy at all.</p>
+<p>The most interesting and most successful companies are not boring. They have novel, creative, inspiring, sometimes even playful strategies. By taking the whole strategy business less seriously, they end up with more serious results—and have some fun in the bargain.</p>
+<p>Strategy Bites Back invites you to encounter a diverse and unlikely set of voices with something sharp to say about strategy --- from Michael Porter and Peter Drucker to Coco Channel’s "little black dress". Taken together these perspectives will provide you with new and dramatically different angles from which to attack the world of strategy.</p>
+<ul><li>Strategy as the Little Black Dress</li>
+<li>Forecasting Whoops</li>
+<li>Management and Magic</li>
+<li>The Soft Underbelly of Hard Data</li>
+<li>Jack Welch on Planning</li>
+<li>The Seven Deadly Sins of Strategic Planning</li>
+<li>Strategy from the Grassroots</li>
+<li>Strategy One Step at a Time</li>
+<li>Strategy and the Art of Seduction</li>
+<li><em>and many more antidotes to dull strategy making and blunt business strategies.</em></li>
+</ul><p>This book is for everyone involved with strategy – manager, CEO, consultant, professor, student – who wants to see strategy more broadly, more deeply and more playfully.</p>
+<p>Strategy with a difference starts here, and why not have a good time reading a strategy book for a change?</p>
+<h3>Reviews</h3>
+<p>"This is a naughty book, a really cheeky little brat of a book which ought to be spanked soundly and sent to bed without any supper. Except that, if you did that, you would be missing out on a delightful, entertaining smorgasbord of advice, insights, red herrings and jokes that together make up a classic text for business leaders."</p>
+<p>Business Voice</p>`,
+  },
+  {
+    slug: `managing-publicly`,
+    title: `Managing Publicly`,
+    coverImage: `managing_publicly.jpg`,
+    links: [{ label: `amazon.com`, href: `http://www.amazon.com/Managing-Publicly-Monographs-Canadian-Administration/dp/0920715982` }],
+    bodyHtml: `<p>(with Jacques Bourgault; Institute of Public Administration of Canada, 2000)—based on study I did of 8 Canadian public sector managers, published with commentaries</p>`,
+  },
+  {
+    slug: `strategy-safari`,
+    title: `Strategy Safari`,
+    coverImage: `strategy_safari.jpg`,
+    links: [{ label: `amazon.com`, href: `http://www.amazon.com/exec/obidos/ASIN/0684847434/` }],
+    bodyHtml: `<p>Henry Mintzberg, described by Tom Peters as “perhaps the world‘s premier management thinker,” teams up with Bruce Ahlstrand and Joseph Lampel to create what must certainly be the most thorough and thoughtful—as well as colorful—tour through the fields of strategic management. This is an unprecedented guide to the practice of strategy, yet reader-friendly all the way. If strategy interests you, this is one safari you will not want to miss.</p>`,
+  },
+  {
+    slug: `the-canadian-condition-reflections-of-a-pure-cotton`,
+    title: `The Canadian Condition: Reflections of a “Pure Cotton”`,
+    coverImage: `canadian_condition.jpg`,
+    links: [{ label: `amazon.com`, href: `http://www.amazon.com/exec/obidos/ASIN/0773757759/` }],
+    bodyHtml: `<p>(Stoddart [en français: Les Propos d’un “Pur Coton”: Essai sur la Problématique Canadienne,Québec/Amérique] 1995)—<em>expression of some personal feelings about Canada and what it goes through</em></p>`,
+  },
+  {
+    slug: `the-rise-and-fall-of-strategic-planning`,
+    title: `The Rise and Fall of Strategic Planning`,
+    coverImage: `rise_and_fall_of_strategic_planning_0.jpg`,
+    links: [{ label: `amazon.com`, href: `http://www.amazon.com/exec/obidos/ASIN/0029216052/` }],
+    bodyHtml: `<p>(Free Press and Prentice-Hall International, 1994)—<em>historical review of the process, very critical, though ends on a positive note</em></p>`,
+  },
+  {
+    slug: `mintzberg-on-management-inside-our-strange-world-of-organizations`,
+    title: `Mintzberg on Management: Inside Our Strange World of Organizations`,
+    coverImage: `mintzberg_on_management.jpg`,
+    links: [{ label: `amazon.com`, href: `http://www.amazon.com/exec/obidos/ASIN/0029213711/` }],
+    bodyHtml: `<p>Henry Mintzberg revolutionized our understanding of what managers do in The Nature of Managerial Work, his landmark book. Now in this comprehensive new volume, Mintzberg broadens his vision to explore not only the function of management, but also that of the organization itself and its meaning for society. A treasury of the dynamic and iconoclastic ideas that have made him a mentor to an entire younger generation of leading management thinkers, Mintzberg on Management presents the collective wisdom of this influential scholar -- in strategy, structure, power, and politics -- the gestalt of organizational theory.</p>
+<p>Known as the guru of bottom-up management, Mintzberg broke with convention by actually going inside companies to witness the business of business. Revealing how strategy is really formulated, he shows here that successful strategy is rarely, if ever, born in solitary contemplation; rather, the elements usually come together in the heat of battle. In addition, Mintzberg identifies the keys to outstanding management. He begins by describing the good manager who successfully combines interpersonal, informational, and decision-making roles.</p>
+<p>However, effectiveness in management, Mintzberg demonstrates, depends not only on a manager's embodiment of these necessary qualities, but also his or her insight into their own work. Performance depends on how well he understands and responds to the pressures and dilemmas of the job. As Mintzberg illustrates, it is often the case that job pressures can drive a manager to be superficial in his actions -- to overload himself with work, encourage interruption, respond quickly to every stimulus, avoid the abstract, make decisions in small increments, and do everything abruptly. The effective manager surmounts the pressures of superficiality by stepping back in order to see a broad picture, and making use of analytical inputs.</p>
+<p>Keeping his focus on how real companies work, Mintzberg challenges traditional assumptions and answers from the grass roots level such essential questions as "How do organizations function and structure themselves?....How do their power relations develop and their goals form?" And, "By what processes do managers make important strategic decisions?"</p>
+<p>With the same hard-hitting impact of his popular seminars for executives, Mintzberg on Management conveys Mintzberg's latest ideas on management and organization, including "Society Is Unmanageable as a Result of Management" and "Training Managers, Not MBAs? As solid and reality oriented in its approach as his classic The Nature of Managerial Work, this volume promises to have comparable sweeping influence on managers in all fields.</p>
+<p>— Amazon.com</p>`,
+  },
+  {
+    slug: `structure-in-5-s-designing-effective-organizations`,
+    title: `Structure in 5's: Designing Effective Organizations`,
+    coverImage: `structure_in_fives.jpg`,
+    links: [{ label: `amazon.com`, href: `http://www.amazon.com/exec/obidos/ASIN/013855479X/` }],
+    bodyHtml: `<p>Here's a guide that shows managers how to choose the best organizational design for their business from five basic structures identified by the author. In it readers will discover how to avoid typical mistakes, especially those pertaining to conflict among different divisions.</p>`,
+  },
+  {
+    slug: `power-in-and-around-organizations`,
+    title: `Power In and Around Organizations`,
+    coverImage: `power.jpg`,
+    links: [{ label: `Download for free`, href: `../Power_in_and_around_organizations.pdf` }],
+    bodyHtml: `<p>(out of print, but available here for free download; originally published by Prentice Hall, 1983)—<em>draws together the literature about power within and around organizations; an extension of my book on organizational structuring</em></p>`,
+  },
+  {
+    slug: `the-structuring-of-organizations-a-synthesis-of-the-research`,
+    title: `The Structuring of Organizations: A Synthesis of the Research`,
+    coverImage: `structuring_of_organizations.jpg`,
+    links: [{ label: `amazon.com`, href: `http://www.amazon.com/exec/obidos/ASIN/0138552703/` }],
+    bodyHtml: `<p>Book is a synthesis of the empirical literature currently available on organizational structuring. A framework is developed enabling students to handle organizational problems. For use as a supplement in upper level Organizational Design courses in Management.</p>`,
+  },
+  {
+    slug: `the-nature-of-managerial-work`,
+    title: `The Nature of Managerial Work`,
+    coverImage: `nature_of_managerial_work.jpg`,
+    links: [{ label: `amazon.com`, href: `http://www.amazon.com/exec/obidos/ASIN/0060445564/` }],
+    bodyHtml: `<p>This text describes the manager's job using findings of empirical studies conducted internationally throughout many levels of management. The text summarizes eight current schools of thought on the manager's job and analyzes the consistencies and variations in managers' roles and working characteristics.</p>`,
+  },
+  {
+    slug: `rebalancing-society`,
+    title: `Rebalancing Society`,
+    coverImage: `rebalancing.png`,
+    links: [{ label: `Berrett-Kohler`, href: `http://www.bkconnection.com/ProdDetails.asp?ID=9781626563179` }, { label: `Amazon.com`, href: `http://www.amazon.com/Rebalancing-Society-Radical-Renewal-Beyond/dp/1626563179` }, { label: `Download as a free PDF`, href: `../sites/default/files/page/rebalancing_full.pdf` }],
+    bodyHtml: `<p><strong>Enough!</strong> Enough of the imbalance that is destroying our democracies, our planet, and ourselves. We require a form of radical renewal unprecedented in the human experience.</p>
+<p>Enough of the pendulum politics of left and right as well as paralysis in the political center. Enough of the visible claw of lobbying in place of the invisible hand of competing. Enough of the economic globalization that undermines our sovereign states and local communities. Have we not had enough exploiting of the world’s resources, including ourselves as “human resources?</p>
+<p>Many people are concerned about these problems, far more than have taken to the streets. The will is there; an appreciation of what is happening, and how to deal with it, is not. We are inundated with conflicting explanations and contradictory solutions. This book presents a comprehensive framework, to suggest an dynamic way forward.</p>
+<p><strong>The Triumph of Imbalance</strong> When the communist regimes of Eastern Europe began to collapse in 1989, pundits in the West had a ready explanation: capitalism had triumphed. They were wrong, and the consequences of that mistake are now proving fateful.</p>
+<p>It was balance that triumphed in 1989. While the communist regimes were utterly out of balance, with so much power concentrated in their public sectors, the successful countries of the West maintained sufficient balance across their public, private, and another sector. But a failure to understand this has been throwing many countries out of balance ever since, on the side of their private sectors.</p>
+<p><strong>Welcome to the Plural Sector</strong> There are three key sectors in society, not two. The other one is known by a variety of inadequate labels, including “not-for- profit” and “civil society”. Calling it plural can help it take its place alongside the ones called public and private, while indicating that it is made up of a wide variety of human associations.</p>
+<p>Consider all those activities that are owned neither by the state nor by private investors: foundations, churches, unions, cooperatives, Greenpeace, the Red Cross, and many renowned universities and hospitals. Also included here are the social movements that arise to protest certain practices and the social initiatives created by community groups to develop better practices (for example in micro-financing and renewable energy).</p>
+<p>Despite the prominence of all this activity, the plural sector remains surprisingly obscure, having been ignored for so long in the great debates over left versus right. This sector does not function between the other two, as if on some straight line. It is a different place, as different as the other two sectors are from each other. Accordingly, picture a balanced society as sitting on three solid legs: a public sector of respected governments, for purposes of protection (such as policing and regulating); a private sector of responsible businesses, for purposes of consumption; and a plural sector of robust communities, for purposes of social affiliations.</p>
+<p><strong>Regaining Balance</strong> How do we regain balance in our societies? Some people believe that the answer will have to lie in the private sector, namely with corporate social responsibility. This is certainly to be welcomed, but anyone who believes that it will compensate for the corporate social irresponsibility we see around us is living in a win-win wonderland. Other people expect democratic governments to act vigorously. That they must do, but will not so long as they continue to be overwhelmed by private sector entitlements, global as well as domestic.</p>
+<p>This leaves but one sector, the plural, which is not some “them”, but you, and me, and we, acting together. We need to engage in social movements and social initiatives that challenge destructive practices and replace them with constructive ones. We need not be passive human resources, in the service of imbalance, but can be resourceful human beings, in the service of our progeny and our planet.</p>
+<p>In 1776 Tom Paine wrote to the American people in his pamphlet <em>Common Sense</em> that “We have it in our power to begin the world over again.” Paine was right in 1776. Can we be right again now? Can we afford not to be?</p>`,
+  },
+  {
+    slug: `managing`,
+    title: `Managing`,
+    coverImage: `managing.jpg`,
+    links: [{ label: `Berrett-Koehler`, href: `https://www.bkconnection.com/books/title/managing` }, { label: `Amazon`, href: `https://www.amazon.com/Managing-Henry-Mintzberg/dp/1605098744` }, { label: `Appendix (29 days of managing)`, href: `../sites/default/files/book/appendix_29_days_of_managing.pdf` }],
+    bodyHtml: `<p>Managing (Berrett-Koehler and Pearson, 2009)—about the characteristics, roles, varieties, conundrums, and effectiveness of managing. See the Appendix, about the day in the life of 29 managers <a href="../sites/default/files/book/appendix_29_days_of_managing.pdf">here</a>.</p>`,
+  },
+  {
+    slug: `managing-the-myths-of-health-care`,
+    title: `Managing the Myths of Health Care`,
+    coverImage: `managing-the-myths-of-health-care.jpg`,
+    links: [{ label: `Berrett-Kohler`, href: `https://www.bkconnection.com/books/title/Managing-the-Myths-of-Health-Care` }, { label: `Amazon`, href: `http://a.co/hg13PLS` }, { label: `Table of Contents`, href: `../sites/default/files/page/myths_table_of_contents.pdf` }],
+    bodyHtml: `<h2>Summary on the back cover</h2>
+<p><strong>“Health care is not failing but succeeding, expensively, and we don’t want to pay for it. So the administrations, public and private alike, intervene to cut costs, and herein lies the failure.”</strong></p>
+<p>In this sure-to-be-controversial book, leading management thinker Henry Mintzberg turns his attention to reframing the management and organization of health care.</p>
+<p>The problem is not management per se but a form of remote-control management detached from the operations yet determined to control them. It reorganizes relentlessly, measures like mad, promotes a heroic form of leadership, favors competition where the need is for cooperation, and pretends that the calling of health care should be managed like a business.</p>
+<p><strong>“Management in health care should be about dedicated and continuous care more than interventionist and episodic cures.”</strong></p>
+<p>This <em>professional</em> form of organizing is the source of health care’s great strength as well as its debilitating weakness. In its administration, as in its operations, it categorizes whatever it can to apply standardized practices whose results can be measured. When the categories fit, this works wonderfully well. The physician diagnoses appendicitis and operates; some administrator ticks the appropriate box and pays. But what happens when the fit fails—when patients fall outside the categories or across several categories or need to be treated as people beneath the categories or when the managers and professionals pass each other like ships in the night?</p>
+<p>To cope with all this, Mintzberg says that we need to reorganize our heads instead of our institutions. He discusses how we can think differently about systems and strategies, sectors and scale, measurement and management, leadership and organization, competition and collaboration.</p>
+<p><strong>“Market control of health care is crass, state control is crude, professional control is closed. We need all three—in their place.”</strong></p>
+<p>The overall message of Mintzberg’s masterful analysis is that care, cure, control, and community have to work together, within health-care institutions and across them, to deliver quantity, quality, and equality simultaneously.</p>
+<p>Henry Mintzberg is the Cleghorn Professor of Management Studies at McGill University and the recipient of twenty honorary degrees from universities around the world. He is the author of nineteen books, including <a href="rebalancing-society.html"><em>Rebalancing Society</em></a>.</p>`,
+  },
+  {
+    slug: `bedtime-stories-for-managers`,
+    title: `Bedtime Stories for Managers`,
+    coverImage: `bedtime-stories.jpg`,
+    links: [{ label: `Berrett-Kohler`, href: `https://www.bkconnection.com/books/title/Bedtime-Stories-for-Managers` }, { label: `Amazon.com`, href: `https://www.amazon.com/Bedtime-Stories-Managers-Leadership-Management/dp/1523098783` }, { label: `Amazon.ca`, href: `https://www.amazon.ca/Bedtime-Stories-Managers-Leadership-Management/dp/1523098783` }, { label: `Penguin Random House`, href: `https://www.penguinrandomhouse.com/books/600343/bedtime-stories-for-managers-by-henry-mintzberg` }, { label: `Indie Bound`, href: `https://indiebound.addlibra.com/store/cart?_ga=2.212327318.381055796.1543073282-1444293187.1543073282` }, { label: `Indigo`, href: `https://www.chapters.indigo.ca/en-ca/books/bedtime-stories-for-managers-farewell/9781523098781-item.html` }, { label: `Barnes and Noble`, href: `https://www.barnesandnoble.com/w/bedtime-stories-for-managers-henry-mintzberg/1129853794` }],
+    bodyHtml: `<p>Had your fill of lofty leadership, strategic planning, and human resources?</p>
+<p>Here comes engaging management, strategic learning, and human beings.</p>
+<p>Relax tonight with this enchanting collection of bedtime stories from Henry Mintzberg, “perhaps the world’s premier management thinker” (Tom Peters).</p>
+<ul><li>Celebrate strategies that grow like weeds in a garden</li>
+<li>Discover how to organize like a cow instead of a chart</li>
+<li>Learn to select managers for their flaws</li>
+<li>Appreciate that if you can’t measure it, you had better manage it</li>
+<li>Above all, welcome communityship beyond leadership</li>
+</ul><p>Join this campaign to bring management down from the clouds, by debunking the maestro myth of managing, replacing keynote speakers with keynote listening, uncovering the soft underbelly of hard data, and questioning the label “CEO” in hospitals, governments, and other endangered species.</p>
+<p>________________________________________________________<br />
+	Who better to write bedtime stories for managers than Henry Mintzberg of McGill University, purveyor of outrageous idea that eventually become obvious. This is his 20th book, certainly his most playful and possibly his most serious. </p>
+<p><img alt="" src="../sites/default/files/book/6._managing_in_age_of_the_internet.html" /></p>`,
+  },
+  {
+    slug: `understanding-organizations-finally-structure-in-sevens`,
+    title: `Understanding Organizations...Finally!: Structure in Sevens`,
+    coverImage: `61livwsk9hl._sl1500_.jpg`,
+    links: [{ label: `Berrett-Kohler`, href: `https://www.bkconnection.com/books/title/Understanding-OrganizationsFinally#more-book` }, { label: `Amazon.ca`, href: `https://www.amazon.ca/Understanding-Organizations-Finally-Structure-Sevens/dp/1523000058` }, { label: `Amazon.com`, href: `https://www.amazon.com/Understanding-Organizations-Finally-Structure-Sevens/dp/1523000058/ref=sr_1_1?dib=eyJ2IjoiMSJ9.PK4UnuUx8zmG7VbNmER5LYJ03DGYJA4gUEMdZXR6HpZi8wg7S3JmyH_tMbi-dwRjpZVvGHQBUThNl7_08Fcg4JUdYeYxY31hs-0UgKvwn-r9N6W6BcwM1M6ajKnfcW-LI-s0tbRay7Y8Z1B58Id1wcmkD9XdmyncYIpWtaA4nTiRqea99BgWKQ0lmpPVymS8iMr0DxSxIE64IqRhQDrdY4ZFf-v04zJExh72BVLpYQBOqp7JVRLX0y-zZPLobFf0wu6xL13TD9L-piEYDdz6YRBiNl-2EC90xrcgrcCgHBU.xsFiw5BUxoP_5B5V1MzoS9xkoZYntz46jVgxHjJemFY&amp;dib_tag=se&amp;keywords=henry%20mintzberg&amp;qid=1713064229&amp;sr=8-1` }, { label: `Back Cover`, href: `../blog/understanding-organizations-back-cover.html` }],
+    bodyHtml: `<p>The iconic Henry Mintzberg provides a crystal-clear map to the forms and forces that shape all human organizations, synthesizing his fifty years of research.</p>
+<p>We live in a world of organizations, from our birth in hospitals until our burial by funeral homes. In between, we are educated, employed, entertained, and exasperated by organizations. We had better understand how these strange beasts really work. But where can we go to find out?</p>
+<p>Welcome to <em>Understanding Organizations . . . Finally!</em> For half a century, Mintzberg has been observing organizations, advising them, engaging them, and escaping them. Here he offers a masterful update and revision of his 1983 classic, Structure in Fives.</p>
+<p>Believing there is one best way to structure organizations is the worst way to do so. A better place to start is by recognizing different species of organizations. Mintzberg identifies seven-personal enterprises, programmed machines, professional assemblies, project pioneers, and others. He explores these forms and the seven forces that drive them toward hybrids and across their life cycles.</p>
+<p>You will find no better guide to the care and feeding of these extraordinarily varied and vital creatures than this book.</p>`,
+  },
+]

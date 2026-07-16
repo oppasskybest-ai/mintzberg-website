@@ -221,5 +221,34 @@ a:hover { color: var(--orange-light); }
   /* iOS Safari doesn't support background-attachment: fixed well inside
      transformed contexts; fall back to scroll on small screens so the
      texture doesn't jitter, per master prompt Mobile section. */
-  .hero-parallax, .section-parallax { background-attachment: scroll; }
+  .hero-parallax, .section-parallax, .feature-band { background-attachment: scroll; }
 }
+
+/* ── FEATURE BAND — full-bleed REAL PHOTO section background, added
+   2026-07-15 per the cushnir-site reference. Distinct from
+   .hero-parallax/.section-parallax (which use the abstract texture): this
+   uses one of Henry's actual photos (sculptures, video stills, book art)
+   as the backdrop, with a navy overlay for text contrast, and pairs with
+   WaveDivider.tsx for the transition seams the reference uses. ── */
+.feature-band {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: var(--paper);
+  padding: 4rem 0;
+}
+.feature-band::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.feature-band-overlay-navy::before {
+  background: linear-gradient(160deg, rgba(15,28,48,0.92) 0%, rgba(26,46,74,0.82) 100%);
+}
+.feature-band-overlay-light::before {
+  background: linear-gradient(160deg, rgba(250,250,248,0.94) 0%, rgba(242,241,236,0.88) 100%);
+}
+.feature-band-overlay-light { color: var(--ink); }
+.feature-band > * { position: relative; z-index: 1; }

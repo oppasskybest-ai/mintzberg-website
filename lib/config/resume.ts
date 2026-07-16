@@ -1,0 +1,14 @@
+// Verbatim from sorted-assets/html/pages/resume.html (Rule 1). Internal
+// links rewritten to the new site's routes (books.html -> /books, etc.);
+// external links kept as-is.
+export const RESUME_CV_FILE = 'henry_mintzberg_cv_april_2024_0.pdf'
+export const RESUME_PORTRAIT_IMAGE = 'canoe.jpg'
+
+export const RESUME_BODY_HTML = `
+<p>I am a writer and educator, mostly about managing originations, developing managers, and rebalancing societies (where my attention is currently focused), also an outdoorsman and collector of <a href="/sculptures">beaver sculptures</a>.</p>
+<p>After receiving my bachelor's degree in Mechanical Engineering from McGill University in Montreal (1961), working in Operational Research for the Canadian National Railways (1961-1963), and doing my masters and PhD at the MIT Sloan School of Management (1965 and 1968), I have made my professional home in the Desautels Faculty of Management at McGill. I sit in the Cleghorn Chair of Management Studies (half-time since the mid-1980s), and have had extensive visiting professorships at INSEAD in France and the London Business School in England.</p>
+<p>I have authored 21 <a href="/books">books</a>, including <em>Managers not MBAs</em>, <em>Simply Managing</em>, <em>Rebalancing Society,</em> <em>Managing the Myths of Health Care</em>, and <em>Understanding Organizations...Finally!</em> (2023), a revision of <em>Structure in Fives</em> (1983), also 184 <a href="/articles">articles</a> plus numerous <a href="/commentaries">commentaries</a> and <a href="/videos">videos</a>. I publish a regular TWOG (TWeet 2 blOG), as "provocative fun in a page or 2 beyond pithy pronouncements in a line or 2" (<a href="https://twitter.com/Mintzberg141">@mintzberg141</a>, <a href="https://ca.linkedin.com/in/henrymintzberg">Linkedin</a> to <a href="/blog">mintzberg.org/blog</a>). A collection has recently been published under the title <em>Bedtime Stories for Managers.</em></p>
+<p>I co-founded and remain active in the International Masters Program for Managers (<a href="https://impm.org/">impm.org</a>) and the International Masters for Health Leadership (<a href="https://www.mcgill.ca/desautels/programs/imhl">mcgill.ca/imhl</a>) as well as a venture <a href="https://coachingourselves.com/">CoachingOurselves.com</a>, all novel initiatives for managers to learn together from their own experience, the last in their own workplace.</p>
+<p>Some consequences of all this have been election to the Order of Canada and l'Ordre national du Quebec as well as to the Royal Society of Canada (the first from a management faculty), two prize-winning <em>Harvard Business Review</em> articles, and twenty-one honorary degrees from universities around the world.</p>
+<p>I may spend my professional life dealing with organizations, but I continue to spend my private life escaping from them, especially in the Laurentian wilderness of Canada.</p>
+`

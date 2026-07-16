@@ -1,6 +1,8 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { getBlogPostsPage } from '@/lib/data/blog-posts'
 import PageHero from '@/components/layout/PageHero'
+import { assetUrl } from '@/lib/assets'
 
 // Blog index — paginated 10 posts per page (not the old site's "load
 // everything at once" pattern, which took 10+ minutes for 234 posts).
@@ -25,21 +27,44 @@ export default async function BlogIndexPage({
       <section className="section-parallax" style={{ padding: '3rem 0 4rem' }}>
         <div className="container-content">
           <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-            {posts.map((post) => (
-              <li key={post.slug} className="premium-card" style={{ padding: '1.5rem' }}>
-                {post.categoryLabel && (
-                  <p className="eyebrow-label" style={{ marginBottom: '0.5rem' }}>
-                    {post.categoryLabel}
-                  </p>
-                )}
-                <h2 style={{ fontSize: '1.35rem', marginBottom: '0.35rem' }}>
-                  <Link href={`/blog/${post.slug}`}>{post.title}</Link>
-                </h2>
-                <p style={{ fontSize: '0.85rem', color: 'var(--ink-light)', marginBottom: 0 }}>
-                  {post.date}
-                </p>
-              </li>
-            ))}
+            {posts.map((post) => {
+              const thumb = post.imageRefs[0] ? assetUrl(post.imageRefs[0]) : null
+              return (
+                <li
+                  key={post.slug}
+                  className="premium-card"
+                  style={{ display: 'flex', gap: '1.25rem', padding: '1rem', alignItems: 'stretch' }}
+                >
+                  {thumb && (
+                    <Link
+                      href={`/blog/${post.slug}`}
+                      style={{ flexShrink: 0, width: '120px', display: 'block', borderRadius: '2px', overflow: 'hidden' }}
+                    >
+                      <Image
+                        src={thumb}
+                        alt=""
+                        width={120}
+                        height={120}
+                        style={{ width: '120px', height: '100%', minHeight: '96px', objectFit: 'cover', display: 'block' }}
+                      />
+                    </Link>
+                  )}
+                  <div style={{ padding: thumb ? '0.25rem 0' : '0.5rem' }}>
+                    {post.categoryLabel && (
+                      <p className="eyebrow-label" style={{ marginBottom: '0.4rem' }}>
+                        {post.categoryLabel}
+                      </p>
+                    )}
+                    <h2 style={{ fontSize: '1.3rem', marginBottom: '0.35rem' }}>
+                      <Link href={`/blog/${post.slug}`}>{post.title}</Link>
+                    </h2>
+                    <p style={{ fontSize: '0.85rem', color: 'var(--ink-light)', marginBottom: 0 }}>
+                      {post.date}
+                    </p>
+                  </div>
+                </li>
+              )
+            })}
           </ul>
 
           {/* Pagination — page numbers + prev/next, no infinite scroll */}

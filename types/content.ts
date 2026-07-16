@@ -34,3 +34,39 @@ export interface BlogCategory {
   id: string
   label: string
 }
+
+export interface BookLink {
+  label: string
+  href: string
+}
+
+export interface Book {
+  slug: string
+  title: string | null
+  coverImage: string | null
+  links: BookLink[]
+  /** Full description HTML, verbatim (Rule 1). Image src values are
+   *  {{ASSET}}filename{{/ASSET}} tokens, same convention as BlogPost. */
+  bodyHtml: string
+}
+
+export interface VideoItem {
+  slug: string
+  title: string | null
+  youtubeId: string
+}
+
+export interface PublicationLink {
+  label: string
+  href: string
+}
+
+export interface PublicationItem {
+  text: string
+  links: PublicationLink[]
+}
+
+export interface PublicationYear {
+  year: string
+  items: PublicationItem[]
+}

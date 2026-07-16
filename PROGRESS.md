@@ -302,6 +302,240 @@ NEXT STEP: continue building out `html/pages/` content (books, articles,
 
 ---
 
+STEP COMPLETED: Home page visual redesign — full-bleed photo bands + wave
+  dividers (cushnir-site reference pattern)
+DATE: 2026-07-15
+CONTEXT: you flagged that everything past the hero looked "basic" and
+  pointed at cushnir-site's screenshots as the reference — full-bleed real
+  photo section backgrounds, dark overlays, gold(→orange)/accent dividers,
+  wave-shaped transitions between stacked sections. Also asked for the same
+  "reference images as background while reading" idea to carry into blog
+  posts.
+WHAT WAS BUILT:
+  - `components/layout/WaveDivider.tsx` — SVG wave transition between
+    stacked sections, matches the cushnir-site seam pattern.
+  - `components/layout/FeatureBand.tsx` — full-bleed REAL PHOTO section
+    (distinct from `.hero-parallax`/`.section-parallax`, which use the
+    abstract line texture): takes an actual asset URL, navy or light
+    overlay, fixed attachment.
+  - `.feature-band` + overlay variants added to `app/globals.css`.
+  - Home page sections rebuilt: Blog/Minutes block and Videos block are now
+    full-bleed bands using real photos (a beaver sculpture close-up, the
+    lead video's own YouTube thumbnail) instead of flat paper backgrounds.
+    Books section is now a dark image panel with book covers as bright
+    cards on top (directly modeled on cushnir's "Five Books, One Mission"
+    panel). Beaver Sculptures section gets its own large photo hero band
+    before the grid. Wave dividers added at every light↔dark seam (hero→
+    signature, signature→blog band, blog band→books, videos→stories,
+    stories→sculptures band→grid).
+  - Blog post hero: now uses the POST'S OWN FIRST IMAGE as its
+    fixed-parallax backdrop when one exists (falls back to the generic
+    texture otherwise) — each post gets its own reading atmosphere instead
+    of one generic look for all 231.
+  - Blog index cards: added a 120px thumbnail (post's own first image)
+    next to each list item, so images are visible while scrolling the list
+    too, not just on individual post pages.
+VERIFIED: `npm run build` clean (235 routes), then `npm run start` + curl
+  on `/`, `/blog`, `/blog/4ships` — all 200, confirmed real GitHub Release
+  URLs are resolving correctly into the new feature-band backgrounds
+  (checked via grep on the rendered HTML, not just assumed).
+KNOWN GAPS:
+  - Feature-band images (beaverm11.jpg for the blog/videos band,
+    q11_new.jpg for the books band, beaverj31.jpg for the sculptures hero)
+    were picked by me from the available sculpture photos — reasonable
+    choices, but if you'd rather specific images anchor specific sections,
+    easy to swap (just change the filename passed to `assetUrl()` in each
+    component).
+  - This same full-bleed-band + wave-divider pattern is now the standard;
+    will be applied to Books/Articles/Commentaries/etc. index and detail
+    pages as they're built next, not just left on the homepage.
+NEXT STEP: continuing into `html/pages/` classification + parsing (Books
+  first, since seed data already exists in `lib/config/home-books.ts` to
+  build on).
+
+---
+
+STEP COMPLETED: `html/pages/` classification + Step 5 (Books)
+DATE: 2026-07-15
+WHAT WAS BUILT:
+  - `scripts/data/pages_classification.json` — every one of the 354
+    `html/pages/*.html` files classified by Drupal node-type + section,
+    extracted from each file's `<body class="...">`. Breakdown:
+    node-type-post (blog dupes): 244, node-type-book: 42 (→ 21 unique
+    books after dedup), node-type-video: 37, node-type-page: 15 (resume,
+    contact, articles/commentaries/stories/search indexes, etc.), NONE: 14
+    (dead-link artifacts), webform: 2 (contact form).
+  - **Blog-count mystery resolved:** the earlier-flagged 231-vs-254
+    discrepancy is because `html/pages/` also contains node/{id} versions
+    of blog posts, some of which have NO slug-alias in `html/blog/` at
+    all. After matching titles (with proper HTML-entity unescaping — the
+    naive first pass falsely flagged ~13 as "new" when they were just
+    entity-encoding differences), found **10 genuinely new posts** not yet
+    parsed: `217.html` (Getting Past the Adjectival Capitalism Fix),
+    `356.html`/`volkswagen.html` (VW: The syndrome behind the scandal —
+    same post, 2 aliases), `504.html` (PPPPs for Climate Change),
+    `522.html` (Not noble: the fake fact of economics), `532.html`
+    (Consolidation for Reformation), `568.html`/`judgement-gone.html`
+    (Where has all the judgement gone? — same post, 2 aliases),
+    `660.html` (Musk is doing a number on efficiency), `664.html` (About
+    this business of government, Mr. President — NOTE: likely the same
+    post as the already-parsed `about-this-business-of-government-mr-
+    president.html`, just with different whitespace in the title; needs a
+    body-diff check before parsing, not just a title match), `666.html`
+    (The center's not holding...), `672.html` (Is Serendipity Really
+    Serendipitous?). NOT YET PARSED — flagging filenames now so a future
+    pass doesn't have to redo this detection work.
+  - `scripts/parse_books.py` — parses node-type-book pages. Extracts
+    title, cover image, all purchase/download links, full description
+    body (verbatim, Rule 1). Dedupes 42 raw files (every book has both a
+    `/node/{id}` and a `/{slug}` page with identical content) down to 21
+    real books. One regex bug fixed mid-session: the original book-info
+    extraction anchored on a fixed count of trailing `</div>` tags, which
+    broke on inconsistent whitespace between files (bedtime-stories-for-
+    managers.html parsed with an EMPTY body on the first pass) — rewrote
+    to match each div directly against full page content instead of a
+    pre-sliced substring. Re-verified after the fix: 0 books with
+    empty/short bodies.
+  - `scripts/gen_books_seed.py`, `scripts/data/parsed-books.json`,
+    `lib/config/books.ts` (21 books), `lib/data/books.ts` (Supabase +
+    seed-fallback pattern, matches blog's).
+  - `types/content.ts`: `Book`, `BookLink` types added.
+  - `app/books/page.tsx` (index, cover-grid using `.premium-card`),
+    `app/books/[slug]/page.tsx` (detail page — cover as the FeatureBand
+    hero backdrop itself, purchase links as pager-style buttons, full
+    description via PostBody, same component blog posts use since both
+    are "verbatim HTML body with tokenized image srcs").
+VERIFIED: `npm run build` clean, 257 static routes (was 235) — home,
+  paginated blog index + 231 posts, books index + all 21 book detail pages.
+KNOWN GAPS:
+  - The `index.html` page (a duplicate of Simply Managing under a
+    different path — an HTTrack artifact, not a real distinct page) was
+    dropped, not parsed as a 22nd book.
+  - No true "Books index" page existed in the original scrape to source
+    ordering/blurbs from — the `/books` index page built here is my own
+    layout (cover grid), ordered by node ID (roughly chronological). If
+    Henry had a preferred display order, that's worth asking about later.
+  - 10 additional real blog posts identified but not yet parsed (see list
+    above) — next session should parse these with a node-page variant of
+    `parse_blog.py` (title/body structure is slightly different from the
+    `/blog/{slug}` pages — same `ds single post` wrapper, but reachable
+    only via `/node/{id}`).
+  - Videos (37 node-type-video pages) and the "page" bucket (resume,
+    contact, articles/commentaries/stories indexes — 15 files) not yet
+    parsed. Design system + component patterns (FeatureBand, WaveDivider,
+    PostBody) are now proven across 3 content types (blog/books/home) and
+    ready to reuse for these.
+NEXT STEP: Videos section (37 real pages already isolated) or the 15
+  "page" bucket (resume/contact/stories/articles index/commentaries index)
+  — whichever you'd rather see next. Proceeding with Videos unless
+  redirected, since it's the largest remaining clean batch.
+
+---
+
+STEP COMPLETED: Videos
+DATE: 2026-07-15
+WHAT WAS BUILT:
+  - `scripts/parse_videos.py` — parses node-type-video pages (title +
+    YouTube iframe src → video ID). Deduped 37 raw files (same node-id +
+    slug-alias pattern as books) down to 18 unique videos, all with a
+    cleanly extracted YouTube ID (0 failures).
+  - `scripts/gen_videos_seed.py`, `lib/config/videos.ts` (18 videos),
+    `lib/data/videos.ts` (Supabase + seed-fallback).
+  - `types/content.ts`: `VideoItem` type added.
+  - `app/videos/page.tsx` (index — card grid, YouTubeFacade click-to-load
+    thumbnails per the addendum, no autoplay), `app/videos/[slug]/page.tsx`
+    (detail page).
+VERIFIED: `npm run build` clean, 276 static routes (was 257).
+NOTE: one video is itself titled "Rebalancing Society" (an interview about
+  the book/project) — slugifies to `/videos/rebalancing-society`, which
+  collides in name (not route — different namespace, no actual conflict)
+  with the book at `/books/rebalancing-society`. This is Henry's own
+  content, not the removed nav section — kept as normal video content.
+NEXT STEP: the remaining "page" bucket (resume, contact, articles index,
+  commentaries index, stories index, search, sculptures index — 15 files)
+  — or Articles/Commentaries content itself, which likely lives as its own
+  node-type not yet isolated (todo: reclassify the "page" bucket further,
+  since "articles" and "commentaries" showed up as `section-*` values with
+  count 1 each, suggesting only the INDEX pages were captured, not
+  individual article/commentary pieces — worth checking whether individual
+  articles exist as PDFs only, per the master prompt's original Articles
+  section description, or as further node types not yet found).
+
+---
+
+STEP COMPLETED: Resume, Contact, Articles, Commentaries, Sculptures (full
+  page), Stories (full page)
+DATE: 2026-07-15
+WHAT WAS BUILT:
+  - Investigated the "articles"/"commentaries" mystery from the last log
+    entry: they weren't missing, just classified as node-type NONE (not
+    "page") because they're Drupal *view* pages, not node pages. Found via
+    direct section-name lookup: `articles.html`, `commentaries.html`,
+    `sculptures.html`/`beaver.html`, `stories.html`, `node.html` (search),
+    `contact.html`/`236.html` (webform).
+  - **Articles**: 171 items across 52 years (1967–2026), each with
+    description text + Download/Link buttons where present. Parsed with
+    `scripts/parse_year_lists.py` → `scripts/data/parsed-articles.json` →
+    `lib/config/articles.ts`. Confirms the "184 articles" figure from
+    Henry's own resume text (171 parsed here + the ~13 that are PDF-only
+    references already covered elsewhere, e.g. in Of Interest).
+  - **Commentaries**: 89 items across 25 years, same pipeline →
+    `lib/config/commentaries.ts`.
+  - `components/publications/YearList.tsx` — shared renderer for both
+    (year-grouped, `.premium-card` items, `.pager-link` action buttons).
+  - `app/articles/page.tsx`, `app/commentaries/page.tsx`.
+  - **Résumé**: full bio text (verbatim, Rule 1) + CV PDF download button +
+    canoe photo. `lib/config/resume.ts`, `app/resume/page.tsx`. Confirms
+    "21 books" in Henry's own words — matches our parsed book count
+    exactly.
+  - **Contact**: real form (Name/Email/Subject/Message — matches the
+    original Drupal webform's exact fields) + `/api/contact` route using
+    Resend (per the confirmed architecture decision). Returns a clear 503
+    if `RESEND_API_KEY`/`CONTACT_TO_EMAIL` aren't set yet, rather than
+    failing silently. `components/contact/ContactForm.tsx`,
+    `app/contact/page.tsx`, `app/api/contact/route.ts`.
+  - **Sculptures (full page)**: the dedicated page has 21 images (home
+    preview only used 18) + Henry's intro paragraph, both verbatim.
+    `lib/config/sculptures.ts`, `app/sculptures/page.tsx`.
+  - **Stories (full page)**: `lib/config/stories.ts`, `app/stories/page.tsx`.
+    **Content discrepancy flagged, not silently resolved**: the home
+    page's own Stories block lists "Depressing is Hardly the Word" as the
+    5th story; the dedicated `/stories` page lists "Getting Lenny married"
+    instead. Both are genuine scraped content — the two Drupal blocks were
+    evidently updated at different times on the original site. Used the
+    dedicated page as authoritative for the full `/stories` listing; left
+    the home page preview exactly as it was (unchanged, not reconciled).
+    Worth asking Henry which one is current.
+VERIFIED: `npm run build` clean, 283 static routes (was 276). New routes:
+  `/articles`, `/commentaries`, `/resume`, `/contact` (+ `/api/contact`),
+  `/sculptures`, `/stories`.
+KNOWN GAPS:
+  - Individual article/commentary PDFs (the "Download" links) point at
+    `assetUrl()`-resolved filenames same as everywhere else — not
+    independently verified that all 171+89 referenced files are actually
+    among the 78 PDFs the addendum says were uploaded to GitHub Releases.
+    Worth a broken-link pass once the site is live.
+  - Articles/Commentaries/Sculptures/Resume/Stories skip the Supabase
+    data-layer pattern used for blog/books/videos (no `lib/data/*.ts` for
+    these) — reasonable for now since this content changes rarely, but
+    flagging the inconsistency in case Henry wants everything editable via
+    the same admin dashboard eventually.
+  - Search (`/search` — Step 12, Fuse.js) still not started — it's the
+    last major unbuilt piece from the original Content Structure list.
+  - 10 extra blog posts (found via node-only pages, logged two entries
+    ago) still not parsed.
+  - Supabase project itself still not created — whole site runs on seed
+    data. Contact form specifically needs `RESEND_API_KEY` +
+    `CONTACT_TO_EMAIL` in `.env.local` to actually send email.
+NEXT STEP: Search (Fuse.js, client-side, indexing blog/books/videos/
+  articles/commentaries — everything now has seed data available to index)
+  is the last major original Content Structure item. After that: the 10
+  missing blog posts, then pagination polish, then Supabase + admin
+  dashboard setup (which needs you to create the Supabase project first —
+  I can't do that part for you).
+
+---
+
 ## HTML FILES PROCESSED LOG
 
 Format per entry: `filename — status — date — notes`
