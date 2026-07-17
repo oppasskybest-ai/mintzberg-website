@@ -91,7 +91,7 @@ export default function WelcomeSection() {
           />
         )}
         <p style={{ color: 'var(--ink-light)', fontSize: '0.85rem', marginTop: '0.75rem' }}>
-          (Website updated in july 2026)
+          (Website updated in April 2024)
         </p>
       </section>
     </>

@@ -680,6 +680,120 @@ NEXT STEP: Search (Fuse.js) is still the next major original content
 
 ---
 
+STEP COMPLETED: Full admin dashboard (auth, CRUD, seed button, rich text
+  editing, image upload, contact messages)
+DATE: 2026-07-16
+CONTEXT: you correctly called out that the admin dashboard was still
+  missing — I'd logged it as "architecture decided, not built" like a
+  footnote, when the original instruction was that everything working
+  end-to-end in the base code (duff-site) should work here too. Re-read
+  duff-site's actual admin implementation in full this time (previously
+  only skimmed it) and replicated its logic faithfully, not just its
+  existence.
+
+WHAT WAS BUILT — matches duff-site's exact mechanisms, restyled in navy/
+  orange instead of dark/gold:
+  - **Auth**: `lib/auth/session.ts` (jsonwebtoken, Node runtime, used by
+    API routes) + `proxy.ts` (jose, Edge runtime, gates every `/admin/*`
+    request before it reaches a page). Login sets an httpOnly cookie AND
+    returns a token for sessionStorage (client reads use Bearer auth via
+    `useAuthFetch`, page-load protection uses the cookie via proxy.ts) —
+    same dual mechanism duff-site uses, not simplified.
+  - **`proxy.ts`, not `middleware.ts`**: tried `middleware.ts` first
+    (the name I assumed was standard) — the build immediately warned
+    "middleware is deprecated, use proxy instead." Next.js 16.x actually
+    requires the name duff-site already used. Not a duff quirk, it was
+    right.
+  - `app/admin/login`, `app/admin/layout.tsx` (auth context provider),
+    `components/admin/Sidebar.tsx` — full shell.
+  - `components/admin/ResourceManager.tsx` — ONE deliberate deviation
+    from duff-site's structure, not from its behavior: duff-site writes
+    one bespoke ~300-line page per resource (articles, books, events,
+    etc. each separately). Built a single generic, field-config-driven
+    CRUD manager instead (list/create/edit/delete/toast, same
+    load-via-useAuthFetch pattern) and instantiated it three times
+    (`app/admin/blog`, `/books`, `/videos`) rather than tripling the code.
+    Same end-to-end behavior, less to maintain — flagging this as a
+    judgment call in case you'd rather have bespoke pages per resource
+    for easier future customization; easy to split apart later if so.
+  - `components/admin/RichTextEditor.tsx` — Tiptap (already a project
+    dependency), bold/italic/H2/list/quote/link/image-upload toolbar.
+    Added `@tiptap/extension-link` as a new dependency (duff-site's
+    version implicitly had it; wasn't in package.json here yet).
+  - `components/admin/ImageUpload.tsx` + `app/api/admin/upload/route.ts`
+    — new admin-uploaded images go to a Supabase Storage bucket (`media`,
+    you create it in step 3 of SUPABASE_SETUP.md), separate from the 391
+    historical assets on GitHub Releases. Both coexist fine — new uploads
+    are just plain absolute URLs, no `{{ASSET}}` token needed.
+  - **The seed button** (Settings → Run Seed) — `app/api/admin/seed/route.ts`
+    matches duff-site's exact idempotent logic: checks existing slugs per
+    table first, only inserts what's missing, reports
+    inserted/skipped/errors per table, safe to click repeatedly, never
+    touches anything already edited from the admin panel. This is now
+    available BOTH from the terminal (`scripts/seed-supabase.mjs`, useful
+    before you can even log in) and from Settings once you can.
+  - **Messages**: added as a 4th table (`contact_messages`) not in the
+    original architecture discussion — the contact form now saves every
+    submission to Supabase regardless of whether Resend is configured
+    (so nothing is lost to a missing email config), viewable/markable-
+    read/deletable from `/admin/messages`. RLS enabled with NO public
+    policy at all (only the service-role client can touch it — private by
+    default, unlike the other 3 tables which are intentionally public-
+    readable).
+  - CRUD API routes for all 3 content tables: `app/api/admin/{blog-posts,
+    books,videos}/route.ts` (GET list, POST create) +
+    `[slug]/route.ts` (PUT update, DELETE) — all auth-gated via
+    `isAuthenticated()`.
+  - `lib/supabase/server.ts` — bug caught and fixed during this build: the
+    first version threw at import time if Supabase env vars weren't set
+    yet (`supabaseUrl is required`), which crashed the ENTIRE production
+    build, not just admin routes — every public page failed to generate.
+    Fixed to use placeholder values so the build always succeeds; a real
+    Supabase connection error only surfaces if an admin route is actually
+    *called* without real credentials configured, which is the correct
+    place for that failure.
+  - `SUPABASE_SETUP.md` rewritten with the Storage bucket step, admin
+    credential env vars, and login instructions added.
+DELIBERATELY NOT PORTED (scope decisions, not oversights):
+  - duff-site's broadcast/email-on-publish system (auto-emails subscribers
+    when new content goes live) — no subscriber system exists in
+    Mintzberg's spec, this would be new scope. Flagged in
+    SUPABASE_SETUP.md's "what's not included" section.
+  - Comments, Reviews, Events, Subscribers, Broadcasts admin sections —
+    all duff-specific business features (his site has blog comments,
+    book reviews, live events) with no Mintzberg equivalent in the master
+    prompt's Content Structure list.
+VERIFIED: `npm run build` clean, 298 static/dynamic routes. Verified the
+  auth token generation/verification logic in isolated Node tests (both
+  jsonwebtoken for API routes and jose for the edge proxy) rather than
+  just assuming — both pass round-trip and correctly reject a wrong
+  secret.
+KNOWN GAPS:
+  - Not yet tested against a REAL Supabase project (you haven't run the
+    schema or created one yet) — only verified the build compiles and the
+    crypto logic works in isolation. First real end-to-end test happens
+    when you follow SUPABASE_SETUP.md.
+  - Articles/Commentaries/Résumé/Stories/Sculptures still have no admin
+    page or Supabase table (documented as a scope decision, not silently
+    dropped) — say the word if you want these editable too.
+  - No image-editing-in-place for the 391 historical GitHub Release
+    assets from the admin panel — ImageUpload only handles NEW uploads to
+    Supabase Storage. Swapping an existing historical image would need a
+    different mechanism (not built).
+
+---
+
+STEP LOGGED (deferred by your instruction, not resolved): the 4 missing
+  images (`for_irene.jpg`, `tableimage.jpg`, `unnamed_0.jpg`,
+  `512px-luther_95_thesen.png`) and the favicon — you manually searched
+  your local machine for both and couldn't find them either. Confirmed:
+  neither is recoverable from anything currently available. Logging as a
+  known, accepted gap to deal with later — not blocking anything else.
+  The favicon placeholder (`app/icon.svg`, "HM" monogram) stays in place
+  until a real one turns up.
+
+---
+
 ## HTML FILES PROCESSED LOG
 
 Format per entry: `filename — status — date — notes`

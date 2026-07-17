@@ -42,6 +42,20 @@ create table if not exists videos (
   created_at timestamptz default now()
 );
 
+-- ── CONTACT MESSAGES ──
+-- Every contact form submission is saved here regardless of whether email
+-- sending (Resend) is configured, so nothing is ever lost — viewable from
+-- the admin Messages page.
+create table if not exists contact_messages (
+  id uuid primary key default gen_random_uuid(),
+  name text not null,
+  email text not null,
+  subject text,
+  message text not null,
+  read boolean default false,
+  created_at timestamptz default now()
+);
+
 -- ── ROW LEVEL SECURITY ──
 -- Public (anon key) can READ everything — this is a public website.
 -- Nothing can be written with the anon key; writes go through the admin
@@ -56,3 +70,9 @@ alter table videos enable row level security;
 create policy "public read blog_posts" on blog_posts for select using (true);
 create policy "public read books" on books for select using (true);
 create policy "public read videos" on videos for select using (true);
+
+-- contact_messages: RLS enabled with NO policies at all — this means the
+-- anon key can neither read nor write it (private submissions). Only the
+-- service-role client (lib/supabase/server.ts, used by /api/contact and
+-- the admin Messages page) can access it, since service-role bypasses RLS.
+alter table contact_messages enable row level security;

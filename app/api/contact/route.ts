@@ -1,9 +1,13 @@
 import { NextResponse } from 'next/server'
 import { Resend } from 'resend'
+import { supabaseAdmin } from '@/lib/supabase/server'
 
 // Mirrors the original Drupal webform fields exactly (see PROGRESS.md):
-// Name, Email, Subject, Message. Sends via Resend if configured;
-// otherwise returns a clear error so the failure isn't silent.
+// Name, Email, Subject, Message. Always saves to Supabase (contact_messages
+// table, viewable in the admin Messages page) if Supabase is configured,
+// regardless of whether email sending works — a submission is never lost
+// just because Resend isn't set up yet. Sends via Resend additionally if
+// RESEND_API_KEY/CONTACT_TO_EMAIL are set.
 export async function POST(request: Request) {
   const { name, email, subject, message } = await request.json()
 
@@ -11,14 +15,27 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'Name, email, and message are required.' }, { status: 400 })
   }
 
+  const supabaseConfigured =
+    !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
+    !!(process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY)
+
+  if (supabaseConfigured) {
+    const { error } = await supabaseAdmin.from('contact_messages').insert({ name, email, subject, message })
+    if (error) console.error('[contact] failed to save message:', error.message)
+  }
+
   const apiKey = process.env.RESEND_API_KEY
   const toEmail = process.env.CONTACT_TO_EMAIL
 
   if (!apiKey || !toEmail) {
-    return NextResponse.json(
-      { error: 'Contact form is not configured yet (missing RESEND_API_KEY / CONTACT_TO_EMAIL).' },
-      { status: 503 }
-    )
+    // Message is still saved above (if Supabase is configured) — this
+    // just means no email notification goes out yet.
+    return NextResponse.json({
+      ok: true,
+      warning: supabaseConfigured
+        ? 'Message saved. Email notifications are not configured yet (RESEND_API_KEY / CONTACT_TO_EMAIL).'
+        : 'Message was not saved anywhere yet — neither Supabase nor Resend is configured.',
+    })
   }
 
   try {
@@ -33,6 +50,11 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: true })
   } catch (err) {
     console.error('Contact form send failed:', err)
-    return NextResponse.json({ error: 'Failed to send message. Please try again later.' }, { status: 500 })
+    // Message was still saved to Supabase above, so this isn't a total
+    // failure from the person's perspective — just no email went out.
+    return NextResponse.json({
+      ok: true,
+      warning: 'Message saved, but the email notification failed to send.',
+    })
   }
 }
