@@ -680,6 +680,117 @@ NEXT STEP: Search (Fuse.js) is still the next major original content
 
 ---
 
+STEP COMPLETED: Two bug fixes + Search + full admin/Supabase wiring for
+  Articles/Commentaries/Résumé/Stories/Sculptures + 10 extra blog posts
+DATE: 2026-07-17
+
+**BUG FIX — admin/public nav collision.** You reported the public Navbar
+  showing up inside `/admin` and breaking the admin Sidebar. Cause: the
+  root `app/layout.tsx` rendered `<Navbar />` for every route, including
+  `/admin/*`, which has its own Sidebar shell — the two collided. Fixed
+  by moving every public route into an `app/(site)/` route group with its
+  own layout carrying the Navbar; root layout is now bare (just html/body).
+  `/admin/*` is a sibling route tree and never sees the public Navbar.
+
+**BUG FIX — static "Website updated in April 2024" text.** Replaced with
+  `components/home/LiveUpdatedNote.tsx`, a small client component that
+  renders the actual current month/year via `new Date()` — always
+  accurate regardless of when/where the page is viewed, never goes stale
+  again.
+
+**10 EXTRA BLOG POSTS PARSED.** The node-only posts identified two
+  sessions ago are now parsed and merged in:
+  `getting-past-the-adjectival-capitalism-fix`,
+  `vw-the-syndrome-behind-the-scandal`, `pppps-for-climate-change`,
+  `not-noble-the-fake-fact-of-economics`, `consolidation-for-reformation`,
+  `where-has-all-the-judgement-gone`,
+  `musk-is-doing-a-number-on-efficiency`,
+  `the-center-s-not-holding-it-s-folding-how-about-rounding`,
+  `is-serendipity-really-serendipitous-come-find-out`, and one deliberate
+  edge case:
+  `about-this-business-of-government-mr-president-2025-repost` — verified
+  by direct body-text comparison (not just title matching, which had
+  already produced false positives once before) that `664.html` is a
+  genuine 2025 repost with real textual edits and a different date (1 May
+  2025 vs. the original 5 April 2017 post), not a duplicate — kept as its
+  own distinct post with a distinct slug. Blog total: 231 → 241.
+  `scripts/parse_extra_blog_posts.py` added (reuses the same cleaning
+  pipeline as the main parser); merged into `parsed-blog-posts.json` and
+  regenerated `lib/config/blog-posts.ts` + the Supabase seed export.
+
+**SEARCH.** `/search`, added to nav. Server builds a lightweight index
+  (`lib/search/build-index.ts` — title/excerpt/url only, NOT full
+  body_html, so the payload shipped to the browser stays small even
+  across 241 posts + 171 articles + 89 commentaries + everything else)
+  via `/api/search-index` (revalidates hourly). Client runs Fuse.js
+  against that index as you type — indexes Blog, Books, Videos, Articles,
+  Commentaries, Stories.
+
+**ARTICLES/COMMENTARIES/RÉSUMÉ/STORIES/SCULPTURES — now fully editable
+  in `/admin`, same as blog/books/videos:**
+  - Added 5 Supabase tables: `articles`, `commentaries` (both flat,
+    individually-slugged rows — year-grouping now happens in code via
+    `groupByYear()` in `lib/data/publications.ts`, purely for display, not
+    storage — this is what makes them editable as a normal list instead
+    of a nested year-tree with no natural single "row"), `stories`
+    (title/description/pdf_file/body_html — body_html is empty for the 5
+    original PDF-only stories but usable for any NEW story added with
+    full inline text, per your "in case he wants to add text to them or
+    post new ones that require text" instruction), `sculpture_images`
+    (id-based, not slug — image_url/caption/sort_order, unique constraint
+    on image_url), `site_pages` (singleton text pages — Résumé today,
+    reusable for any future one-off text page).
+  - Flattened the year-grouped articles/commentaries JSON into individual
+    rows with generated slugs (`scripts/gen_flat_publications_seed.py`) —
+    caught and fixed 2 slug collisions from truncated-text matching
+    (duplicate slugs would have silently dropped one row).
+  - New data layers: `lib/data/publications.ts` (articles + commentaries
+    + groupByYear), `lib/data/stories.ts`, `lib/data/sculptures.ts`,
+    `lib/data/site-pages.ts` — all Supabase-with-seed-fallback, same
+    pattern as blog/books/videos.
+  - Public pages rewired to read from these data layers instead of
+    directly importing `lib/config/*.ts`: `/articles`, `/commentaries`,
+    `/stories`, `/sculptures`, `/resume`. Home page previews
+    (`StoriesPreview`, `SculpturesPreview`) also switched to the live data
+    layer — admin edits to stories/sculptures now show up on the home
+    page too, not just their dedicated pages.
+  - `components/admin/ResourceManager.tsx` extended to support a
+    configurable `idField` (sculpture_images uses `id`, not `slug`) and
+    an optional `renderTitle` function (articles/commentaries have no
+    natural title field — shows a truncated excerpt of the body instead).
+  - New admin pages: `/admin/articles`, `/admin/commentaries`,
+    `/admin/stories`, `/admin/sculptures`, `/admin/resume` — plus their
+    CRUD API routes. Sidebar nav updated with all 5.
+  - Seed route (`/api/admin/seed`) and terminal script
+    (`scripts/seed-supabase.mjs`) both extended to cover all 5 new tables,
+    same idempotent skip-existing logic as before. Sculpture images use
+    `image_url` as the natural dedup key (not slug, since that table
+    doesn't have one) — added a unique constraint on that column to
+    support upsert-based seeding.
+VERIFIED: `npm run build` clean, 320 routes (was 298). Confirmed the
+  nav-collision fix by checking that no admin file imports Navbar and the
+  (site) route group is the only place it's rendered. Caught and fixed a
+  handful of TypeScript strict-mode errors (`unknown` type from the now-
+  generic `ResourceRow` interface) during the build, not after.
+KNOWN GAPS:
+  - Not yet tested against a real Supabase project — same caveat as
+    before, first real test happens when you run through
+    SUPABASE_SETUP.md.
+  - Search excerpts for Articles/Commentaries show a truncated version of
+    the body text as both the "title" and the "excerpt" (since neither
+    has a natural title field) — a little redundant-looking in results,
+    could be refined later.
+  - `sort_order` on sculpture images is a plain number field in the admin
+    form (type "text" input) — works, but drag-to-reorder would be a
+    nicer future UX than manually typing numbers.
+NEXT STEP: your call. Remaining from the original Content Structure list:
+  a full site-wide broken-link sweep (mentioned last round, still not
+  done), and eventually the Rebalancing-Society-adjacent Of Interest links
+  (`pp.html` = "Can pollution be a missing piece..." — never parsed,
+  4-image gap — accepted, deferred per your instruction).
+
+---
+
 STEP COMPLETED: Full admin dashboard (auth, CRUD, seed button, rich text
   editing, image upload, contact messages)
 DATE: 2026-07-16

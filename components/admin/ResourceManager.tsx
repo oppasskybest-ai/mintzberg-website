@@ -13,7 +13,6 @@ export type FieldConfig =
   | { key: string; label: string; type: 'linklist' } // array of { label, href }
 
 export interface ResourceRow {
-  slug: string
   [key: string]: unknown
 }
 
@@ -36,17 +35,23 @@ const labelStyle: React.CSSProperties = {
 export default function ResourceManager({
   apiPath,
   titleField = 'title',
+  idField = 'slug',
   emptyRow,
   fields,
   resourceLabel,
   listSubtitle,
+  autoSlug = true,
+  renderTitle,
 }: {
   apiPath: string
   titleField?: string
+  idField?: string
   emptyRow: Record<string, unknown>
   fields: FieldConfig[]
   resourceLabel: string
   listSubtitle: (row: ResourceRow) => string
+  autoSlug?: boolean
+  renderTitle?: (row: ResourceRow) => string
 }) {
   const { token } = useAdmin()
   const authFetch = useAuthFetch()
@@ -85,10 +90,12 @@ export default function ResourceManager({
   const save = async () => {
     if (!editing) return
     setSaving(true)
-    const slug = String(editing.slug || '').trim() ||
-      String(editing[titleField] || '').toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-').trim()
-    const payload = { ...editing, slug }
-    const url = isNew ? `/api/admin/${apiPath}` : `/api/admin/${apiPath}/${encodeURIComponent(slug)}`
+    let idValue = String(editing[idField] || '').trim()
+    if (!idValue && autoSlug) {
+      idValue = String(editing[titleField] || '').toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-').trim()
+    }
+    const payload = autoSlug ? { ...editing, [idField]: idValue } : { ...editing }
+    const url = isNew ? `/api/admin/${apiPath}` : `/api/admin/${apiPath}/${encodeURIComponent(idValue)}`
     const method = isNew ? 'POST' : 'PUT'
     try {
       const res = await authFetch(url, { method, body: JSON.stringify(payload) })
@@ -106,10 +113,10 @@ export default function ResourceManager({
     setSaving(false)
   }
 
-  const del = async (slug: string, label: string) => {
+  const del = async (id: string, label: string) => {
     if (!confirm(`Delete "${label}"? This cannot be undone.`)) return
     try {
-      await authFetch(`/api/admin/${apiPath}/${encodeURIComponent(slug)}`, { method: 'DELETE' })
+      await authFetch(`/api/admin/${apiPath}/${encodeURIComponent(id)}`, { method: 'DELETE' })
       showToast(`${resourceLabel} deleted.`)
       load()
     } catch {
@@ -168,18 +175,18 @@ export default function ResourceManager({
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
           {rows.map((row) => (
             <div
-              key={row.slug}
+              key={String(row[idField])}
               style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1rem 1.25rem', background: '#141b26', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '3px' }}
             >
               <div>
-                <p style={{ color: 'white', fontSize: '0.9rem', marginBottom: '0.2rem' }}>{String(row[titleField] ?? row.slug)}</p>
+                <p style={{ color: 'white', fontSize: '0.9rem', marginBottom: '0.2rem' }}>{renderTitle ? renderTitle(row) : String(row[titleField] ?? row[idField])}</p>
                 <p style={{ color: 'rgba(255,255,255,0.35)', fontSize: '0.75rem' }}>{listSubtitle(row)}</p>
               </div>
               <div style={{ display: 'flex', gap: '0.5rem' }}>
                 <button onClick={() => openEdit(row)} style={{ padding: '0.45rem 0.9rem', background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.7)', fontSize: '0.72rem', borderRadius: '2px', cursor: 'pointer' }}>
                   Edit
                 </button>
-                <button onClick={() => del(row.slug, String(row[titleField] ?? row.slug))} style={{ padding: '0.45rem 0.9rem', background: 'transparent', border: '1px solid rgba(255,80,80,0.25)', color: 'rgba(255,100,100,0.7)', fontSize: '0.72rem', borderRadius: '2px', cursor: 'pointer' }}>
+                <button onClick={() => del(String(row[idField]), renderTitle ? renderTitle(row) : String(row[titleField] ?? row[idField]))} style={{ padding: '0.45rem 0.9rem', background: 'transparent', border: '1px solid rgba(255,80,80,0.25)', color: 'rgba(255,100,100,0.7)', fontSize: '0.72rem', borderRadius: '2px', cursor: 'pointer' }}>
                   Delete
                 </button>
               </div>
@@ -191,10 +198,12 @@ export default function ResourceManager({
       <Modal open={!!editing} onClose={() => setEditing(null)} title={isNew ? `New ${resourceLabel}` : `Edit ${resourceLabel}`} maxWidth="720px">
         {editing && (
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.1rem' }}>
-            <div>
-              <label style={labelStyle}>Slug (URL path — leave blank to auto-generate from title)</label>
-              <input style={fieldStyle} value={String(editing.slug ?? '')} onChange={(e) => setField('slug', e.target.value)} />
-            </div>
+            {autoSlug && (
+              <div>
+                <label style={labelStyle}>Slug (URL path — leave blank to auto-generate from title)</label>
+                <input style={fieldStyle} value={String(editing[idField] ?? '')} onChange={(e) => setField(idField, e.target.value)} />
+              </div>
+            )}
 
             {fields.map((f) => {
               if (f.type === 'text') {

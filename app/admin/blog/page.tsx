@@ -8,7 +8,7 @@ export default function AdminBlogPosts() {
       resourceLabel="Post"
       titleField="title"
       emptyRow={{ slug: '', title: '', date: '', category_label: '', category_id: '', body_html: '' }}
-      listSubtitle={(row) => [row.date, row.category_label].filter(Boolean).join(' · ') || row.slug}
+      listSubtitle={(row) => [String(row.date || ''), String(row.category_label || '')].filter(Boolean).join(' · ') || String(row.slug)}
       fields={[
         { key: 'title', label: 'Title', type: 'text' },
         { key: 'date', label: 'Date (e.g. "16 July 2026")', type: 'text' },

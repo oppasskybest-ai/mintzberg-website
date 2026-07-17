@@ -31,5 +31,6 @@ export const NAV_ITEMS: NavItem[] = [
   { label: 'Stories', href: '/stories' },
   { label: 'Beaver Sculptures', href: '/sculptures' },
   { label: 'Résumé + CV', href: '/resume' },
+  { label: 'Search', href: '/search' },
   { label: 'Contact', href: '/contact' },
 ]

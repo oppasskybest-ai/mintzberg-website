@@ -50,14 +50,14 @@ if (!SUPABASE_URL || !SERVICE_ROLE_KEY) {
 // script, never run this key in a browser context.
 const supabase = createClient(SUPABASE_URL, SERVICE_ROLE_KEY)
 
-async function seedTable(table, jsonFile, batchSize = 50) {
+async function seedTable(table, jsonFile, batchSize = 50, conflictColumn = 'slug') {
   const filePath = path.join(ROOT, 'supabase', 'seed-data', jsonFile)
   const rows = JSON.parse(readFileSync(filePath, 'utf-8'))
   console.log(`\nSeeding ${table} (${rows.length} rows)...`)
 
   for (let i = 0; i < rows.length; i += batchSize) {
     const batch = rows.slice(i, i + batchSize)
-    const { error } = await supabase.from(table).upsert(batch, { onConflict: 'slug' })
+    const { error } = await supabase.from(table).upsert(batch, { onConflict: conflictColumn })
     if (error) {
       console.error(`  Batch ${i / batchSize + 1} failed:`, error.message)
       process.exitCode = 1
@@ -72,6 +72,11 @@ async function main() {
   await seedTable('blog_posts', 'blog_posts.json')
   await seedTable('books', 'books.json')
   await seedTable('videos', 'videos.json')
+  await seedTable('articles', 'articles.json')
+  await seedTable('commentaries', 'commentaries.json')
+  await seedTable('stories', 'stories.json')
+  await seedTable('sculpture_images', 'sculpture_images.json', 50, 'image_url')
+  await seedTable('site_pages', 'site_pages.json')
   console.log('\nAll done. The site will now read from Supabase instead of the local seed files.')
 }
 

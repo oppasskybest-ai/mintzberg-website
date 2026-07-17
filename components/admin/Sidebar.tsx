@@ -7,6 +7,11 @@ const NAV = [
   { label: 'Blog Posts', href: '/admin/blog', icon: '✎' },
   { label: 'Books', href: '/admin/books', icon: '▣' },
   { label: 'Videos', href: '/admin/videos', icon: '▶' },
+  { label: 'Articles', href: '/admin/articles', icon: '▤' },
+  { label: 'Commentaries', href: '/admin/commentaries', icon: '▥' },
+  { label: 'Stories', href: '/admin/stories', icon: '❦' },
+  { label: 'Sculptures', href: '/admin/sculptures', icon: '◆' },
+  { label: 'Résumé', href: '/admin/resume', icon: '☰' },
   { label: 'Messages', href: '/admin/messages', icon: '✉' },
   { label: 'Settings', href: '/admin/settings', icon: '⚙' },
 ]

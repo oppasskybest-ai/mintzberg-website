@@ -70,3 +70,37 @@ export interface PublicationYear {
   year: string
   items: PublicationItem[]
 }
+
+// Flat, individually-editable row shape — matches how Articles/
+// Commentaries are actually stored (Supabase table + seed), grouped into
+// PublicationYear[] only at display time via groupByYear() in
+// lib/data/publications.ts. This is what makes them editable in the admin
+// panel like everything else (list/edit/delete by slug), instead of the
+// nested year-grouped shape which has no natural single "row" to edit.
+export interface PublicationItemRow {
+  slug: string
+  year: string | null
+  bodyHtml: string
+  links: PublicationLink[]
+}
+
+export interface StoryItem {
+  slug: string
+  title: string | null
+  description: string | null
+  pdfFile: string | null
+  bodyHtml: string
+}
+
+export interface SculptureImageItem {
+  id?: string
+  imageFile: string // bare filename (resolved via assetUrl) or a full URL
+  caption: string
+  sortOrder: number
+}
+
+export interface SitePage {
+  slug: string
+  title: string | null
+  bodyHtml: string
+}

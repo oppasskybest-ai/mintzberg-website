@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import Navbar from '@/components/layout/Navbar'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -8,8 +7,14 @@ export const metadata: Metadata = {
     "Henry Mintzberg's personal website — books, blog, articles, commentaries, and the Rebalancing Society project.",
 }
 
-// Step 2 adds navigation. Footer/other chrome is intentionally still absent
-// per mintzberg-master-prompt.md Build Order — added when a step calls for it.
+// Bare root layout — just html/body + global metadata. The public
+// Navbar lives in app/(site)/layout.tsx now, NOT here.
+//
+// BUG FIXED 2026-07-17: Navbar used to render here, meaning it applied to
+// EVERY route including /admin/*, which has its own Sidebar shell — the
+// two navs collided and broke the admin UI. Moved every public route into
+// a (site) route group with its own layout so /admin stays completely
+// separate.
 export default function RootLayout({
   children,
 }: {
@@ -17,10 +22,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
-        <Navbar />
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   )
 }

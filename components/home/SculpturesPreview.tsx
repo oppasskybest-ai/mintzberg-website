@@ -1,23 +1,19 @@
 import Image from 'next/image'
+import { getAllSculptureImages } from '@/lib/data/sculptures'
 import { assetUrl } from '@/lib/assets'
 import FeatureBand from '@/components/layout/FeatureBand'
 import WaveDivider from '@/components/layout/WaveDivider'
 
-// Original wraps these in a horizontal-scroll cycle-slideshow with
-// prev/next arrows. Rendered as a full-bleed feature band (one large
-// sculpture photo, light overlay so the wood grain still reads) plus a
-// static grid below — master prompt forbids sliders/carousels. All 18
-// preview images preserved.
-const SCULPTURE_IMAGES = [
-  'beaverc11.jpg', 'd11_new.jpg', 'b11_new_0.jpg', 'b21_new_0.jpg',
-  'beavera21.jpg', 'beavere11.jpg', 'beavere21.jpg', 'beaverg11.jpg',
-  'beaver_2014_04.jpg', 'r11_new.jpg', 'beaverj11.jpg', 'beaverj21.jpg',
-  'beaverj31.jpg', 'beaverk11.jpg', 'beaverl11.jpg', 'q11_new.jpg',
-  'beaverm11.jpg', 'beavero1o21.jpg',
-]
+function resolveImageSrc(imageFile: string): string | null {
+  return /^https?:\/\//.test(imageFile) ? imageFile : assetUrl(imageFile)
+}
 
-export default function SculpturesPreview() {
-  const heroImg = assetUrl('beaverj31.jpg')
+// Now pulls from the same Supabase-backed data as the full /sculptures
+// page (admin-added images show up here too).
+export default async function SculpturesPreview() {
+  const images = await getAllSculptureImages()
+  const heroImg = resolveImageSrc(images[12]?.imageFile || images[0]?.imageFile || '')
+
   return (
     <>
       <WaveDivider fill="var(--navy)" />
@@ -36,11 +32,11 @@ export default function SculpturesPreview() {
             gap: '0.6rem',
           }}
         >
-          {SCULPTURE_IMAGES.map((file) => {
-            const src = assetUrl(file)
+          {images.map((img, i) => {
+            const src = resolveImageSrc(img.imageFile)
             if (!src) return null
             return (
-              <a href="/sculptures" key={file} className="premium-card" style={{ padding: 0, overflow: 'hidden' }}>
+              <a href="/sculptures" key={img.id || i} className="premium-card" style={{ padding: 0, overflow: 'hidden' }}>
                 <Image
                   src={src}
                   alt=""

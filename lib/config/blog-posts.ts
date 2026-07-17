@@ -6823,4 +6823,315 @@ how are they to create even that? Big pictures have to be painted with the brush
 	© Henry Mintzberg and Hanieh Mohammadi 2020. See <a href="https://coachingourselves.com/">CoachingOurselves.com</a>, <a href="https://impm.org/">impm.org</a>, and <a href="https://mcgill.ca/imhl">mcgill.ca/imhl</a> for some creative ways to zoom past these problems.</p>
 <p>Follow this TWOG on Twitter <a href="https://twitter.com/Mintzberg141">@mintzberg141</a>, or receive the blogs directly in your inbox by subscribing <a href="subscribe.html">here</a>. To help disseminate these blogs, we also have a <a href="https://www.facebook.com/Mintzberg141/?ref=bookmarks">Facebook page</a>, a <a href="https://www.linkedin.com/in/henrymintzberg/">LinkedIn page</a> and a <a href="https://www.youtube.com/channel/UCHw8dpiDBb5DfZbqJ87pJ1Q/videos?view_as=subscriber">YouTube Channel</a>.</p>`,
   },
+  {
+    slug: `getting-past-the-adjectival-capitalism-fix`,
+    title: `Getting Past the Adjectival Capitalism Fix`,
+    date: `17 October 2014`,
+    categoryLabel: `Rebalancing Society`,
+    categoryId: `4`,
+    imageRefs: [],
+    bodyHtml: `<p>Proposals for adjectival capitalism are springing up like mushrooms: we have Sustainable Capitalism, Caring Capitalism, Breakthrough Capitalism, Democratic Capitalism, Conscious Capitalism, Regenerative Capitalism, Inclusive Capitalism—and I have probably missed a few. Democratic Capitalism probably tells it best: capitalism is the noun, democracy is just the adjective.</p>
+<p>The assumption seems to be that If only we can get capitalism right, all will be well with the world. No doubt capitalism needs some fixing: the short-term pressures of stock markets are encouraging mercenary behaviors that are doing great harm to our democracies, our planet, and ourselves. (Predatory capitalism is, of course, adjectival too.) A broken world needs to get past the adjectival capitalism fix.</p>
+<p>How did the word capitalism, coined to describe the creation and funding of private enterprises, themselves intended to supply us with commercial goods and services, come to be seen as the be-all and end-all of human existence? Is capitalism any way to run public services or judge their effectiveness, any way to understand the needs of education and health care, any way to organize our social lives and express our values as human beings?</p>
+<p>Fixing this world will require <em>less</em> inclusive capitalism. To any corporate chief executive who truly cares about social responsibility, I say: start by getting your company out of our government. Claiming that government must not meddle in the affairs of business while business meddles in the affairs of government is a hypocrisy that distorts our societies and degrades our democracies. As citizens, you and I have every right to make our wishes known. But no citizen, let alone any corporation, has a moral right to use private wealth to influence public policies, at least not in any country that wishes to call itself democratic. Democracy is about one person-one vote, not one $-one vote.</p>
+<p>What we need is better balance across the three sectors of society—public, private, and plural (civil society). To achieve this, capitalism will have to be put in its place. That is within the private sector, where its activities are beneficial, and away from the lobbying and bribing (political donations) that have been co-opting the public sector. We know that capitalism needs reform; we need to realize that this will not happen until power is better balance across the sectors.</p>
+<p>So please, enough of the adjectives. Let’s get on instead with fixing our societies, and our thinking. As Pope Francis put it: “Money must serve, not rule.”</p>
+<p>
+	To be continued… Next weekend’s TWOG: an unsent letter from the CEO to the board about executive bonuses. More on Shareholder Value and short-term thinking in later TWOGs. Meanwhile, the above has been adapted from <em>Rebalancing Society—radical renewal beyond left, right, and center</em>, an electronic pamphlet posted on <a href="../index.html">www.mintzberg.org</a> and coming out revised in book form in January (<a href="http://www.bkconnection.com/ProdDetails.asp?ID=9781626563179">Berrett-Koehler</a>, or from <a href="http://www.amazon.com/Rebalancing-Society-Radical-Renewal-Beyond/dp/1626563179">Amazon.com</a> or <a href="http://www.amazon.ca/Rebalancing-Society-Radical-Renewal-Beyond-ebook/dp/B00NJ2HIO2">Amazon.ca</a>, etc.). Order it while they last (hopefully a decade or two).</p>
+<p>© 2014 Henry Mintzberg</p>`,
+  },
+  {
+    slug: `vw-the-syndrome-behind-the-scandal`,
+    title: `VW: The syndrome behind the scandal`,
+    date: `23 September 2015`,
+    categoryLabel: `Rebalancing Society`,
+    categoryId: `4`,
+    imageRefs: [],
+    bodyHtml: `<p><em>"What were they thinking?" This is the question an editor of the Globe and Mail newspaper in Canada asked me to address, in a commentary about the Volkswagen scandal. They published it on Wednesday, in a <a href="http://www.theglobeandmail.com/report-on-business/rob-commentary/volkswagen-corruption-crisis-isnt-a-scandal-its-a-syndrome/article26479332/">slightly different form</a>.</em></p>
+<p>"What was Volkswagen thinking?" This question makes a big assumption: that the Volkswagen people <em>were</em> thinking, about anything beyond their greed. About decency, about our environment, about their progeny.</p>
+<p>OK, so you will not be buying a Volkswagen. A Chevrolet instead? Watch out for the ignition. Or how about a Toyota? Just duck as the airbag comes your way. Do you, by any chance, see a pattern? Have <em>we</em> been thinking?</p>
+<p>In Europe, the U.S., Japan, and most everywhere else, something is going on. There is a level of sheer corruption that transcends the automobile industry. How about banking in the U.S. and Europe? How about politics, most everywhere? Now Brazil is receiving a lot of attention, while the utter corruption of U.S. politics—private money in public elections, a level of lobbying out of control—carries merrily along.</p>
+<p>A good deal of the corruption is criminal, and so can be prosecuted. So why don’t we prosecute corporate criminals and not just corporate crimes? And why don’t we set the fines to indicate that corporate crime doesn’t pay? If you wish to steal, don’t grab somebody’s iPhone. The government will throw the book at you. Devise some financial manoeuver—a little more clever than a Ponzi scheme—to defraud many people of much money. If you wish to get away with manslaughter, don’t do it as the driver of a car; do it as the designer of the car. Executives and engineers in General Motors knew that people were dying as a result of their inaction on those ignition switches, yet they have walked off scot-free.</p>
+<p>Far more insidious, however, is the legal corruption, because it is so prevalent. Goldman Sachs allegedly manipulated the market for recycled aluminum so that it could <a href="http://www.nytimes.com/2013/07/21/business/a-shuffle-of-aluminum-but-to-banks-pure-gold.html?pagewanted=all">siphon off $5 billion</a> by moving ingot from one warehouse to another. What were they thinking? That’s easy: five billion dollars.</p>
+<p>The company claimed to have broken no law. That is precisely the problem. Our societies are being destroyed by this legal corruption. University professors are in cahoots with pharmaceutical companies that think nothing of charging hundreds of thousands of dollars for life and death products that cost them hundreds. And economists who cannot see past markets support such nonsense. Are they thinking at all? Some markets! This is actually the exploitation of monopolies called patents whose prices are not being regulated. And these are not just any old monopolies: people have to die for want of these products, for the sake of obscene profiteering. What kind of a society tolerates this?</p>
+<p>Are you seeing the pattern? It’s not a scandal; it’s a syndrome. Shocking as it may be, the Volkswagen affair is just a blatant case of an accelerating trend. Expect it to get worse, because right now we are living in a world where predatory capitalism is triumphing.</p>
+<p>In 1989, pundits declared that capitalism had triumphed. Wrong. Balance triumphed. The developed countries of the West were balanced back then. Think of the United States post-war—higher levels of taxation, fairer distribution of wealth, generous welfare programs—and with all that, remarkable development, political and social as well as economic. The communist states of Eastern Europe collapsed because they were utterly out of balance, with so much power concentrated in their public sectors.</p>
+<p>It turns out that the Berlin Wall fell on us: predatory capitalism has been triumphing since 1989, throwing much of the world out of balance, on the side of private sectors. They are dominating government and much of society, with the consequences described above.</p>
+<p>What were they thinking at Volkswagen? Very likely that governments are impotent, or coopted, or lack the staff to regulate and prosecute. OK, so this particular company was particularly dumb. But how many others are close behind, just a bit smarter, to keep out of the spotlight?</p>
+<p>Remember “<a href="https://selectra.co.uk/sites/default/files/pdf/Fukuyama-End-of-history-article.pdf">The End of History</a>”,  the widely accepted claim in 1989 that human society had reached perfection, thanks to our relentless greed? Well, watch out: unless we get our act together, here it comes.</p>
+<p>© Henry Mintzberg 2015. See <a href="http://www.amazon.com/Rebalancing-Society-Radical-Renewal-Beyond/dp/1626563179">Rebalancing Society</a> for more on this. See also critique of the Fukuyama claim in "<a href="http://www.huffingtonpost.com/henry-mintzberg/the-end-of-thinking_b_5575017.html">The end of thinking?</a>"</p>
+<p>UPDATED: Sept. 24, 2015 2:25pm</p>`,
+  },
+  {
+    slug: `pppps-for-climate-change`,
+    title: `PPPPs for Climate Change`,
+    date: `8 December 2018`,
+    categoryLabel: `Getting it together`,
+    categoryId: `21`,
+    imageRefs: ["climate_change_-1-4.jpg", "screen_shot_2018-12-08_at_7.00.06_pm.png", "screen_shot_2018-12-08_at_7.00.26_pm.png"],
+    bodyHtml: `<p><em>Co-authored with Dror Etzion and Saku Mantere; adapted from <a href="https://ssir.org/articles/entry/worldly_strategy_for_the_global_climate">“Wordly Strategy for the Global Climate” </a>in the Stanford Social Innovation Review (Fall 2018).</em></p>
+<p><em><img alt="" src="{{ASSET}}climate_change_-1-4.jpg{{/ASSET}}" /></em></p>
+<p>Much has been written about PPPs: public private partnerships. But for vital issues such as climate change, a third partner has been missing: the plural sector.</p>
+<p>
+	Otherwise known as “civil society”, and other labels, this is the sector of NGOs, foundations, cooperatives, many of the world’s renowned universities, and more, including social initiatives and social movements—much of all this community-based. In other words, included here are all the associations that are neither public nor private, that is, owned not by the state or by private investors, but by members (as in cooperatives), or else, like trusts, by no-one.</p>
+<p>
+	This sector is huge–think of all such activities you have associated with in the past week. Yet it has been obscured by the centuries-old divide between left and right, government controls and market forces. Now we are discovering, with a vengeance, that no healthy society, like no stable stool, can balance itself on two legs. A third is required–the plural sector—alongside those called private and public.</p>
+<p>
+	<strong>Three Sectors: Three Approaches </strong><br />
+	To understand more about the potential role of each of the sectors for climate change, we identified twelve initiatives, four in each, all somewhat typical although some more prominent than others.</p>
+<p>
+	<strong>In the Public Sector:</strong> COP21 and subsequent efforts sponsored by the United Nations. Carbon taxes and cap-and-trade initiatives. Preservation of its forests by the government of Bhutan. And fuel economy standards for automobiles established in many countries.</p>
+<p>
+	<strong>In the Plural Sector:</strong>  The Green Building Council that certifies sustainability in U.S. structures. The Beyond Coal Campaign of the Sierra Club. The Girl Scouts training project to educate members to bring energy-savings attitudes into their homes. And the wind meetings held In Danish communities to promote the country’s conversion to this form of energy.</p>
+<p>
+	<strong>In the Private Sector:</strong>  The Tesla enterprise to produce and promote electric automobiles. The electronics company Phillips’ program that sells lighting as a service to reduce the use of energy. The Pulled Oats initiative in Finland to reduce the use of meat products. And Communauto, a car-sharing company in Montreal.</p>
+<p>
+	As we considered these three sets of initiates, we found that each of the sectors tends to favor a different approach to address the problem of climate change.</p>
+<p>
+	<strong>Orchestrated Planning in the Public Sector</strong>   In the public sector, we found an inclination to favor orchestrated planning: climate change initiatives in government tend to be centrally directed, analytically driven, and strategically deliberate. This is usually enacted in top-down fashion: to pledge, plan, and police, from the political leadership to the civil service, and then out to the broader population. Orchestrated planning can use central controls, such as regulations and decrees, or rely on incentives to encourage desired behaviors.</p>
+<p>
+	<strong>Grounded Engagement in the Plural Sector</strong>   Plural sector associations tend to favor grounded engagement. Here the initiatives develop from the tangible experiences of learning in action—bottom-up. Think of this as thousands of flowers blooming, many planted in the soils of local communities, usually in response to local concerns.</p>
+<p>
+	<strong>Autonomous Venturing in the Private Sector </strong> Businesses, as independent organizations in the marketplace, are most inclined to favor autonomous venturing, much of this championed by creative entrepreneurs who develop new products, services, infrastructures, and technologies that provide the means to reduce global warming.</p>
+<p>
+	<strong>Collision or Consolidation?</strong></p>
+<p>
+	Striking about all these initiatives is that they add up to a collection of separate strategic positions more than a consolidated strategic perspective. Each may contribute in its own right, but the synergy that could be had by working together is lost. So the planet continues to warm.</p>
+<p>
+	Worse is when the sectors themselves work at cross-purposes. As shown in Figure 1, a downward spiral of collision can occur when businesses are inclined to lobby governments while governments make empty promises as they police the citizens, groups of whom in turn protest the activities of businesses.</p>
+<p>
+	<strong>Figure 1: Collision between the sectors</strong></p>
+<p><strong><img alt="" src="{{ASSET}}screen_shot_2018-12-08_at_7.00.06_pm.png{{/ASSET}}" /></strong></p>
+<p>Contrast this with the ascending spiral of consolidation shown in Figure 2, with the three sectors working together. Activism by community groups in the plural sector pushes governments in the public sector to enact legislation that regulates and incentivizes businesses in the private sector, which in turn provide the citizens with the means to combat climate change. Communities engage, governments legitimize, businesses provide.</p>
+<p>
+	<strong>Figure 2: Consolidating across the sectors</strong></p>
+<p><strong><img alt="" src="{{ASSET}}screen_shot_2018-12-08_at_7.00.26_pm.png{{/ASSET}}" /></strong></p>
+<p>Does this consolidation scenario sound utopian? Not when seen in the cooperative activities across the three sectors in Denmark, which has become an exemplary model of shifting to alternate forms of energy. Other examples of such consolidation can be found in B Labs for B corporations, also in the Brazilian City of Curitiba (all of this written up in our <a href="https://ssir.org/articles/entry/worldly_strategy_for_the_global_climate">full paper</a>).</p>
+<p>
+	When organizations and sectors compete with each other for local or global power, they are disinclined to see, let alone solve, their common problems. We have certainly experienced enough of this. Climate change has no invisible hand to reconcile differing perspectives; instead it faces the visible claw of a creeping warming that threatens our planet. A collaborative mind-set can prepare actors to appreciate their differences, and thereby work toward consolidated ascension, from group to globe. To deal with climate change, and much more, the time has come for PPPPs.</p>
+<p>
+	© Henry Mintzberg, Dror Etzion, and Saku Mantere 2018.</p>
+<p>Follow this TWOG on Twitter <a href="https://twitter.com/Mintzberg141">@mintzberg141</a>, or receive the blogs directly in your inbox by subscribing <a href="../blog/subscribe.html">here</a>. To help disseminate these blogs, we also have a <a href="https://www.facebook.com/Mintzberg141/?ref=bookmarks">Facebook page</a> and a <a href="https://www.linkedin.com/in/henrymintzberg/">LinkedIn page</a>.</p>`,
+  },
+  {
+    slug: `not-noble-the-fake-fact-of-economics`,
+    title: `Not noble: the fake fact of economics`,
+    date: `22 October 2019`,
+    categoryLabel: `Simply Nonsense`,
+    categoryId: `14`,
+    imageRefs: ["nobel-blog_1.jpg", "nobel.001_copy.html"],
+    bodyHtml: `<p><img alt="Not noble" src="{{ASSET}}nobel-blog_1.jpg{{/ASSET}}" /><img alt="" src="../sites/default/files/nobel.001_copy.html" /></p>
+<p><sup><em>Alfred Nobel image: <a href="https://commons.wikimedia.org/wiki/File:Alfred_Nobel3.jpg"> Wikimedia commons</a>; Illustration: <a href="https://collectiver.com/">Collectiver</a></em></sup></p>
+<p>Six Nobel Prizes for 2019 have just been widely reported, five of them real.</p>
+<p>In his will of 1896, Alfred Nobel created prizes in physics, chemistry, medicine, literature, and peace. Why, then, does <a href="http://nobelprize.org/">nobelprize.org</a> list a sixth one, in “economic sciences”, and then bury deep in its site the heading “Not a Nobel Prize”? And why do so many of its recipients, presumably selected for the integrity of their scholarship, claim to have won a Nobel Prize? Is this just another fake fact, too good to pass up? No, this one has serious consequences, that’s why I harp on it.</p>
+<p>In 1968, the Bank of Sweden created a prize in its own name for the “economic sciences“ and added “in memory of Alfred Nobel.” With these superfluous words, the prize that economists created for themselves has come to be called “Nobel”, or sometimes “The Nobel Memorial Prize” (see even <a href="https://www.google.com/search?client=safari&amp;rls=en&amp;q=nobel+prize+in+economics&amp;ie=UTF-8&amp;oe=UTF-8">Wikipedia</a>), as if the extra word is any less of a violation of Alfred Nobel’s will. Imagine if political scientists or anthropologists tried to get away with this.</p>
+<p>Each of the social sciences has its central concept, for example power in political science, culture in anthropology, and markets in economics. Considered together, in balance, they provide a range of perspectives on human behavior. Considered alone, each narrows our perspective, at the limit into a dogma. Should we see our behavior primarily through the lens of power, or of culture?</p>
+<p>Well, mainstream economics has convinced too many of us to see our behavior primarily through the lens of markets, in the form of a dogma that greed is good, markets are sufficient, and governments are suspect. As one view of the human condition, this makes some sense. As <em>the</em> view, it is nonsense. Yet this nonsense, in an unholy alliance with the private forces of greed, has been throwing much of the world dangerously out of balance. (When John Maynard Keynes declared famously that “In the long run we are all dead”, he meant each of us, not all of us. There is no collective “we” in economics, no sense of community. Thanks to the state of the world today, we could all be dead in the short run.)</p>
+<p>A healthy society sustains balance across its three sectors: respected governments in the public sector, responsible businesses in the private sector, and robust communities in what should be called the <a href="../blog/three-sectors.html">plural sector</a>. Thanks to this alliance, many ostensibly democratic societies have become unhealthy, not least the U.S. and U.K. Their private sectors dominate, coopting their governments, diminishing their communities, and undermining their democracy. On the international stage, economic globalization has become the new hegemony. Facing no countervailing power, it plays governments off against each other, driving down taxes at the expense of public services. </p>
+<p>The consequences of this imbalance are all too evident, for example in the income disparities that are driving many frustrated people to vote for the likes of Trump and Brexit; in levels of production and consumption that exacerbate climate change; even in our everyday vocabulary that regards human beings as “human resources“ and citizens as “customers“ of governments. These days, every organization is supposed to act like a business, with every chief a CEO.</p>
+<p>Where to begin the restoration of balance? We can hardly expect corporations to cede the power that they have amassed. And fixing capitalism, however necessary, will not fix democracies that are broken, any more than fixing communism would have fixed the broken societies of Eastern Europe (which were out of balance on the side of their public sectors). And how can we expect balance to be restored by governments that have been coopted by private interests.</p>
+<p>This leaves the plural sector, were culture matters more than markets. If we are to stop our descent into self-destruction, a form of reformation will have to begin here. Some of us may work in the private sector and many of us may vote in the public sector but all of us live our social lives in the plural sector—for example, when volunteering for a cause, donating to an NGO, joining a protest, or just plain working out at the Y.</p>
+<p>Our economically developed world is in dire need of social redevelopment. The restoration of balance will take a lot more than putting this economics prize in its place, namely as The Bank of Sweden Prize in Economic Sciences. But doing so could be a good place to start—even better if it’s name was changed to the Bank of Sweden Prize in the Social Sciences—by sending a message that private sector interests have to refocus their attention back in their place, namely the marketplace, so that our public sector governments and plural sector communities can get on with serving our collective and social needs.</p>
+<p>© Henry Mintzberg 2019. See <em><a href="../books/rebalancing-society.html">Rebalancing Society…radical renewal beyond left, right, and center</a></em>. </p>
+<p>Follow this TWOG on Twitter <a href="https://twitter.com/Mintzberg141">@mintzberg141</a>, or receive the blogs directly in your inbox by subscribing <a href="../blog/subscribe.html">here</a>. To help disseminate these blogs, we also have a <a href="https://www.facebook.com/Mintzberg141/?ref=bookmarks">Facebook page</a> and a <a href="https://www.linkedin.com/in/henrymintzberg/">LinkedIn page</a>.</p>`,
+  },
+  {
+    slug: `consolidation-for-reformation`,
+    title: `Consolidation for Reformation`,
+    date: `7 March 2020`,
+    categoryLabel: `Rebalancing Society`,
+    categoryId: `4`,
+    imageRefs: ["3_pelicans.jpg"],
+    bodyHtml: `<p><em>“We will either find a way or make one.”</em> (Hannibal)</p>
+<p><img alt="" src="{{ASSET}}3_pelicans.jpg{{/ASSET}}" /></p>
+<p>
+	The blog on January 1st introduced <a href="https://ourinterdependence.org/">The Declaration of our Interdependence</a>, for the restoration of balance across the three sectors of society—public governments, private enterprises, and plural communities. But how to get from words on a screen to rebalancing of societies? The blog that followed, on February 1st, outlined the first step—the taking of individual and collective actions (shown in a table of of 32 possibilities). This blog discusses how to consolidate such actions into a movement for grounded reformation.</p>
+<h3><strong>The Message of the 16th Century Reformation </strong></h3>
+<p>What is known as the <a href="https://youtu.be/UCtZNFdUzKA" target="_blank">Reformation </a>began with words on a door in Germany and ended with a realignment of power in Europe. In 1517, with widespread outrage over corruption in the dominating religion, an obscure monk named Martin Luther challenged its prevailing authority by nailing a list of 95 theses (really grievances) to the door of one of its churches. His words spread within weeks, carried by the new social medium of the time, the printing press. A groundswell followed, as angry people in communities confronted the corruption. Eventually, new institutions formed and some existing ones reformed. Much of the world changed.</p>
+<p>Can our world so change? That was Europe five centuries ago, concerning the corruption of one institution. Today we face corruption in many institutions, worldwide. Is reformation on a global scale impossible? Well, the devastating effects of climate change are not only possible but existent. Income disparities are on the rise. And another great war is possible—and would be the last—with several loose cannons elected by people fed up with these income disparities. When disaster looms, the impossible can become possible, indeed necessary.</p>
+<h3><strong>Starting on the ground, not at the “top”</strong></h3>
+<p> Where, then, to begin? At the <a href="../blog/transformation-from-the-top-how-about-engagement-on-the-ground.html">top</a>? The Reformation did not begin at any top, yet today that is where the  preferred solutions focus: the established authorities are supposed to fix the establishment. Elect heroic leaders. Hold lofty conferences. Make 30-year plans. Pretend to fix capitalism. All to no avail.</p>
+<p>The record of <a href="../blog/to-lead.html">heroic leadership</a> is hardly stellar. Much of it has proved to be impotent when not autocratic. Have we not had enough of the leadership fix?</p>
+<p>The <a href="../blog/farce.html">lofty conferences</a> on global warming seem to generate more of it, thanks to all the travel, let alone the talk (not to mention the swarms of private jets that descend on Davos every year to bemoan the warming). At home, politicians with four-year mandates proclaim 30-year plans. Why do we tolerate such nonsense?</p>
+<p>Then there are the <a href="../blog/getting-past-adjectival-capitalism-fix">adjectival capitalism</a> fixes—Progressive Capitalism, Caring Capitalism, Inclusive Capitalism, Sustainable Capitalism, even Democratic Capitalism (democracy being the adjective). Capitalism certainly needs fixing, but that will not fix societies broken by its own power. It is these societies that need fixing, by restoring balance across their sectors.</p>
+<p>The change we require will have to begin on the ground, as it did in the Reformation. Franklin Delano Roosevelt caught the spirit of this when he was asked by an activist to champion a particular change. He replied: “I agree with you. I want to do it. Now go out and make me do it.” The message is clear: reforming established institutions may be the last step in reformation. The first ones have to be taken on the ground.</p>
+<h3>
+	<strong>Pathway to Reformation</strong></h3>
+<p> Consider these steps to reformation: </p>
+<p>Declaration of common cause =&gt; Reframing beliefs =&gt; Reversing wrongs and Renewing rights =&gt; Consolidating this activity =&gt; Reforming institutions</p>
+<p>The path to reformation is opened by a compelling statement of common cause that reframes what we believe, or have been made to believe, so that we can understand what is wrong and take action to make it right. If we believe that change must come from the top, then most of us will sit around waiting for it to happen. If we believe that the wealth of globalization trickles down to everyone, then we will take what we get. If we believe that democracy is about swinging between left and right, then we will not see the <a href="../blog/three-sectors.html">plural sector</a> for the role it must play in buttressing the power of the public and private sectors. It is the reframing of beliefs that galvanizes action.</p>
+<h3><strong>Consolidating Activities</strong></h3>
+<p>The last blog presented a table outlining a variety of actions that can be taken to address our problems. We are, in fact, getting a great deal of it, more than ever before. One <a href="https://www.penguinrandomhouse.com/books/291205/blessed-unrest-by-paul-hawken/">book</a> estimated the number of social initiatives for such activities to exceed one million, on a wide variety of fronts: for social justice, sustainable environment, world peace, reformed education, and much more.</p>
+<p>That book was published in 2007, yet consider what has been happening to the imbalance ever since. The more constructive activity we get, the worse the imbalance becomes. That is because, while the efforts for reformative change are scattered, the forces that exacerbate the imbalance work in concert, for self-interest—as when they promote conspicuous consumption. These efforts will have to consolidate, around a common cause, which I believe will have to be the restoration of balance. A clear focus of attention (such The Declaration of our Interdependence) is required to fuse a myriad of activities into a movement for regeneration. But this consolidation cannot center on any institution or plan; it has to happen as a groundswell of community activity, as in the Reformation, but this time networked worldwide.</p>
+<p>We shall have to recognize that imbalance in society is a root cause of the major problems we face—the social injustices, income disparities, decline of democracy, even much of climate change. How, for example, are we to reverse climate change as long as private power drives so much conspicuous consumption? In other words, if you are concerned about the climate, you had better put the rebalancing of society front and center.</p>
+<p>The corruption of established institutions is far more widespread than at the time of Luther, and the dangers we face are far more alarming. We have glorified greed and excess long enough; it is time to value balance and benevolence. Our choice comes down to this: grounded reformation or global devastation. We can continue to plunder this planet, and each other, or we can make our way to reformation.</p>
+<p>© Henry Mintzberg 2020, adapted from a note on “Next Steps” on <a href="https://ourinterdependence.org/">The Declaration of our Interdependence</a>.   </p>
+<p>Follow this TWOG on Twitter <a href="https://twitter.com/Mintzberg141">@mintzberg141</a>, or receive the blogs directly in your inbox by subscribing <a href="../blog/subscribe.html">here</a>. To help disseminate these blogs, we also have a <a href="https://www.facebook.com/Mintzberg141/?ref=bookmarks">Facebook page</a> and a <a href="https://www.linkedin.com/in/henrymintzberg/">LinkedIn page</a>.</p>`,
+  },
+  {
+    slug: `where-has-all-the-judgement-gone`,
+    title: `Where has all the judgement gone?`,
+    date: `19 February 2021`,
+    categoryLabel: `Simply Thinking`,
+    categoryId: `9`,
+    imageRefs: ["heron.jpg"],
+    bodyHtml: `<p><em>With Dulcie Naimer, and thanks to Pete Seeger (<a href="https://www.youtube.com/watch?v=1y2SIIeqy34">hear him</a> or <a href="https://www.youtube.com/watch?v=nBuUqJYRfpg">sing along</a>)</em></p>
+<p><img alt="" src="{{ASSET}}heron.jpg{{/ASSET}}" /></p>
+<p>Where has all the judgement gone?<br />
+	Long time missing.<br />
+	Why has all the judgement gone?<br />
+	So much suppressed.<br />
+	Where did all the judgement go?<br />
+	Distraction took it every bit.<br />
+	How will this ever turn?<br />
+	Why do we never learn?</p>
+<p>Why should any fact be fake?<br />
+	So much lying.<br />
+	Why is truth so hard to take?<br />
+	Buried long ago.<br />
+	Why so many facts are fake?<br />
+	Millions made on every one.<br />
+	When will we see the light?<br />
+	When will we get this right?</p>
+<p>Where have half the voters gone?<br />
+	Long time dumbing down.<br />
+	Why have half the voters gone?<br />
+	Short-term trusting.<br />
+	Where did half the voters go?<br />
+	To exploiters everyone.<br />
+	Why can’t we ever hear?<br />
+	Why is there so much fear?</p>
+<p>Where has so much nature gone?<br />
+	Long time warming.<br />
+	Why has so much nature gone?<br />
+	Short-term taking.<br />
+	Where does all that nature go?<br />
+	Gone to greed every tree.<br />
+	When will we ever care?<br />
+	Why can’t we learn to share?</p>
+<p>Why did COVID-19 come?<br />
+	Long time asking.<br />
+	What else could be going on?<br />
+	Answers ended long ago.<br />
+	What do all our leaders see?<br />
+	Six feet forward every drop.<br />
+	That leaves us on the brink.<br />
+	When will they ever think?</p>
+<p>Now the smart new leaders come.<br />
+	Long time waiting.<br />
+	Will these smart new leaders lead?<br />
+	So far to go.<br />
+	What can smart new leaders do?<br />
+	Facing crisis everywhere.<br /><em>We</em> will have to fix the past.<br /><em>We</em> must learn to do it fast.</p>
+<p>________________________________________</p>
+<ul><li>For what else could be going on with this pandemic, see these <a href="../blog/what-else-might-be-going-on.html">questions</a> and <a href="../pp.html"><em>Pollution and the Pandemic</em></a>, also a <a href="https://www.youtube.com/watch?v=5Ce720tWBaw&amp;ab_channel=HenryMintzberg">video</a>. </li>
+<li>About the dumbing down, see <a href="../blog/donald-trump-is-not-the-problem-part-ii.html"><em>Reflecting on and in America</em></a>.</li>
+<li>For how we might ever learn, see <a href="http://rebalancingsociety.org/">RebalancingSociety.org</a>.</li>
+</ul><p>© Henry Mintzberg and Dulcie Naimer 2021 under a <a href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.</p>
+<p>Follow this TWOG on Twitter <a href="https://twitter.com/Mintzberg141">@mintzberg141</a>, or receive the blogs directly in your inbox by subscribing <a href="../blog/subscribe.html">here</a>. To help disseminate these blogs, we also have a <a href="https://www.facebook.com/Mintzberg141/?ref=bookmarks">Facebook page</a>, a <a href="https://www.linkedin.com/in/henrymintzberg/">LinkedIn page</a> and a <a href="https://www.youtube.com/channel/UCHw8dpiDBb5DfZbqJ87pJ1Q/videos?view_as=subscriber">YouTube Channel</a>.</p>`,
+  },
+  {
+    slug: `musk-is-doing-a-number-on-efficiency`,
+    title: `Musk is doing a number on efficiency`,
+    date: `2 April 2025`,
+    categoryLabel: `Simply Measuring`,
+    categoryId: null,
+    imageRefs: ["musk-efficiency.jpg"],
+    bodyHtml: `<p><em><img alt="" src="{{ASSET}}musk-efficiency.jpg{{/ASSET}}" /></em></p>
+<p><sup><em>Illustration: Chat GPT and S. Brovkin. </em></sup></p>
+<p><em>This is a modified version of a blog posted years ago, in anticipation of the American government being torn apart by efficiency.</em></p>
+<p> </p>
+<p>Efficiency is like motherhood. It gives us the greatest bang for the buck. We decide what benefits we want; efficiency gets us them at the least possible cost. Who could possibly argue with that?</p>
+<p>Me, for one, masses of American civil servants, for others.</p>
+<p>I list below a couple of things that are efficient. Ask yourself what I am referring to—the first word that pops into your head.</p>
+<p>A restaurant is efficient.</p>
+<p>Did you think about speed of service? Most people do. Few think about the quality of the food. Is this the way you usually chose your restaurants?</p>
+<p>My house is efficient.</p>
+<p>Energy consumption always comes out way ahead. Tell me: who ever bought a house for its energy consumption, compared with, say, its design, or its location?</p>
+<p>What’s going on here? It’s obvious as soon as we realize it. When we hear the word efficiency, we zero in―subconsciously―on the most measurable criterion, like speed of service or consumption of energy. Efficiency means measurable efficiency: it favors what can best be measured. And herein lies the problem, in three respects:</p>
+<p>1. Because costs are usually easier to measure than benefits, efficiency often reduces to economy: cutting measurable costs at the expense of less measurable benefits. Think of all those governments that have cut the costs of health care or education while the quality of those services deteriorated. (I defy anyone to come up with an adequate measure of what a child really learns in a classroom.) How about this <a href="../../www.mintzberg.org/blog/ye-gods-efficient-orchestra" target="_blank">student </a>who found all sorts of ways to make an orchestra more efficient? Or those corporate CEOs who cut the quality control budgets or whatever—does Boeing come to mind?—so that they could earn bigger bonuses right away. That’s efficient! (for them).</p>
+<p>2. Because economic costs are typically easier to measure than social costs, efficiency can result in an escalation of social costs. Making a factory or a school or diplomacy more efficient is easy, so long as you don’t care about the air or the minds or the treaties polluted.</p>
+<p>3. Because economic benefits are typically easier to measure than social benefits, efficiency drives us toward an economic mindset that can result in social degradation. In a nutshell, we are efficient when we eat fast food instead of good food, or don’t answer the phone at Veterans Administration.</p>
+<p>So beware of efficiency, and of efficiency experts—efficiency kids too—as well as of efficient education, heath care, and music, sometimes even efficient factories, let alone efficient government departments, where so much that counts can’t be counted. (Efficient tariffs? An efficient White House?) Be careful too of <a href="https://youtu.be/iG9P0vB8TPM" target="_blank">balanced scorecards</a>, because, while the inclusion of all kinds of factors may be well intentioned, the dice are loaded in favor of those that can most easily be measured.</p>
+<p>By the way, TwiXer used to be efficient: maximum of 140 characters. (Count them now.) But don’t try to count the trillions from the big boss—not an efficient use of your time.</p>
+<p><br />
+	================</p>
+<p><em>This blog derives from my article “A Note on the Dirty Word Efficiency”, Interfaces (October, 1982: 101-105)</em></p>
+<p><em>Follow me on <a href="https://www.linkedin.com/in/henrymintzberg/" target="_blank">LinkedIn</a>, <a href="https://bsky.app/profile/mintzberg.bsky.social" target="_blank">BlueSky</a>, <a href="https://www.youtube.com/@Mintzberg141" target="_blank">YouTube</a>, and what's left of <a href="https://x.com/Mintzberg141" target="_blank">Twitter</a>, or receive the blogs directly in your inbox by <a href="../blog/subscribe.html" target="_blank">subscribing here</a>. To help disseminate these blogs, we also have a Facebook page.</em></p>
+<p><br />
+	 </p>`,
+  },
+  {
+    slug: `about-this-business-of-government-mr-president-2025-repost`,
+    title: `About this business of government,   Mr. President`,
+    date: `1 May 2025`,
+    categoryLabel: `Reframing`,
+    categoryId: null,
+    imageRefs: ["business-of-government.jpg", "hm_signature.png"],
+    bodyHtml: `<p><em>Originally posted 5 April 2017.</em><br /><em>Reposted here with only minor changes necessary,<br />
+	mostly deletion of a few dated examples.</em></p>
+<p><img alt="" src="{{ASSET}}business-of-government.jpg{{/ASSET}}" /></p>
+<p> </p>
+<p>Dear Mr. President,</p>
+<p>As a neighbor in Canada who has long worked with businesses and governments around the world, I have some important news for you. America is not suffering from too much government so much as from too much business―all over government. Please understand this to avoid pouring more oil on the fires of America, and this planet.</p>
+<p>Business in its place is essential, just as is government in its place, which is not all over business. Now, however, thanks to you and your cabinet, business need no longer just lobby government to get its way; it is government. You were elected to challenge the establishment; will the executives who came into your cabinet from Wall Street, etc. do that? They are the establishment, that has displaced the political establishment.</p>
+<p>This is an old problem now being carried to a new extreme. In the early days of the Republic, Thomas Jefferson expressed the hope that “we shall crush in its birth the aristocracy of our monied corporations which dare already to challenge our government to a trial by strength...” Instead, later in that century, the U.S. Supreme Court recognized corporations as “persons” in the law. Not long after that, in the new century, President Teddy Roosevelt was railing about the power of corporate trusts in American society, and in the 1960s President Dwight David Eisenhower warned of the “unwarranted influence…by the military-industrial complex.” Nevertheless, in 2010 the Supreme Court gave those corporate persons the right to fund political campaigns to their heart’s content. When “free enterprise” in an economy becomes the freedom of enterprises in society, to paraphrase Abraham Lincoln, government of the real people, by the real people, for the real people perishes from the earth.</p>
+<p>Should government even be run like a business, let alone by businesspeople? No more than that should business be run like a government, by civil servants. As you well know, when an entrepreneur says “Jump”, the response is “How high sir?” You are now finding out what happens when a U.S. president says “Jump”. So far, so bad. Governments are relentlessly subjected to a plethora of pressures that many businesses, especially entrepreneurial ones like your own, cannot easily understand.</p>
+<p>Business has a convenient bottom line, called profit, which can easily be measured. What’s the bottom line in government, say for terrorism? (Countries listed? Immigrants deported? Walls built?)  </p>
+<p>Running government like a business has been tried again and again, only to fail again and again. In the 1960s, Secretary of Defense Robert McNamara introduced PPBS (Planning-Programming-Budgeting System) to run government like a business. The obsessive measuring led to the infamous body counts of the Vietnam War. Then, in the 1980s, came the “New Public Management”, a euphemism for old corporate practices: isolate governmental activities, put a manager in charge of each, and hold them responsible for the measurable results. That might work for the state lottery, but how about foreign relations or education, let alone health care? Al Gore, as Vice President, used the misguided metaphor of citizens as “customers.” You know what? I am not a mere customer of my government, thank you, as if I buy services at arm’s length. I am an engaged citizen of my country.</p>
+<p>The place of business is to supply us with goods and services; that of government, aside from protecting us from threats, is to help keep our marketplaces competitive and responsible. Do you really believe that recent American governments have been overdoing this job, let alone doing it at all?</p>
+<p>I have a little book for you, Mr. President, called <a href="../books/rebalancing-society.html" target="_blank"><strong><em>Rebalancing Society</em></strong></a>. It contends that a healthy society balances the power of respected governments in the public sector with responsible businesses in the private sector and robust communities in what I call the plural sector (“civil society”). The most democratic nations in the world today function closest to such balance, including ours in Canada and those in Scandinavia, likewise your own when Alexis de Tocqueville wrote about the community “associations” that helped to maintain democracy in early America. Indeed, during the decades following World War Two, the U.S. was far better balanced, as it experienced striking prosperity and development—economic as well as social―despite high taxes and generous welfare programs. Now, however, the country has lost that balance. Free enterprise runs free in America. Look around, Mr. President, at the income disparities and the unregulated forces of globalization running rampant around the globe. That is why we have seen votes like Brexit and your own, by distraught people unsure which way to turn, except against the “establishment.”</p>
+<p>When enough people realize what has been going on, then a subsequent president, if not you, will have to restore the balance that made America great in the first place.</p>
+<p>
+	Sincerely<br /><img alt="" src="{{ASSET}}hm_signature.png{{/ASSET}}" /><br />
+	Henry Mintzberg<br />
+	Cleghorn Professor of Management Studies, McGill University in Montreal</p>
+<p> </p>
+<hr /><p>© Henry Mintzberg, 2017, 2025, with a Creative Commons Attribution-NonCommercial 4.0 International License. For elaboration of these arguments, please see <a href="../books/rebalancing-society.html" target="_blank"><em>Rebalancing Society…radical renewal beyond left, right, and center</em></a>, also my <em>Harvard Business Review</em> article <a href="https://hbr.org/1996/05/managing-government-governing-management"><em>“Managing Government, Governing Management”</em></a>. A different version of this blog was published in the <em>Harvard Business Review</em> under the title <em><a href="https://hbr.org/2017/03/the-u-s-cannot-be-run-like-a-business" target="_blank">“The U.S. cannot be run like a business.”</a></em></p>`,
+  },
+  {
+    slug: `the-center-s-not-holding-it-s-folding-how-about-rounding`,
+    title: `The center’s not holding, it’s folding. How about rounding?`,
+    date: `14 September 2025`,
+    categoryLabel: `Reframing`,
+    categoryId: null,
+    imageRefs: ["centre-not-holding-header.jpg", "three-sectors.jpg"],
+    bodyHtml: `<p><img alt="" src="{{ASSET}}centre-not-holding-header.jpg{{/ASSET}}" /></p>
+<p> </p>
+<p>William Butler Yeats wrote famously that “Things fall apart; the centre cannot hold…”  Accordingly, opinion writers, left and right, have been writing about the center holding or not. What center? Mostly it’s been folding, not holding.</p>
+<p>Why do we tolerate the linear politics of left, right, and center? Has not two centuries since two groups happened to sit on the left and right sides of the French revolutionary assembly been long enough?</p>
+<p><strong>left ______________ center ______________ right</strong></p>
+<p>Much of politics these days swings like a pendulum, between government controls on the left and market hegemony on the right. As a consequence, the center becomes paralyzed, the country becomes ungovernable, and power shifts increasingly to the right. No wonder we get nowhere with our crises of climate change, income disparities, and the demise of democracy itself.</p>
+<p>A society, like a stool, cannot be balanced on one leg, whether communism or socialism on the left or capitalism or populism on the right. Nor can it be balanced on two legs, namely back and forth between these two. A third leg is needed for stability, and progress.</p>
+<p>To appreciate this, consider these three basic human needs: for consumption, supplied significantly by private sector businesses; for protection, served especially by public sector governments; and, no less fundamentally, for affiliation—for which we depend, not on government or business, but our families, and beyond that, our communities. The latter functions in another sector that has to be understood, for the sake of survival.</p>
+<p>Formally, this sector is called “civil society,” a label whose ambiguity helps to explain its obscurity. So, too, do its variety of other confusing labels, such as the non-profit, non-governmental, and social sector. Calling “civil society” the <a href="https://ssir.org/articles/entry/time_for_the_plural_sector" target="_blank">plural sector</a> can help to bring it out of its obscurity, not only to recognize its sheer variety of associations, but especially because this label can enable it to be seen as taking its place alongside those sectors called public and private—hence, to appreciate balance in society.</p>
+<p>This third leg was recognized by Alexis de Tocqueville in the 1830s, when he wrote about community associations as a critical component of the new Democracy in America: “… civilization itself would be endangered” if people “never acquired the habit of forming associations…” Unfortunately, it is hardly so recognized today, despite being ubiquitous: it has been drowned out by the strident voices of the left and the right.</p>
+<p>A <a href="../books/rebalancing-society.html" target="_blank">healthy society</a> balances itself on a public sector of respected governments, a private sector of responsible businesses, and a plural sector of robust communities. The latter is the sector of our social affiliations, whose associations are neither part of the state apparatus nor owned by private investors. Some are owned by their members, as in farmer cooperatives and credit unions, while many others are owned by no-one: think Greenpeace, Wikipedia, the Mayo Clinic, and more generally, foundations, food banks, community hospitals, and social movements. (Note that such associations exist across the political spectrum, from a Marxist cell to a rifle association.)</p>
+<p>Where to put this plural sector on that line of linear politics? Certainly not at the center. We don’t need compromise between our basic needs—say, a little more consumption for a little less protection—so much as some sort of balance across them. Accordingly, let’s reshape our politics by rounding the line of linear politics—left, right, and center—into a circle, to understand how three fundamental sectors can cooperate for balance while holding each other in check.</p>
+<p><img alt="" src="{{ASSET}}three-sectors.jpg{{/ASSET}}" /></p>
+<p>How many plural sector associations have you connected with in the last few days? I’ll bet quite a few—working out at the Y, being treated in a community hospital, attending a meeting of some religious service, donating to a charity, maybe marching for a cause. Many of us may work in private sector business and most of us may vote for public sector government, but all of us live our personal lives significantly in this sector. The plural sector is our sector.</p>
+<p>Mary Parker Follett wrote famously in the 1920s about three ways to deal with a conflict, two of which she dismissed. The first she called domination, when one side wins. The problem is that the other side “will simply wait for its chance to dominate.” We have seen enough of this, for example, in the shifts from one form of imbalance to another in Eastern Europe over the past century: domination by state communism or populist fascism followed by market capitalism now shifting toward dogmatic populism. </p>
+<p>The second way she called compromise, wherein “each side gives up a little in order to have peace.” But with neither side satisfied, Follett contended that the conflict would keep coming back. (The conflict in the Middle East can be seen, like so many others, as between, not just Palestinians and Israelis, but <a href="../../www.mintzberg.org/blog/extremists-moderates" target="_blank">the extremist and the moderates</a>, with the extremists, on both sides, determined to dominate, without compromise. The moderates suffer the consequences.)</p>
+<p>Follett thus favored a third option, which she called integration, where the two sides seek some common ground, based on a recognition of what they truly need.</p>
+<blockquote><p><em>“Integration involves invention…not let one’s thinking stay within the boundaries of two alternatives, which are mutually exclusive. In other words, never let yourself be bullied by either-or situation… Find a third way.”</em></p>
+</blockquote>
+<p>Her example is a simple one. In a library, one person wanted a window open for fresh air while she wanted it closed to avoid a draft. So they opened a window in an adjacent room. This solution was hardly brilliant or particularly creative, just resourceful. All it took were open minds and goodwill.</p>
+<p>Linear politics has become intrinsically confrontational, as each side seeks to dominate, or else reluctantly accept compromise—never ending. Circular politics can be seen as potentially more integrative, for example, in the form of private, public, plural partnerships. Today, we desperately need another way. The circle can be that. Here community associations can not only help to sustain balance, as de Tocqueville implied, but also play the leading role in attaining balance in the first place, by promoting resourceful solutions to our escalating crises.</p>
+<p>The private sector will not do that, however fashionable “fixing capitalism” has become. Capitalism certainly needs fixing, not least in its myopic stock markets. But fixing capitalism will no more fix the broken societies of the West than would fixing communism have fixed the broken communist societies of Eastern Europe.</p>
+<p>The Western societies need fixing, in part by putting capitalism back in its place, namely the competitive marketplace, where it functions best, and out of the public space, where it has become so destructive. Nor will government by itself be able to restore the necessary balance: in the center, it is too compromised, elsewhere, it is too partisan.</p>
+<p>The evidence from major constructive social change suggests that reformation begins on the ground, with community movements that spread—“go viral”—eventually to drive governments to do what is necessary and businesses to do what is responsible. As Franklin Delano Roosevelt reputedly told a community organizer when asked to support his cause: “I agree with what you’ve said. Now go out and make me do it.” For the sake of survival, we may well have to rally around the circle, to make ourselves and our authorities do it.</p>
+<address>____________________________________<br />
+	Henry Mintzberg, Order of Canada, is Cleghorn Professor of Management Studies at McGill University and the author of 21 books, including <a href="../books/rebalancing-society.html" target="_blank">Rebalancing Society</a> (that diagnosis the imbalance), as well as the website <a href="https://rebalancingsociety.org/" target="_blank">RebalancingSociety.org</a> (that prescribes a path to balance).</address>`,
+  },
+  {
+    slug: `is-serendipity-really-serendipitous-come-find-out`,
+    title: `Is Serendipity Really Serendipitous? Come Find Out!`,
+    date: `24 October 2025`,
+    categoryLabel: `Imagine`,
+    categoryId: null,
+    imageRefs: ["serendipity.png"],
+    bodyHtml: `<p><img alt="Serendipity-isnt-serendipitous" src="{{ASSET}}serendipity.png{{/ASSET}}" /></p>
+<p>Ever had a chance encounter that sparked a great opportunity. In my new article, Is Serendipity Serendipitous? (2025), I dive into why serendipity isn’t just random luck—and how you can make it work for you, by turning chance into opportunity.</p>
+<p>From an elevator pitch to IKEA’s flatpack revolution, I share stories of how serendipity shapes lives and organizations. Discover why coffee machine chats outshine Zoom call for discoveries, how small encounters can lead to lasting success. <a href="https://journals.sagepub.com/doi/10.1177/10564926251365863" target="_blank">Read the full article</a>, open access, then skip a zoom call and head straight to the coffee machine. </p>`,
+  },
 ]

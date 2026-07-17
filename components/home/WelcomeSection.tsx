@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import { assetUrl } from '@/lib/assets'
 import WaveDivider from '@/components/layout/WaveDivider'
+import LiveUpdatedNote from '@/components/home/LiveUpdatedNote'
 
 // Verbatim from html/pages/1.html <div class="ds single page"> block.
 // Rule 1: not one word of Henry's welcome text is altered.
@@ -90,9 +91,7 @@ export default function WelcomeSection() {
             style={{ height: 'auto', margin: '0 auto' }}
           />
         )}
-        <p style={{ color: 'var(--ink-light)', fontSize: '0.85rem', marginTop: '0.75rem' }}>
-          (Website updated in April 2024)
-        </p>
+        <LiveUpdatedNote />
       </section>
     </>
   )

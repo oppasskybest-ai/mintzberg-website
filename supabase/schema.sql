@@ -56,6 +56,64 @@ create table if not exists contact_messages (
   created_at timestamptz default now()
 );
 
+-- ── ARTICLES ── (each row is one item; year-grouping for display happens
+-- in code, not in the schema, so admin editing stays a flat, familiar
+-- list/edit/delete pattern like everything else)
+create table if not exists articles (
+  slug text primary key,
+  year text,
+  body_html text not null,        -- the description text — richtext so
+                                    -- future entries can carry real body
+                                    -- copy, not just a one-line blurb
+  links jsonb default '[]',        -- [{ "label": "...", "href": "..." }]
+  created_at timestamptz default now()
+);
+create index if not exists articles_year_idx on articles (year desc);
+
+-- ── COMMENTARIES ── (same shape as articles)
+create table if not exists commentaries (
+  slug text primary key,
+  year text,
+  body_html text not null,
+  links jsonb default '[]',
+  created_at timestamptz default now()
+);
+create index if not exists commentaries_year_idx on commentaries (year desc);
+
+-- ── STORIES ──
+create table if not exists stories (
+  slug text primary key,
+  title text,
+  description text,               -- short one-line blurb (matches the
+                                    -- original site's list format)
+  pdf_file text,                   -- filename (resolved via assetUrl) or
+                                    -- a full URL for a newly-added story
+  body_html text default '',       -- optional full story text — empty
+                                    -- for the 5 original PDF-only stories,
+                                    -- usable for any new story added
+                                    -- directly through the admin panel
+  created_at timestamptz default now()
+);
+
+-- ── SCULPTURE IMAGES ──
+create table if not exists sculpture_images (
+  id uuid primary key default gen_random_uuid(),
+  image_url text not null unique,
+  caption text default '',
+  sort_order int default 0,
+  created_at timestamptz default now()
+);
+create index if not exists sculpture_images_sort_idx on sculpture_images (sort_order);
+
+-- ── SITE PAGES ── (singleton text pages — Résumé today, anything else
+-- text-only and one-of-a-kind later, e.g. an About page)
+create table if not exists site_pages (
+  slug text primary key,
+  title text,
+  body_html text not null,
+  created_at timestamptz default now()
+);
+
 -- ── ROW LEVEL SECURITY ──
 -- Public (anon key) can READ everything — this is a public website.
 -- Nothing can be written with the anon key; writes go through the admin
@@ -70,6 +128,17 @@ alter table videos enable row level security;
 create policy "public read blog_posts" on blog_posts for select using (true);
 create policy "public read books" on books for select using (true);
 create policy "public read videos" on videos for select using (true);
+create policy "public read articles" on articles for select using (true);
+create policy "public read commentaries" on commentaries for select using (true);
+create policy "public read stories" on stories for select using (true);
+create policy "public read sculpture_images" on sculpture_images for select using (true);
+create policy "public read site_pages" on site_pages for select using (true);
+
+alter table articles enable row level security;
+alter table commentaries enable row level security;
+alter table stories enable row level security;
+alter table sculpture_images enable row level security;
+alter table site_pages enable row level security;
 
 -- contact_messages: RLS enabled with NO policies at all — this means the
 -- anon key can neither read nor write it (private submissions). Only the

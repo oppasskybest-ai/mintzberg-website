@@ -1,15 +1,10 @@
-import { assetUrl } from '@/lib/assets'
+import { getAllStories } from '@/lib/data/stories'
+import { resolveHref } from '@/lib/assets'
 
-const STORIES = [
-  { label: 'Reflecting on Doors', file: 'reflecting_on_doors_dec_2015.pdf' },
-  { label: "Gopi's Farm", file: 'stories_gopis_farm_march_2014.pdf' },
-  { label: 'Why I Climb Mountains Anyway', file: 'mountains_17_july_2015.pdf' },
-  { label: 'For the Love of the Lake', file: 'love_of_the_lake_january_2016.pdf' },
-  { label: 'Depressing is Hardly the Word', file: 'depressing_march_25_2014.pdf' },
-]
-
-// Verbatim from html/pages/1.html block-nodeblock-177.
-export default function StoriesPreview() {
+// Now pulls from the same Supabase-backed data as the full /stories page
+// (admin edits show up here too), showing the first 5.
+export default async function StoriesPreview() {
+  const stories = (await getAllStories()).slice(0, 5)
   return (
     <section className="section-parallax" style={{ padding: '3.5rem 0' }}>
       <div className="container-content">
@@ -21,11 +16,11 @@ export default function StoriesPreview() {
           <a href="/stories">here</a>.
         </p>
         <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
-          {STORIES.map((s) => {
-            const href = assetUrl(s.file) || '#'
+          {stories.map((s) => {
+            const href = s.pdfFile ? resolveHref(s.pdfFile).href : '#'
             return (
-              <li key={s.file}>
-                <a href={href} target="_blank" rel="noopener noreferrer">{s.label}</a>
+              <li key={s.slug}>
+                <a href={href} target="_blank" rel="noopener noreferrer">{s.title}</a>
               </li>
             )
           })}
