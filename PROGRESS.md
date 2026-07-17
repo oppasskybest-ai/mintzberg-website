@@ -14,53 +14,66 @@ Rules this file follows:
 ---
 
 # ⭐ CURRENT STATUS — AT A GLANCE
+## (Rewritten 2026-07-17 to be accurate — everything below this point was
+## going stale as more got built. This is now the authoritative summary;
+## trust this section over anything that contradicts it further down the
+## file. The detailed dated entries below are kept as history, not as the
+## current-state reference.)
 
-**Architecture decided:** Supabase + full admin CRUD dashboard (like the
-duff-site base code), NOT the static JSON/MDX approach originally sketched in
-the master prompt's Technical Stack section. This supersedes that one section
-only — everything else in the master prompt (content rules, design direction,
-build order) is unchanged. Henry will be able to edit blog posts, books,
-articles, commentaries, etc. live from a private dashboard without a
-redeploy, same pattern as duff-site: Supabase table with a static seed-array
-fallback in `lib/config/*.ts` if the DB is empty/unreachable.
+**Architecture:** Supabase + full admin CRUD dashboard (duff-site's
+pattern), not the static JSON/MDX approach originally sketched in the
+master prompt. Every content type has a Supabase table with a static
+seed-array fallback in `lib/config/*.ts` — the site runs fine even before
+Supabase is configured, and switches to live Supabase data automatically
+once it is (no code changes needed).
 
-**Asset hosting:** GitHub Releases only, on `oppasskybest-ai/mintzberg-website`
-(same repo as the code). See mintzberg-addendum-final.md for the full URL
-pattern and the release_upload_log.csv reference. No Cloudinary.
+**Asset hosting:** GitHub Releases on `oppasskybest-ai/mintzberg-website`
+(391 historical assets — images/PDFs, verified against the live GitHub API,
+not just assumed). New images added via the admin panel go to Supabase
+Storage instead (bucket `media`) — both sources work side by side.
 
-**Where we are:** Steps 1–4 substantially complete. All 231 real blog posts
-parsed, cleaned (inline Word-paste styles stripped), and live in
-`lib/config/blog-posts.ts` — no longer just a 10-post test batch. Blog index
-is paginated at 10 posts/page (`/blog?page=N`), not the old site's
-load-everything pattern. Premium design system (fixed-parallax hero/section
-backgrounds, navy/orange palette) is now the standard for every page going
-forward. Rebalancing Society removed from scope entirely per explicit
-2026-07-15 decision. `mintzberg-master-prompt.md` and
-`mintzberg-addendum-final.md` now live in the repo root, version-controlled.
+**Public site — what's live and built, verified via `npm run build`
+(320 routes, 0 errors) as of 2026-07-17:**
+- Home, Blog (241 posts, paginated 10/page), Books (21), Videos (18),
+  Articles (171), Commentaries (89), Résumé, Stories (5), Sculptures (21
+  images), Contact (working form + email), Search (`/search`, Fuse.js)
+- Premium design system (fixed-parallax hero/section backgrounds, real
+  photo feature-bands, wave dividers, navy/off-white/orange palette) is
+  the standard across every page, not just the home page
+- Rebalancing Society removed from scope entirely (explicit decision,
+  2026-07-15)
+
+**Admin dashboard — `/admin`, fully built and editable for EVERY content
+type above** (not just blog/books/videos — Articles, Commentaries,
+Résumé, Stories, and Sculptures are all in there too, added 2026-07-17,
+including the ability to create brand new entries with full rich text,
+not just edit what's already there):
+- Login (username/password from env vars) → session-gated via `proxy.ts`
+- Blog Posts, Books, Videos, Articles, Commentaries, Stories, Sculptures,
+  Résumé — each with list/create/edit/delete, rich text editor (Tiptap)
+  with image upload where relevant
+- Messages — every contact form submission, saved automatically
+- Settings — the idempotent seed button (adds what's missing, never
+  touches existing/edited data, safe to click repeatedly)
+
+**NOT yet done:**
+- Supabase project itself hasn't been created/tested against real
+  credentials yet (that step is on you — see SUPABASE_SETUP.md)
+- 4 images (`for_irene.jpg`, `tableimage.jpg`, `unnamed_0.jpg`,
+  `512px-luther_95_thesen.png`) and the real favicon — confirmed
+  unrecoverable, deferred by explicit instruction, not blocking anything
+- A full exhaustive broken-link sweep across the entire site (individual
+  bugs have been found and fixed as reported, but no single systematic
+  final pass has been done)
+- No image-editing-in-place for the 391 historical GitHub Release assets
+  from the admin panel (only NEW uploads go through the admin UI)
 
 **Important correction to the master prompt's blog count:** the master
-prompt says 254 blog HTML files / 254 posts. The actual `sorted-assets/html/blog/`
-folder sent (252 files) breaks down as:
-- **231 real individual posts** (have the `ds single post` marker)
-- **20 category-listing pages** (Drupal views, e.g. `10.html` = "Blog:
-  Learning Strategy" — not content, just an index; their id→label mapping
-  is captured in `lib/config/blog-categories.ts` for category filtering)
-- **1 infra page** (`subscribe.html` — MailChimp signup block, not a post)
-
-So the real individual-post count is 231, not 254. The remaining ~23 may be
-missing from this HTML export, or the master prompt's original count
-included the listing pages. Flagging this rather than silently reconciling
-it — worth a quick confirmation whenever convenient, doesn't block
-anything.
-
-Also found in `html/blog/`: 3 dead-scrape artifacts (`enterprise.html`,
-`what-else-might-be-going-on.html`, `=.html`) — these are 404/Access-Denied
-pages the scraper picked up, not real content. Marked SKIPPED below.
-
-`html/pages/` (354 files: books, articles, commentaries, resume, contact,
-rebalancing society, videos, stories, sculptures, and more) has **not been
-classified or parsed yet** — only `pages/1.html` (home page) has been read,
-for Step 3.
+prompt says 254 posts. Actual breakdown: 231 posts reachable via
+`/blog/{slug}` + 10 more found only via `/node/{id}` pages (parsed and
+merged in 2026-07-17) = 241 real posts total, not 254. The remaining ~13
+are most likely accounted for by the 20 category-listing pages and other
+non-post files the master prompt's original count may have included.
 
 ---
 
@@ -884,9 +897,20 @@ KNOWN GAPS:
     schema or created one yet) — only verified the build compiles and the
     crypto logic works in isolation. First real end-to-end test happens
     when you follow SUPABASE_SETUP.md.
-  - Articles/Commentaries/Résumé/Stories/Sculptures still have no admin
+  - CORRECTION (added 2026-07-17, see the entry further below dated
+    2026-07-17): the line that used to be here said "Articles/
+    Commentaries/Résumé/Stories/Sculptures still have no admin page or
+    Supabase table." That's no longer true — a later session block (search
+    for "Two bug fixes + Search + full admin/Supabase wiring", dated
+    2026-07-17) added all 5, but that entry ended up physically inserted
+    ABOVE this one instead of at the true end of the file, an ordering
+    mistake in how I edited this log, not in the actual code. Leaving the
+    original gap text below struck through rather than deleting it, so
+    the history stays honest about what was true at the time this block
+    was written:
+    ~~Articles/Commentaries/Résumé/Stories/Sculptures still have no admin
     page or Supabase table (documented as a scope decision, not silently
-    dropped) — say the word if you want these editable too.
+    dropped) — say the word if you want these editable too.~~
   - No image-editing-in-place for the 391 historical GitHub Release
     assets from the admin panel — ImageUpload only handles NEW uploads to
     Supabase Storage. Swapping an existing historical image would need a
