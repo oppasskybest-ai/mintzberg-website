@@ -47,9 +47,9 @@ export default function AdminMessages() {
       ) : messages.length === 0 ? (
         <p style={{ color: 'rgba(255,255,255,0.4)' }}>No contact form submissions yet.</p>
       ) : (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', minWidth: 0 }}>
           {messages.map((m) => (
-            <div key={m.id} style={{ padding: '1.25rem', background: '#141b26', border: `1px solid ${m.read ? 'rgba(255,255,255,0.06)' : 'rgba(224,92,26,0.3)'}`, borderRadius: '3px' }}>
+            <div key={m.id} style={{ padding: '1.25rem', background: '#141b26', border: `1px solid ${m.read ? 'rgba(255,255,255,0.06)' : 'rgba(224,92,26,0.3)'}`, borderRadius: '3px', minWidth: 0, overflow: 'hidden' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
                 <div>
                   <p style={{ color: 'white', fontSize: '0.9rem' }}>{m.name} <span style={{ color: 'rgba(255,255,255,0.4)' }}>&lt;{m.email}&gt;</span></p>
@@ -66,7 +66,7 @@ export default function AdminMessages() {
                   </button>
                 </div>
               </div>
-              <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: '0.85rem', lineHeight: 1.6, whiteSpace: 'pre-wrap' }}>{m.message}</p>
+              <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: '0.85rem', lineHeight: 1.6, whiteSpace: 'pre-wrap', overflowWrap: 'anywhere', wordBreak: 'break-word', maxWidth: '100%', maxHeight: '12rem', overflowY: 'auto' }}>{m.message}</p>
               <p style={{ color: 'rgba(255,255,255,0.3)', fontSize: '0.72rem', marginTop: '0.6rem' }}>{new Date(m.created_at).toLocaleString()}</p>
             </div>
           ))}

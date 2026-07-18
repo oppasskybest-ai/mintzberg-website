@@ -19,6 +19,7 @@ alter table books        add column if not exists order_index int;
 alter table videos       add column if not exists order_index int;
 alter table articles     add column if not exists order_index int;
 alter table commentaries add column if not exists order_index int;
+alter table stories      add column if not exists order_index int;
 
 alter table articles     add column if not exists title text;
 alter table commentaries add column if not exists title text;
@@ -28,3 +29,4 @@ create index if not exists books_order_idx        on books        (order_index);
 create index if not exists videos_order_idx       on videos       (order_index);
 create index if not exists articles_order_idx     on articles     (order_index);
 create index if not exists commentaries_order_idx on commentaries (order_index);
+create index if not exists stories_order_idx      on stories      (order_index);

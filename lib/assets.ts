@@ -36,8 +36,21 @@ export function basename(path: string): string {
  * Returns null if the extension isn't one of the four known asset types
  * (e.g. .css/.js from the old theme, which are reference-only and never
  * get hosted) — callers should treat null as "not a hostable asset."
+ *
+ * Bug fixed 2026-07-18: this always ran `basename()` first, which strips
+ * everything up to the last "/" — fine for a scraped relative path like
+ * "../sites/default/files/book/cover.jpg", but it also silently mangled a
+ * full Supabase Storage URL (e.g.
+ * "https://xxx.supabase.co/storage/v1/object/public/media/123-cover.png")
+ * down to just "123-cover.png", then rebuilt it as a GitHub Release URL
+ * that file was never uploaded to — a 404/broken image every time. New
+ * images uploaded via the admin panel's image picker go to Supabase
+ * Storage and come back as a full URL, so this needed to pass those
+ * through untouched instead of treating them as a bare historical
+ * filename.
  */
 export function assetUrl(pathOrFilename: string): string | null {
+  if (/^https?:\/\//i.test(pathOrFilename)) return pathOrFilename
   const filename = basename(pathOrFilename)
   const ext = filename.split('.').pop()?.toLowerCase()
   if (!ext) return null

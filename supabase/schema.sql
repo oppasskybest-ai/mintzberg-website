@@ -108,8 +108,10 @@ create table if not exists stories (
                                     -- for the 5 original PDF-only stories,
                                     -- usable for any new story added
                                     -- directly through the admin panel
+  order_index int,                 -- manual ordering; lower = shows first
   created_at timestamptz default now()
 );
+create index if not exists stories_order_idx on stories (order_index);
 
 -- ── SCULPTURE IMAGES ──
 create table if not exists sculpture_images (

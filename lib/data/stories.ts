@@ -6,8 +6,9 @@ export async function getAllStories(): Promise<StoryItem[]> {
   if (supabase) {
     const { data, error } = await supabase
       .from('stories')
-      .select('slug, title, description, pdf_file, body_html')
-      .order('created_at', { ascending: true })
+      .select('slug, title, description, pdf_file, body_html, order_index')
+      .order('order_index', { ascending: true, nullsFirst: false })
+      .order('created_at', { ascending: false })
     if (!error && data && data.length > 0) {
       return data.map((row) => ({
         slug: row.slug,

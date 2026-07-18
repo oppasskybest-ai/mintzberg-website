@@ -1226,3 +1226,64 @@ page (previously fully static/build-time-only).
 classification noted above.
 
 ---
+
+## 2026-07-18 (later same day) — Follow-up bug report from live testing on Vercel
+
+Person tested the deployed site and flagged three more issues with
+screenshots. All three were real bugs, found by reading the code (not
+guessed):
+
+**1. "Added an image but nothing shows on the front end — size/resolution
+limit?"** — Not a size limit. `lib/assets.ts`'s `assetUrl()` always ran
+`basename()` on its input, which strips everything up to the last "/".
+That's correct for the ~391 *historical* scraped assets (bare filenames,
+resolved to a GitHub Release URL) but it also silently mangled a brand-new
+Supabase Storage upload — a full URL like
+`https://xxx.supabase.co/storage/v1/object/public/media/123-cover.png` —
+down to just `123-cover.png`, then rebuilt *that* as a GitHub Release URL
+which was never uploaded there. Every new image uploaded via the admin
+panel's image picker, anywhere in the site (book covers, blog inline
+images, sculptures, resume), was affected — confirmed by grepping every
+caller of `assetUrl()`. Fixed: `assetUrl()` now returns an already-absolute
+`http(s)://` URL unchanged instead of running it through the historical-
+asset resolver. One function fix, applies everywhere `assetUrl` is called.
+
+**2. Messages admin page — a long message with no spaces (e.g. spam/test
+input) pushed the card past the viewport instead of wrapping.**
+`white-space: pre-wrap` alone only wraps at whitespace; a run with zero
+spaces has nothing to wrap on, so it overflowed. Fixed
+`app/admin/messages/page.tsx`: added `overflowWrap: 'anywhere'` +
+`wordBreak: 'break-word'` (forces a break even inside an unbroken run),
+`minWidth: 0` on the flex containers (the actual root cause of the card
+refusing to shrink), and capped each message body to a 12rem scrollable
+preview so one huge message can't blow out the whole list.
+
+**3. Stories — a newly-added story didn't sort to the top, landed "in the
+middle."** Unlike Blog/Books/Videos/Articles/Commentaries, Stories never
+got the `order_index` treatment in the first go — the first fix pass
+scoped it to revalidation-only since ordering wasn't in the original
+report. Fixed now the same way as everything else: `order_index` column
+(added to `supabase/migrations/002_ordering_and_titles.sql` — **re-run
+that migration file**, it's idempotent, the new `stories` line is additive
+alongside what it already had), `lib/data/stories.ts` now orders by
+`order_index` first the same as every other content type, admin Stories
+form got an Order field, and the POST route auto-assigns a new story to
+the top via `withTopOrderIndex()` the same helper every other resource
+uses. Also changed the fallback sort from oldest-created-first to
+newest-created-first for consistency with the rest of the site's "new
+things appear first by default" behavior.
+
+**Verified:** `npm run build` — 320 routes, 0 errors.
+
+**NOT done / needs the person's action:**
+- Re-run `supabase/migrations/002_ordering_and_titles.sql` — it now also
+  adds `order_index` to `stories`. Safe to re-run even though earlier
+  statements already ran; everything is `IF NOT EXISTS`.
+- Could not reproduce the original broken-image/overflow/ordering bugs
+  against the live Vercel deployment or real Supabase data in this
+  environment (no credentials, no deployment access) — fixes are verified
+  by code-reading + a clean local build against seed data, not by
+  reproducing the exact screenshots. Recommend re-testing all three after
+  redeploying.
+
+---

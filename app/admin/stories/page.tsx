@@ -7,11 +7,17 @@ export default function AdminStories() {
       apiPath="stories"
       resourceLabel="Story"
       titleField="title"
-      emptyRow={{ slug: '', title: '', description: '', pdf_file: '', body_html: '' }}
+      emptyRow={{ slug: '', title: '', description: '', pdf_file: '', body_html: '', order_index: null }}
       listSubtitle={(row) => String(row.pdf_file || (row.body_html ? 'Full text' : ''))}
       fields={[
         { key: 'title', label: 'Title', type: 'text' },
         { key: 'description', label: 'Short description (one line)', type: 'text' },
+        {
+          key: 'order_index',
+          label: 'Order (lower number shows first)',
+          type: 'number',
+          helpText: 'Leave blank and this story goes to the top of the Stories page. Type a number to place it manually.',
+        },
         { key: 'pdf_file', label: 'PDF filename or URL (optional if writing full text below)', type: 'text' },
         { key: 'body_html', label: 'Full story text (optional — leave blank if this story is only a PDF download)', type: 'richtext' },
       ]}
