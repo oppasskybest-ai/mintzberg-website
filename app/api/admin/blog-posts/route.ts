@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from "next/server"
 import { supabaseAdmin } from "@/lib/supabase/server"
 import { isAuthenticated } from "@/lib/auth/session"
+import { withTopOrderIndex } from "@/lib/admin/order"
+import { revalidatePublic } from "@/lib/admin/revalidate"
+import { deriveSortDate } from "@/lib/admin/blogDate"
 
 const TABLE = "blog_posts"
 
@@ -13,8 +16,16 @@ export async function GET(req: NextRequest) {
 
 export async function POST(req: NextRequest) {
   if (!isAuthenticated(req)) return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
-  const body = await req.json()
+  const rawBody = await req.json()
+  // sort_date drives ordering for posts without a manual order_index —
+  // derive it from the free-text `date` field so the admin never has to
+  // fill in two date fields for one post (see lib/admin/blogDate.ts).
+  if (rawBody.sort_date === undefined || rawBody.sort_date === null || rawBody.sort_date === "") {
+    rawBody.sort_date = deriveSortDate(rawBody.date)
+  }
+  const body = await withTopOrderIndex(TABLE, rawBody)
   const { data, error } = await supabaseAdmin.from(TABLE).insert(body).select().single()
   if (error) return NextResponse.json({ error: error.message }, { status: 500 })
+  revalidatePublic(TABLE, [data?.slug])
   return NextResponse.json(data, { status: 201 })
 }

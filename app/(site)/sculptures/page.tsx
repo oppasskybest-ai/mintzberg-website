@@ -3,6 +3,13 @@ import PageHero from '@/components/layout/PageHero'
 import { getAllSculptureImages } from '@/lib/data/sculptures'
 import { assetUrl } from '@/lib/assets'
 
+// ISR safety net: on-demand revalidation (see lib/admin/revalidate.ts) already
+// refreshes this page the moment an admin saves/deletes content, so this is
+// just a ceiling on how stale the page could ever get if a revalidate call
+// were ever missed — not the primary freshness mechanism.
+export const revalidate = 300
+
+
 const SCULPTURES_INTRO =
   "I collect beaver sculptures. I take what these busy, wet Canadian artists (or is it craftworkers) leave behind, in the water or on land, not from their dams and lodges. These pieces range in size from a few centimeters to a meter and a half. I hope they can be displayed one day, presumably in a rather broad-minded museum."
 

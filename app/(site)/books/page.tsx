@@ -4,6 +4,13 @@ import { getAllBooks } from '@/lib/data/books'
 import PageHero from '@/components/layout/PageHero'
 import { assetUrl } from '@/lib/assets'
 
+// ISR safety net: on-demand revalidation (see lib/admin/revalidate.ts) already
+// refreshes this page the moment an admin saves/deletes content, so this is
+// just a ceiling on how stale the page could ever get if a revalidate call
+// were ever missed — not the primary freshness mechanism.
+export const revalidate = 300
+
+
 export default async function BooksIndexPage() {
   const books = await getAllBooks()
 

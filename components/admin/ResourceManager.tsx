@@ -11,6 +11,7 @@ export type FieldConfig =
   | { key: string; label: string; type: 'richtext' }
   | { key: string; label: string; type: 'image' }
   | { key: string; label: string; type: 'linklist' } // array of { label, href }
+  | { key: string; label: string; type: 'number'; helpText?: string }
 
 export interface ResourceRow {
   [key: string]: unknown
@@ -211,6 +212,23 @@ export default function ResourceManager({
                   <div key={f.key}>
                     <label style={labelStyle}>{f.label}</label>
                     <input style={fieldStyle} value={String(editing[f.key] ?? '')} onChange={(e) => setField(f.key, e.target.value)} />
+                  </div>
+                )
+              }
+              if (f.type === 'number') {
+                return (
+                  <div key={f.key}>
+                    <label style={labelStyle}>{f.label}</label>
+                    <input
+                      type="number"
+                      style={fieldStyle}
+                      value={editing[f.key] === null || editing[f.key] === undefined ? '' : String(editing[f.key])}
+                      placeholder="Leave blank to auto-place at the top"
+                      onChange={(e) => setField(f.key, e.target.value === '' ? null : Number(e.target.value))}
+                    />
+                    {f.helpText && (
+                      <p style={{ fontSize: '0.68rem', color: 'rgba(255,255,255,0.35)', marginTop: '0.35rem' }}>{f.helpText}</p>
+                    )}
                   </div>
                 )
               }

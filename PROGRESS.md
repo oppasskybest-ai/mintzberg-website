@@ -33,7 +33,7 @@ not just assumed). New images added via the admin panel go to Supabase
 Storage instead (bucket `media`) — both sources work side by side.
 
 **Public site — what's live and built, verified via `npm run build`
-(320 routes, 0 errors) as of 2026-07-17:**
+(320 routes, 0 errors) as of 2026-07-18:**
 - Home, Blog (241 posts, paginated 10/page), Books (21), Videos (18),
   Articles (171), Commentaries (89), Résumé, Stories (5), Sculptures (21
   images), Contact (working form + email), Search (`/search`, Fuse.js)
@@ -42,6 +42,15 @@ Storage instead (bucket `media`) — both sources work side by side.
   the standard across every page, not just the home page
 - Rebalancing Society removed from scope entirely (explicit decision,
   2026-07-15)
+- **2026-07-18: every public page now regenerates on-demand the instant an
+  admin saves/edits/deletes anything** (see "2026-07-18" entry below) — this
+  was the root cause of "I added a book/video and it didn't show up on the
+  live site." Previously every page was frozen at build time until the next
+  deploy.
+- **2026-07-18: manual ordering added** (`order_index`) for Blog, Books,
+  Videos, Articles, Commentaries — lower number = shows first, blank =
+  auto-placed at the top. Home page's 3 featured books / 2 featured videos
+  now pull live from Supabase ordered data instead of a hardcoded list.
 
 **Admin dashboard — `/admin`, fully built and editable for EVERY content
 type above** (not just blog/books/videos — Articles, Commentaries,
@@ -52,13 +61,29 @@ not just edit what's already there):
 - Blog Posts, Books, Videos, Articles, Commentaries, Stories, Sculptures,
   Résumé — each with list/create/edit/delete, rich text editor (Tiptap)
   with image upload where relevant
+- **2026-07-18: rich text editor upgraded** — headings, bold/italic/
+  underline/strike/sub/superscript, text color, highlight color, left/
+  center/right/justify alignment, bullet + numbered lists, blockquote,
+  code block, tables (insert/add/delete row/col), horizontal rule, link/
+  unlink, image upload, clear formatting, undo/redo. Same component used
+  everywhere, so this applies to Blog, Books, Videos, Articles,
+  Commentaries, Stories, and Résumé all at once.
 - Messages — every contact form submission, saved automatically
 - Settings — the idempotent seed button (adds what's missing, never
   touches existing/edited data, safe to click repeatedly)
 
 **NOT yet done:**
 - Supabase project itself hasn't been created/tested against real
-  credentials yet (that step is on you — see SUPABASE_SETUP.md)
+  credentials yet (that step is on you — see SUPABASE_SETUP.md).
+  **Important: run `supabase/migrations/002_ordering_and_titles.sql` in
+  the Supabase SQL Editor** — it adds the `order_index` columns and the
+  `articles`/`commentaries` `title` columns that the 2026-07-18 fixes
+  depend on. Safe to run even if you already have data; it only adds
+  columns, never touches existing rows.
+- Existing articles/commentaries rows created before 2026-07-18 have no
+  `title` — they'll keep working (their slug/body are unaffected) but the
+  admin list will show a preview of the body text instead of a real title
+  until you fill one in.
 - 4 images (`for_irene.jpg`, `tableimage.jpg`, `unnamed_0.jpg`,
   `512px-luther_95_thesen.png`) and the real favicon — confirmed
   unrecoverable, deferred by explicit instruction, not blocking anything
@@ -1078,5 +1103,126 @@ Next session: run the same "classify first, then parse" approach used for
 blog — the pages/ folder mixes books, articles, commentaries, resume,
 contact, rebalancing society, videos, stories, sculptures pages, so
 classification by content type comes before parsing.
+
+---
+
+## 2026-07-18 — Fixed reported bugs: ordering, stale frontend, missing article titles, editor toolbar
+
+**Session start:** Person reported four concrete bugs after testing the
+admin panel against the live site: (1) new blog posts appear on the last
+page instead of the first / no manual ordering control, (2) a new book
+saved fine to Supabase but never appeared on the front end even after a
+hard refresh, (3) same problem for videos, plus the home page's 2 featured
+videos aren't tied to real ordering, (4) same problem for articles, and
+articles have no title field so slugs can't be generated. Also asked for a
+richer text editor (~80% of Word's toolbar) across every admin form, and a
+thorough pass across all admin sections including Messages.
+
+**Root causes found by reading the code (not guessed):**
+1. Blog's admin form saved the free-text `date` field but never set
+   `sort_date` (the actual column driving order) — new posts got
+   `sort_date = NULL`, which sorts last.
+2. **Every public page in the site was fully static-generated with no
+   `revalidate`/`dynamic` export and no on-demand invalidation.** Next.js
+   rendered each page once and never refetched from Supabase until a full
+   redeploy — this is why books/videos/edits "worked" in Supabase but never
+   showed on the live site.
+3. The `articles` table had no `title` column at all, and the admin form
+   didn't ask for one — confirmed exactly what was suspected.
+4. Home page's featured books (3) / videos (2) were hardcoded arrays in
+   `lib/config/home-books.ts` / `home-videos.ts`, fully disconnected from
+   Supabase — not itself a bug, but the reason "a fresh book" never
+   appeared there.
+5. No manual ordering field existed anywhere except sculpture images.
+6. `YearList.tsx` (articles/commentaries) rendered body HTML as literal
+   text (`<p>{item.text}</p>`) instead of real HTML — any rich formatting
+   from the admin editor would have shown as raw tags on the live site.
+
+**What was built:**
+- `supabase/migrations/002_ordering_and_titles.sql` — idempotent migration
+  adding `order_index` to blog_posts/books/videos/articles/commentaries and
+  `title` to articles/commentaries. **Must be run manually in the Supabase
+  SQL Editor** — not applied automatically, no DB credentials in this
+  environment. `supabase/schema.sql` updated to match for fresh installs.
+- `lib/admin/order.ts` — `withTopOrderIndex()`: auto-assigns a new item's
+  `order_index` to be lower than everything else (so it shows first)
+  unless the admin explicitly typed a value.
+- `lib/admin/revalidate.ts` — `revalidatePublic(table, slugs)`: calls
+  Next's `revalidatePath` for every public path a given table's content
+  touches (index page, detail page, home page, search index). Wired into
+  every admin POST/PUT/DELETE route (blog-posts, books, videos, articles,
+  commentaries, stories, sculpture-images, site-pages) — a save now shows
+  up on the live site on the very next request, not after a redeploy.
+- `lib/admin/blogDate.ts` — derives `sort_date` from the existing free-text
+  `date` field automatically, so the two-fields-for-one-date bug can't
+  recur (belt-and-suspenders alongside the order_index fix, which alone
+  already guarantees new posts sort first).
+- Added `export const revalidate = 300` to every public page as an ISR
+  safety-net ceiling (on-demand revalidation is the primary mechanism now;
+  this just bounds worst-case staleness if a revalidate call is ever
+  missed). `dynamicParams = true` on the three `[slug]` detail routes so a
+  brand-new slug renders on-demand instead of 404ing until the next build.
+- `lib/data/blog-posts.ts`, `books.ts`, `videos.ts`, `publications.ts` —
+  all now `order('order_index', asc, nullsFirst:false)` first, then a
+  sensible fallback (`sort_date`/`created_at` desc) as tiebreaker.
+- `components/home/FeaturedBooks.tsx` / `VideosPreview.tsx` — rewritten as
+  async server components pulling the first 3 books / 2 videos from the
+  live, ordered Supabase data instead of a hardcoded list.
+  `lib/config/home-books.ts` / `home-videos.ts` marked deprecated (kept,
+  unused) rather than deleted.
+- `types/content.ts` — added optional `title` to `PublicationItem` /
+  `PublicationItemRow` (optional, not required, so the 260 existing
+  scraped seed entries without a title still type-check).
+- `components/publications/YearList.tsx` — now renders `item.title` as a
+  heading when present, and renders the body through the same `PostBody`
+  component blog posts use (real HTML, not raw tags) — fixes the "articles
+  failed to work" report and gives articles/commentaries the same visual
+  weight as blog/book copy, which was also requested.
+- Admin forms updated: `app/admin/blog/page.tsx`, `books/page.tsx`,
+  `videos/page.tsx` gained an "Order" number field. `articles/page.tsx` and
+  `commentaries/page.tsx` gained both a required "Title" field (fixes slug
+  generation) and an "Order" field, plus a `renderTitle` fallback that
+  shows a body-text preview for older rows that predate the title column.
+- `components/admin/ResourceManager.tsx` — added a `number` field type
+  (with optional help text) to support the new Order fields.
+- `components/admin/RichTextEditor.tsx` — full rewrite. Added: heading
+  picker (H1–H3/paragraph), underline, strikethrough, sub/superscript,
+  text color (8-swatch picker), highlight color (6-swatch picker), 4-way
+  alignment, tables (insert + add/delete row/column/table), horizontal
+  rule, clear-formatting, and undo/redo — on top of the existing bold/
+  italic/lists/blockquote/link/image. New Tiptap packages installed:
+  extension-underline, extension-text-align, extension-color,
+  extension-text-style, extension-highlight, extension-table(+row/cell/
+  header), extension-subscript, extension-superscript. Same component is
+  used by every content type via `ResourceManager`, so this one change
+  applies everywhere at once, as requested.
+- `app/globals.css` — added table/highlight/subscript/superscript/hr/pre
+  styling for both the live site (`.post-body`) and the admin editor
+  (`.ProseMirror`), so tables etc. actually look right in both places.
+- Audited Messages admin (`/admin/messages`) — it's a plain client-side
+  fetch against the admin API, never statically cached, no bug found.
+  Audited Stories, Sculptures, Résumé admin routes for the same
+  stale-frontend bug and added `revalidatePublic()` calls to all three even
+  though ordering wasn't requested for them (sculptures already had
+  `sort_order`, untouched).
+
+**Verified:** `npm run build` — 320 routes, 0 TypeScript errors, 0 build
+errors. Route manifest confirms `revalidate: 5m` now shows on every public
+page (previously fully static/build-time-only).
+
+**NOT done / needs the person's action:**
+- Run `supabase/migrations/002_ordering_and_titles.sql` in Supabase before
+  any of this works against real data — the columns don't exist in the
+  live database until that migration runs.
+- No automated test/verification against a real Supabase project was
+  possible in this environment (no credentials) — the fix is verified by
+  code-reading + a clean build, not by reproducing the original bug
+  end-to-end against live data. Recommend the person re-test all four
+  original repro steps after running the migration and deploying.
+- Existing articles/commentaries with no title will show a body-preview in
+  the admin list until manually given a real title.
+
+**Resume point:** next reported bug, or continue the pages/ folder
+classification noted above.
 
 ---

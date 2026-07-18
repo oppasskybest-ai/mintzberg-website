@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { supabaseAdmin } from '@/lib/supabase/server'
 import { isAuthenticated } from '@/lib/auth/session'
+import { revalidatePublic } from '@/lib/admin/revalidate'
 
 function coerce(body: Record<string, unknown>) {
   if (body.sort_order !== undefined) body.sort_order = Number(body.sort_order) || 0
@@ -15,6 +16,7 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<{ id: 
     delete body.id
     const { data, error } = await supabaseAdmin.from('sculpture_images').update(body).eq('id', id).select().single()
     if (error) throw error
+    revalidatePublic('sculpture_images')
     return NextResponse.json(data)
   } catch (error) {
     console.error('[API /admin/sculpture-images/[id] PUT]', error)
@@ -28,6 +30,7 @@ export async function DELETE(req: NextRequest, { params }: { params: Promise<{ i
   try {
     const { error } = await supabaseAdmin.from('sculpture_images').delete().eq('id', id)
     if (error) throw error
+    revalidatePublic('sculpture_images')
     return NextResponse.json({ success: true })
   } catch (error) {
     console.error('[API /admin/sculpture-images/[id] DELETE]', error)

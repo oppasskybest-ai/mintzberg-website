@@ -216,6 +216,39 @@ a:hover { color: var(--orange-light); }
   font-style: italic;
   color: var(--ink-light);
 }
+.post-body table, .ProseMirror table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.5rem 0;
+  overflow: hidden;
+}
+.post-body table td, .post-body table th,
+.ProseMirror table td, .ProseMirror table th {
+  border: 1px solid var(--rule, rgba(255,255,255,0.15));
+  padding: 0.5rem 0.75rem;
+  vertical-align: top;
+}
+.post-body table th, .ProseMirror table th {
+  background: rgba(26, 46, 74, 0.06);
+  font-weight: 600;
+  text-align: left;
+}
+.ProseMirror table th { background: rgba(255,255,255,0.06); }
+.post-body mark, .ProseMirror mark { border-radius: 2px; padding: 0.05em 0.15em; color: inherit; }
+.post-body sub, .post-body sup, .ProseMirror sub, .ProseMirror sup { font-size: 0.75em; }
+.post-body hr, .ProseMirror hr { border: none; border-top: 1px solid var(--rule, rgba(255,255,255,0.15)); margin: 2rem 0; }
+.post-body pre, .ProseMirror pre {
+  background: rgba(26, 46, 74, 0.06);
+  padding: 0.85rem 1rem;
+  border-radius: 3px;
+  overflow-x: auto;
+}
+.ProseMirror pre { background: rgba(255,255,255,0.06); }
+.ProseMirror .selectedCell { background: rgba(224, 92, 26, 0.18); }
+.ProseMirror .column-resize-handle {
+  background-color: var(--orange, #e05c1a);
+  width: 3px;
+}
 
 @media (max-width: 640px) {
   /* iOS Safari doesn't support background-attachment: fixed well inside

@@ -1,5 +1,10 @@
 import type { FeaturedBook } from '@/types/content'
 
+// DEPRECATED 2026-07-18: components/home/FeaturedBooks.tsx now pulls the
+// first 3 books live from Supabase (ordered) instead of this hardcoded
+// list, so a newly-added book actually shows up on the home page. Kept
+// here for reference only — nothing imports this anymore.
+//
 // The three "Bedtime Stories for Managers" sidebar block books on the home
 // page, sourced verbatim from html/pages/1.html.
 export const HOME_FEATURED_BOOKS: FeaturedBook[] = [

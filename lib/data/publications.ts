@@ -5,10 +5,15 @@ import { COMMENTARIES_SEED } from '@/lib/config/commentaries'
 
 async function getAllRows(table: 'articles' | 'commentaries', seed: PublicationItemRow[]): Promise<PublicationItemRow[]> {
   if (supabase) {
-    const { data, error } = await supabase.from(table).select('slug, year, body_html, links')
+    const { data, error } = await supabase
+      .from(table)
+      .select('slug, title, year, body_html, links, order_index')
+      .order('order_index', { ascending: true, nullsFirst: false })
+      .order('created_at', { ascending: false })
     if (!error && data && data.length > 0) {
       return data.map((row) => ({
         slug: row.slug,
+        title: row.title ?? null,
         year: row.year,
         bodyHtml: row.body_html,
         links: row.links ?? [],
@@ -31,7 +36,7 @@ export function groupByYear(rows: PublicationItemRow[]): PublicationYear[] {
     .sort((a, b) => b[0].localeCompare(a[0]))
     .map(([year, items]) => ({
       year,
-      items: items.map((r) => ({ text: r.bodyHtml, links: r.links })),
+      items: items.map((r) => ({ title: r.title ?? null, text: r.bodyHtml, links: r.links })),
     }))
 }
 

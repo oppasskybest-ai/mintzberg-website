@@ -19,9 +19,15 @@ function parseDate(d: string | null): number {
 // populated (via the admin dashboard), this becomes the live source.
 export async function getAllBlogPosts(): Promise<BlogPost[]> {
   if (supabase) {
+    // order_index is the manual "place this anywhere" control (lower =
+    // shows first). Posts without one (older/legacy rows) fall back to
+    // sort_date, newest first. New posts created via the admin panel are
+    // auto-assigned an order_index that puts them above everything else —
+    // see the POST handler in app/api/admin/blog-posts/route.ts.
     const { data, error } = await supabase
       .from('blog_posts')
-      .select('slug, title, date, category_label, category_id, image_refs, body_html')
+      .select('slug, title, date, category_label, category_id, image_refs, body_html, order_index')
+      .order('order_index', { ascending: true, nullsFirst: false })
       .order('sort_date', { ascending: false, nullsFirst: false })
 
     if (!error && data && data.length > 0) {

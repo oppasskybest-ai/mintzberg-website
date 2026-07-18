@@ -4,6 +4,13 @@ import { getBlogPostsPage } from '@/lib/data/blog-posts'
 import PageHero from '@/components/layout/PageHero'
 import { assetUrl } from '@/lib/assets'
 
+// ISR safety net: on-demand revalidation (see lib/admin/revalidate.ts) already
+// refreshes this page the moment an admin saves/deletes content, so this is
+// just a ceiling on how stale the page could ever get if a revalidate call
+// were ever missed — not the primary freshness mechanism.
+export const revalidate = 300
+
+
 // Blog index — paginated 10 posts per page (not the old site's "load
 // everything at once" pattern, which took 10+ minutes for 234 posts).
 export default async function BlogIndexPage({

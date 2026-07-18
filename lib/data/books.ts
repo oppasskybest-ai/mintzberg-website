@@ -6,7 +6,9 @@ export async function getAllBooks(): Promise<Book[]> {
   if (supabase) {
     const { data, error } = await supabase
       .from('books')
-      .select('slug, title, cover_image, links, body_html')
+      .select('slug, title, cover_image, links, body_html, order_index')
+      .order('order_index', { ascending: true, nullsFirst: false })
+      .order('created_at', { ascending: false })
 
     if (!error && data && data.length > 0) {
       return data.map((row) => ({

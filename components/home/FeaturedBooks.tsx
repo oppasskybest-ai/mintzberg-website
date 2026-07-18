@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { HOME_FEATURED_BOOKS } from '@/lib/config/home-books'
+import { getAllBooks } from '@/lib/data/books'
 import { assetUrl } from '@/lib/assets'
 import FeatureBand from '@/components/layout/FeatureBand'
 import WaveDivider from '@/components/layout/WaveDivider'
@@ -8,8 +8,15 @@ import SmartLink from '@/components/ui/SmartLink'
 // Redesigned 2026-07-15: dark full-bleed panel (Henry's own sculpture
 // photography as texture) with book covers as bright cards on top —
 // matching cushnir-site's "Five Books, One Mission" reference panel.
-export default function FeaturedBooks() {
+//
+// 2026-07-18: now pulls the first 3 books live from Supabase (ordered by
+// order_index / newest-first, same ordering as the full /books page)
+// instead of a hardcoded list — a new book added via the admin panel and
+// placed first shows up here automatically, no code change needed.
+export default async function FeaturedBooks() {
+  const HOME_FEATURED_BOOKS = (await getAllBooks()).slice(0, 3)
   const bg = assetUrl('q11_new.jpg')
+  if (HOME_FEATURED_BOOKS.length === 0) return null
   return (
     <>
       <WaveDivider fill="var(--navy)" />
@@ -29,7 +36,7 @@ export default function FeaturedBooks() {
             }}
           >
             {HOME_FEATURED_BOOKS.map((book) => {
-              const cover = assetUrl(book.coverImage)
+              const cover = book.coverImage ? assetUrl(book.coverImage) : null
               return (
                 <div
                   key={book.slug}
@@ -44,7 +51,7 @@ export default function FeaturedBooks() {
                     <a href={`/books/${book.slug}`}>
                       <Image
                         src={cover}
-                        alt={book.title}
+                        alt={book.title ?? ''}
                         width={220}
                         height={330}
                         style={{ width: '100%', height: 'auto' }}

@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server"
 import { supabaseAdmin } from "@/lib/supabase/server"
 import { isAuthenticated } from "@/lib/auth/session"
+import { revalidatePublic } from "@/lib/admin/revalidate"
 
 const TABLE = "stories"
 
@@ -11,6 +12,7 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<{ slug
     const body = await req.json()
     const { data, error } = await supabaseAdmin.from(TABLE).update(body).eq("slug", slug).select().single()
     if (error) throw error
+    revalidatePublic(TABLE, [slug, data?.slug])
     return NextResponse.json(data)
   } catch (error) {
     console.error("[API /admin/stories/[slug] PUT]", error)
@@ -24,6 +26,7 @@ export async function DELETE(req: NextRequest, { params }: { params: Promise<{ s
   try {
     const { error } = await supabaseAdmin.from(TABLE).delete().eq("slug", slug)
     if (error) throw error
+    revalidatePublic(TABLE, [slug])
     return NextResponse.json({ success: true })
   } catch (error) {
     console.error("[API /admin/stories/[slug] DELETE]", error)

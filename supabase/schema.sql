@@ -19,10 +19,14 @@ create table if not exists blog_posts (
   category_id text,
   image_refs text[] default '{}',
   body_html text not null,
+  order_index int,               -- manual ordering; lower = shows first.
+                                  -- null = falls back to sort_date. See
+                                  -- migrations/002_ordering_and_titles.sql
   created_at timestamptz default now()
 );
 
 create index if not exists blog_posts_sort_date_idx on blog_posts (sort_date desc nulls last);
+create index if not exists blog_posts_order_idx on blog_posts (order_index);
 
 -- ── BOOKS ──
 create table if not exists books (
@@ -31,16 +35,20 @@ create table if not exists books (
   cover_image text,
   links jsonb default '[]',      -- [{ "label": "...", "href": "..." }]
   body_html text not null,
+  order_index int,               -- manual ordering; lower = shows first
   created_at timestamptz default now()
 );
+create index if not exists books_order_idx on books (order_index);
 
 -- ── VIDEOS ──
 create table if not exists videos (
   slug text primary key,
   title text,
   youtube_id text not null,
+  order_index int,               -- manual ordering; lower = shows first
   created_at timestamptz default now()
 );
+create index if not exists videos_order_idx on videos (order_index);
 
 -- ── CONTACT MESSAGES ──
 -- Every contact form submission is saved here regardless of whether email
@@ -61,24 +69,32 @@ create table if not exists contact_messages (
 -- list/edit/delete pattern like everything else)
 create table if not exists articles (
   slug text primary key,
+  title text,                      -- required to generate the slug from
+                                    -- the admin panel; older rows may have
+                                    -- this null (backfill via admin)
   year text,
   body_html text not null,        -- the description text — richtext so
                                     -- future entries can carry real body
                                     -- copy, not just a one-line blurb
   links jsonb default '[]',        -- [{ "label": "...", "href": "..." }]
+  order_index int,                 -- manual ordering; lower = shows first
   created_at timestamptz default now()
 );
 create index if not exists articles_year_idx on articles (year desc);
+create index if not exists articles_order_idx on articles (order_index);
 
 -- ── COMMENTARIES ── (same shape as articles)
 create table if not exists commentaries (
   slug text primary key,
+  title text,
   year text,
   body_html text not null,
   links jsonb default '[]',
+  order_index int,
   created_at timestamptz default now()
 );
 create index if not exists commentaries_year_idx on commentaries (year desc);
+create index if not exists commentaries_order_idx on commentaries (order_index);
 
 -- ── STORIES ──
 create table if not exists stories (

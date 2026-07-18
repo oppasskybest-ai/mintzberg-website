@@ -62,6 +62,7 @@ export interface PublicationLink {
 }
 
 export interface PublicationItem {
+  title?: string | null
   text: string
   links: PublicationLink[]
 }
@@ -79,6 +80,7 @@ export interface PublicationYear {
 // nested year-grouped shape which has no natural single "row" to edit.
 export interface PublicationItemRow {
   slug: string
+  title?: string | null
   year: string | null
   bodyHtml: string
   links: PublicationLink[]
